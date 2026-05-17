@@ -255,6 +255,13 @@
             color: var(--text-secondary);
         }
 
+        /* Center the last card if it is alone on the last row (e.g. 7th card in a 3-col grid) */
+        @media (min-width: 1000px) {
+            .feature-card:last-child:nth-child(3n + 1) {
+                grid-column: 2;
+            }
+        }
+
         /* Stats Section */
         .stats {
             background: var(--card-bg);
@@ -421,7 +428,7 @@
                 </div>
                 <span class="logo-text">Token Studio</span>
             </div>
-            <div class="version-badge">v0.2.52-beta</div>
+            <div class="version-badge">v0.3.16-beta</div>
         </header>
 
         <section class="hero">
@@ -432,15 +439,17 @@
             </h1>
             <p>Token Studio is a professional-grade engine for comprehensive NFT lifecycle management on the Solana
                 blockchain. Designed specifically for digital artists and collectors, the application provides absolute,
-                granular control over the assets. Users can Create, Edit, Verify, Print, Transfer, Autograph, Freeze,
+                granular asset control at scale. It aggregates your entire on-chain footprint into a unified indexed
+                view,
+                enriched with pricing and performance data. Create, Edit, Verify, Print, Transfer, Autograph, Freeze,
                 Delegate, and Burn NFTs with deterministic precision, high-performance batching capabilities, and
                 MTU-optimized transaction efficiency. The platform integrates directly with the Seed Vault to ensure a
-                non-custodial, institutional-grade security model. </p>
+                non-custodial, institutional-grade security model.</p>
             <div class="cta-group">
                 <a href="javascript:void(0)" class="btn btn-primary"
                     style="pointer-events: none; opacity: 1; cursor: default;">
                     <img src="assets/solana_logo.png" alt="Solana">
-                    Get it on dApp Store
+                    Get it on the dApp Store
                 </a>
                 <a href="https://x.com/impylse" class="btn btn-secondary">Follow for Updates</a>
             </div>
@@ -450,31 +459,88 @@
         <section class="features" id="features">
             <div class="feature-card">
                 <div class="feature-icon">
-                    <img src="assets/data.png" alt="Density"
+                    <img src="assets/wallet.png" alt="Wallet"
                         style="left: -100px; filter: drop-shadow(100px 0 0 #F294C3);">
                 </div>
-                <h3>High-Density</h3>
-                <p>High-Density transaction packing for Burn and Transfer operations. Reclaim SOL and optimize your
-                    wallet with byte-perfect precision.</p>
+                <h3>Wallet</h3>
+                <p>A unified view of your entire Solana footprint aggregated into a
+                    single control surface.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
-                    <img src="assets/collection.png" alt="Create"
+                    <img src="assets/master.png" alt="Asset Foundry"
+                        style="left: -100px; filter: drop-shadow(100px 0 0 #BBF294);">
+                </div>
+                <h3>Asset Foundry</h3>
+                <p>Create, Edit, Verify, Print, Transfer, Autograph, Freeze, Delegate, and Burn NFTs with deterministic
+                    precision.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="assets/search.png" alt="Search"
+                        style="left: -100px; filter: drop-shadow(100px 0 0 #BCE1F3);">
+                </div>
+                <h3>Seeker</h3>
+                <p>Powerful filtering lets you query everything across your holdings by name,
+                    address, category, or metadata property.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="assets/burn.png" alt="Burn" style="left: -100px; filter: drop-shadow(100px 0 0 #F294C3);">
+                </div>
+                <h3>Burner</h3>
+                <p>Large-scale asset cleanup with thorough safety validations, letting you process mixed sets of
+                    hundreds of tokens at once.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="assets/data.png" alt="Density"
+                        style="left: -100px; filter: drop-shadow(100px 0 0 #BBF294);">
+                </div>
+                <h3>High-Density</h3>
+                <p>High-Density transaction packing, up to the 1232 byte payload limit, minimizing total transaction
+                    count
+                    and execution costs with byte-perfect precision.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="assets/airdrop.png" alt="Airdrop"
+                        style="top: -100px; left: 0; filter: drop-shadow(0 100px 0 #BCE1F3); transform: scaleX(-1);">
+                </div>
+                <h3>Control Surface</h3>
+                <p>Navigate the Solana blockchain at scale through a unified, responsive interface with a
+                    real-time tactile feedback that keeps you in the loop.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="assets/hide.png" alt="Independance"
+                        style="left: -100px; filter: drop-shadow(100px 0 0 #F294C3);">
+                </div>
+                <h3>Independance</h3>
+                <p>The blockchain is public, but your workspace shouldn't be. No backend reliance, zero telemetry. Your
+                    data
+                    never leaves your device.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="assets/collection.png" alt="Seed Vault"
                         style="left: -100px; filter: drop-shadow(100px 0 0 #BBF294);">
                 </div>
                 <h3>Seed Vault Native</h3>
-                <p>Create, Edit, Verify, Print, Transfer, Autograph, Freeze, Delegate, and Burn NFTs with the security
-                    of the Seed Vault.</p>
+                <p>Built from the ground up for the Solana Mobile ecosystem. Every transaction is signed locally using
+                    the hardware-backed security of the Seed Vault.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
-                    <img src="assets/master.png" alt="Management"
+                    <img src="assets/read_only.png" alt="Read-Only"
                         style="left: -100px; filter: drop-shadow(100px 0 0 #BCE1F3);">
                 </div>
-                <h3>Asset Foundry</h3>
-                <p>Full Metaplex Legacy and Core architecture support,
-                    including advanced Plugin management.</p>
+                <h3>Read-Only</h3>
+                <p>Extract the same deep intelligence from any public Solana wallet address, without ever connecting
+                    your keys.</p>
             </div>
+
+
         </section>
 
         <div class="stats">
