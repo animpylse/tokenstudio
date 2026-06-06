@@ -71,7 +71,7 @@
 
         /* Header */
         header {
-            padding: 40px 0;
+            padding: 32px 0 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -122,7 +122,7 @@
 
         /* Hero Section */
         .hero {
-            padding: 80px 0 40px;
+            padding: 36px 0 40px;
             text-align: center;
             animation: fadeIn 0.8s ease-out;
         }
@@ -390,6 +390,14 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            header {
+                padding: 24px 0 12px;
+            }
+
+            .hero {
+                padding: 24px 0 32px;
+            }
+
             .hero h1 {
                 font-size: 40px;
             }
@@ -428,23 +436,23 @@
                 </div>
                 <span class="logo-text">Token Studio</span>
             </div>
-            <div class="version-badge">v0.3.16-beta</div>
+            <div class="version-badge">v0.6.97-beta</div>
         </header>
 
         <section class="hero">
-            <h1>The Definitive <br> NFT Management Engine <br> for the Solana Seeker.
-                <br>
+            <h1>The Solana Control Surface
                 <br>
                 <span>Elevate your control. Define your legacy.</span>
+                <br>
             </h1>
-            <p>Token Studio is a professional-grade engine for comprehensive NFT lifecycle management on the Solana
-                blockchain. Designed specifically for digital artists and collectors, the application provides absolute,
-                granular asset control at scale. It aggregates your entire on-chain footprint into a unified indexed
-                view,
-                enriched with pricing and performance data. Create, Edit, Verify, Print, Transfer, Autograph, Freeze,
-                Delegate, and Burn NFTs with deterministic precision, high-performance batching capabilities, and
-                MTU-optimized transaction efficiency. The platform integrates directly with the Seed Vault to ensure a
-                non-custodial, institutional-grade security model.</p>
+            <p>Token Studio is an all-in-one Solana portfolio tracker and asset management toolkit. It aggregates your
+                entire on-chain footprint into a unified view of all your wallets, tokens, NFTs and collections,
+                enriched with pricing and performance data.
+                Manage Solana tokens, NFTs, and collections from a single interface. Create, edit, print, transfer,
+                freeze, delegate, and burn assets at scale with powerful batch operations and advanced filtering.
+                Built for the Solana ecosystem, Token Studio integrates directly with the Seed Vault, Solflare, and
+                Phantom wallets to provide a secure, non-custodial experience while keeping you in full control of your
+                assets.</p>
             <div class="cta-group">
                 <a href="javascript:void(0)" class="btn btn-primary"
                     style="pointer-events: none; opacity: 1; cursor: default;">

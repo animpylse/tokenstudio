@@ -120,56 +120,69 @@
         <a href="index.html" class="back-btn">← Back to Token Studio</a>
         <h1>Privacy Policy</h1>
         <div id="content">
-            <p><strong>Effective Date: April 7, 2026</strong></p>
+            <p><strong>Effective Date: June 6, 2026</strong></p>
 
             <h2>1. Overview</h2>
             <p>Token Studio is built on the principles of decentralization and user sovereignty. The application is
-                designed to be fully privacy-focused, ensuring that you remain in control of your data and identity at
-                all times.</p>
+                designed to minimize data collection while still relying on limited server-side telemetry and
+                diagnostics needed to operate certain features, monitor service quality, and investigate errors.</p>
 
             <h2>2. Data Collection</h2>
-            <p>Token Studio does not collect, store, or process any personal information. This includes, but is not
-                limited to:
-                <br>• Email addresses or names
-                <br>• Wallet addresses or transaction history
-                <br>• Device information or hardware identifiers
-                <br>• IP addresses (beyond temporary network routing)
-                <br>No user accounts exist, and we do not maintain a backend database for user activity.
+            <p>Token Studio does not require user accounts and does not collect traditional account identifiers such as
+                email addresses, passwords, or profile names. However, when certain server-assisted features are used,
+                we may collect and store limited technical and usage data, including:
+                <br>- IP address
+                <br>- Approximate location derived from country code
+                <br>- App version
+                <br>- Diagnostic and error-report payloads sent through the app
+                <br>Token Studio does not collect private keys, seed phrases, wallet authentication
+                credentials, or wallet balances for telemetry purposes.
             </p>
 
             <h2>3. Local Processing</h2>
-            <p>All application logic and operations occur locally on your device or directly on public blockchain
-                networks. We do not transmit your data to any central server for processing or storage.</p>
+            <p>All application logic and blockchain operations occur locally on your device or directly against public
+                blockchain infrastructure. Some features, however, rely on Token Studio-operated servers for signal
+                generation, telemetry logging, diagnostics, version checks, and service monitoring. When you use those
+                features, relevant request data is transmitted to those servers for processing and, in some cases,
+                storage.</p>
 
             <h2>4. Third-Party Services</h2>
             <p>To provide high-performance asset management, Token Studio interacts with specialized decentralized and
                 third-party infrastructure:
-                <br>• <strong>Irys & Arweave</strong>: For decentralized permanent storage.
-                <br>• <strong>IPFS (via Pinata)</strong>: For distributed asset hosting.
-                <br>• <strong>Solana RPC Providers (including Helius)</strong>: For live blockchain data.
+                <br>- <strong>Irys</strong>: For decentralized permanent storage.
+                <br>- <strong>IPFS (via Pinata)</strong>: For distributed asset hosting.
+                <br>- <strong>Solana RPC Providers (including Helius)</strong>: For live blockchain data.
                 <br>These services operate independently and may process data according to their own policies. Users
                 interact with these infrastructure providers directly via blockchain requests initiated from their
                 device.
             </p>
 
-            <h2>5. No Tracking</h2>
-            <p>The application is committed to a tracker-free experience. Token Studio uses no cookies, no analytics
-                platforms, and no tracking technologies. Your activity remains private and local to your device.</p>
+            <h2>5. Telemetry and Diagnostics</h2>
+            <p>Token Studio uses limited first-party telemetry for product operations, analytics, version support,
+                abuse prevention, and debugging. This telemetry is not used for advertising or cross-site behavioral
+                profiling. We do not use cookies on the application itself, and we do not operate a third-party ad
+                tracking stack. Telemetry is collected only in connection with server-assisted features and diagnostic
+                reporting.</p>
 
             <h2>6. Data Security</h2>
             <p>Security is managed by the decentralized architecture of the Solana blockchain and the secure enclave of
-                the <strong>Seed Vault</strong> wallet. Token Studio never has access to your private keys or sensitive
-                data, and it does not store such information.</p>
+                the <strong>Seed Vault/Solflare/Phantom</strong> wallets. Token Studio never has access to your private
+                keys or sensitive
+                wallet credentials, and it does not collect or store such information. Telemetry and diagnostic records
+                that are
+                collected are retained on developer-controlled systems and protected using reasonable administrative and
+                technical safeguards, but no internet transmission or storage system can be guaranteed to be perfectly
+                secure.</p>
 
-            <h2>7. Children’s Privacy</h2>
+            <h2>7. Children's Privacy</h2>
             <p>Token Studio is not directed at children under the age of 13. It does not knowingly collect, solicit, or
                 process any data from children.</p>
 
             <h2>8. On-Chain Immutability</h2>
-            <p>Data recorded on the Solana blockchain (such as your transaction
-                history, minting activity, or burns) is immutable by design. The developer does not control the Solana
-                network and is technically unable to alter, delete, or "forget" any on-chain records. These actions are
-                permanent and publicly accessible.</p>
+            <p>Data recorded on the Solana blockchain, such as transaction history, minting activity, or burns, is
+                immutable by design. The developer does not control the Solana network and is technically unable to
+                alter, delete, or "forget" any on-chain records. These actions are permanent and publicly
+                accessible.</p>
 
             <h2>9. Changes to Policy</h2>
             <p>This Privacy Policy may be updated at any time to reflect changes in our technical practices or the
