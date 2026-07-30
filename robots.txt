@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tokenstudio.dev/sitemap.xml
+
+# LLM Specifications
+# https://tokenstudio.dev/llms.txt
+# https://tokenstudio.dev/llms-full.txt

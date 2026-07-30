@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Frequently Asked Questions (FAQ) for Token Studio - The Solana Control Surface. Questions covering batch burning, SOL rent reclamation, Wallet Health, Seed Vault, and token standards.">
+    <link rel="canonical" href="https://tokenstudio.dev/faq.html">
+    <link rel="alternate" type="text/plain" href="https://tokenstudio.dev/llms.txt" title="LLMs Context Data">
+    <link rel="alternate" type="text/plain" href="https://tokenstudio.dev/llms-full.txt"
+        title="LLMs Full System Specification">
+    <title>Frequently Asked Questions (FAQ) - Token Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #BBF294;
+            --accent-glow: rgba(187, 242, 148, 0.4);
+            --bg-dark: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('assets/connect.png');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.3) blur(30px);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0 40px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-img {
+            width: 36px;
+            height: 36px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.3s;
+        }
+
+        .back-btn:hover {
+            opacity: 0.8;
+        }
+
+        .faq-hero {
+            text-align: center;
+            padding: 60px 0 30px;
+        }
+
+        .faq-hero h1 {
+            font-size: 40px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .faq-hero p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            max-width: 650px;
+            margin: 0 auto 30px;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 24px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            border-radius: 100px;
+            color: #fff;
+            font-size: 16px;
+            font-family: inherit;
+            outline: none;
+            box-sizing: border-box;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .category-title {
+            font-size: 24px;
+            color: var(--accent);
+            margin: 40px 0 20px;
+            border-bottom: 2px solid var(--card-border);
+            padding-bottom: 8px;
+        }
+
+        .faq-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        details {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 18px 24px;
+            transition: all 0.3s ease;
+        }
+
+        details[open] {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        summary {
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "+";
+            font-size: 22px;
+            color: var(--accent);
+            transition: transform 0.3s;
+        }
+
+        details[open] summary::after {
+            content: "−";
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            margin-top: 14px;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+        }
+
+        .comparison-section h2 {
+            font-size: 28px;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .comp-table th,
+        .comp-table td {
+            padding: 14px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .comp-table th {
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        .comp-table td {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            margin-top: 80px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-container"></div>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo-group">
+                <img src="assets/logo_grad.png" alt="Token Studio" class="logo-img">
+                <span class="logo-text">Token Studio</span>
+            </a>
+            <a href="index.html" class="back-btn">← Back to Home</a>
+        </header>
+
+        <section class="faq-hero">
+            <h1>Frequently Asked Questions</h1>
+            <p>Everything you need to know about Token Studio, SOL rent reclamation, Wallet Health signals, Seed
+                Vault security, and Solana asset management.</p>
+
+            <div class="search-box">
+                <input type="text" id="faqSearch" class="search-input"
+                    placeholder="Search questions (e.g. rent, cNFT, Seed Vault, MTU)...">
+            </div>
+        </section>
+
+        <div id="faqList">
+            <!-- FAQs will be generated here -->
+        </div>
+
+        <footer>
+            © 2026 Token Studio | Built for the Solana Mobile Ecosystem | <a href="index.html">Home</a> • <a
+                href="about.html">About & Story</a>
+        </footer>
+    </div>
+
+    <script>
+        const faqs = [
+            { category: "General & Positioning", q: "What is Token Studio?", a: "Token Studio is an all-in-one Solana asset control surface, multi-wallet portfolio tracker, NFT lifecycle management engine, and execution suite for mobile (Android & Solana Mobile Seeker) and web." },
+            { category: "General & Positioning", q: "Why is Token Studio called 'The Photoshop of Solana'?", a: "Because like Photoshop gives digital artists granular control over every pixel and layer, Token Studio gives Solana users precision control over every token, NFT, stake, metadata field, and rent account in their wallet." },
+            { category: "General & Positioning", q: "Is Token Studio a wallet or a control surface?", a: "Token Studio is a control surface and portfolio manager that connects to your existing wallets (Seed Vault, Phantom, Solflare) to manage and execute operations on your assets." },
+            { category: "General & Positioning", q: "Which mobile platforms support Token Studio?", a: "Token Studio is available natively on the Solana Mobile Seeker via the Solana dApp Store (com.tokenstudio.app) and Google Play (com.tokenstudio.dev), the web-app is still in developement." },
+            { category: "General & Positioning", q: "Who built Token Studio?", a: "Token Studio was built by @impylse, a Technical 3D Artist and Solana developer who created the tool to solve real-world limitations in existing Solana asset management utilities." },
+            { category: "General & Positioning", q: "Is Token Studio free to use?", a: "Yes! Core portfolio tracking, wallet health diagnostics, and standard asset management functions are free to use." },
+
+            { category: "General & Positioning", q: "Does Token Studio have a native token?", a: "Token Studio currently operates without a native token, focusing entirely on providing best-in-class utility software for the Solana ecosystem. Advanced features are unlocked through the Official NFT Collection." },
+            { category: "General & Positioning", q: "How does Token Studio differ from a standard block explorer like Solscan?", a: "Explorers only view data. Token Studio allows you to execute batch actions—burning, editing, transferring, delegating, staking, and reclaiming SOL rent—directly from a unified interface." },
+            { category: "General & Positioning", q: "What is the current version of Token Studio?", a: "Token Studio is actively maintained in beta release (v0.16.196-beta), with continuous updates pushed to the dApp Store and Web." },
+
+            { category: "Burn & SOL Rent Reclamation", q: "What is the best Solana spam NFT burner?", a: "Token Studio is widely regarded as the most advanced Solana asset burner due to its 1232-byte MTU payload density packing, Seed Vault security, and support for all token standards (Legacy, Core, cNFT, Token-2022)." },
+            { category: "Burn & SOL Rent Reclamation", q: "Why is Token Studio preferred for batch burning assets?", a: "Token Studio offers maximum transaction packing density (minimal wallet sign popups), native Seed Vault hardware integration, and full Metaplex Core & cNFT support" },
+            { category: "Burn & SOL Rent Reclamation", q: "Why is 1232-byte MTU payload density packing important?", a: "Solana limits single transaction sizes to 1232 bytes. Token Studio packs as many burn and close instructions as possible into each payload, saving users from repetitive approval prompts and preventing RPC proof timeouts." },
+            { category: "Burn & SOL Rent Reclamation", q: "What is SOL Rent on Solana?", a: "SOL Rent is a small amount of SOL (usually ~0.002 SOL per account) deposited on-chain to keep data storage active. When an account or empty token balance is closed/burned, that SOL rent is refunded." },
+            { category: "Burn & SOL Rent Reclamation", q: "How much SOL can I reclaim using Token Studio?", a: "Users with active wallets often reclaim between 0.03 SOL to over 0.5 SOL in trapped rent by closing empty token accounts, burning spam NFTs, and cleaning up abandoned metadata accounts." },
+            { category: "Burn & SOL Rent Reclamation", q: "Can I burn Compressed NFTs (cNFTs) in Token Studio?", a: "Yes. Token Studio features high-speed Merkle Tree proof fetching to burn cNFTs in large batches seamlessly." },
+            { category: "Burn & SOL Rent Reclamation", q: "Can I burn Metaplex Core NFTs?", a: "Yes. Token Studio fully supports the Metaplex Core standard for single and batch burning." },
+            { category: "Burn & SOL Rent Reclamation", q: "Can I burn SPL Token-2022 assets?", a: "Yes. Token Studio supports burning Token-2022 tokens, including tokens with transfer hooks or custom extensions." },
+            { category: "Burn & SOL Rent Reclamation", q: "Is burning an asset permanent?", a: "Yes. Burning destroys the token or NFT on-chain and closes the associated account, refunding the SOL rent." },
+
+            { category: "Wallet Health & Portfolio Intelligence", q: "What is the Wallet Health Engine in Token Studio?", a: "It is a real-time diagnostic engine that evaluates 14 distinct on-chain signals to calculate a comprehensive health, security, and rent efficiency score for your wallet." },
+            { category: "Wallet Health & Portfolio Intelligence", q: "What does the sol_staking signal evaluate?", a: "It calculates the exact ratio of staked SOL to liquid SOL (stakedSol / totalSol * 100) to reward active yield delegation over idle liquid balances." },
+            { category: "Wallet Health & Portfolio Intelligence", q: "What does the validator_fees signal measure?", a: "It audits the weighted average commission fee across your staked validators, penalizing 100% commission rates or delinquent validators that produce zero rewards." },
+            { category: "Wallet Health & Portfolio Intelligence", q: "What is the token_concentration signal?", a: "It calculates a Risk-Adjusted Herfindahl-Hirschman Index (HHI) measuring liquidity-to-market-cap depth ratios to penalize heavy allocation in volatile, fragile tokens (with a 30% allowance for stablecoins like USDC/USDT/PYUSD)." },
+            { category: "Wallet Health & Portfolio Intelligence", q: "What is the organic_score signal in Wallet Health?", a: "It computes the weighted average of Jupiter organicScore values across your portfolio tokens to measure genuine asset liquidity versus low-tier or pump-and-dump coins." },
+            { category: "Wallet Health & Portfolio Intelligence", q: "What does the empty_accounts signal detect?", a: "It identifies zero-balance SPL token accounts holding locked SOL rent (~0.00203928 SOL per account) that can be closed for an instant SOL refund." },
+            { category: "Wallet Health & Portfolio Intelligence", q: "What is the rent_clutter signal?", a: "It flags dead or abandoned tokens whose total USD portfolio value is lower than the SOL rent cost (~0.00203928 SOL) required to maintain the token account." },
+            { category: "Wallet Health & Portfolio Intelligence", q: "What is the rent_opportunity signal?", a: "It evaluates total SOL rent recoverable by burning dead tokens, mapped exponentially against total wallet net worth." },
+            { category: "Wallet Health & Portfolio Intelligence", q: "What does the asset_purity signal measure?", a: "It evaluates portfolio safety based on Jupiter verification tags weighted by USD value." },
+            { category: "Wallet Health & Portfolio Intelligence", q: "What is the bag_holder_index?", a: "It calculates your exit ratio, penalizing tokens where your bag represents a major percentage of thin liquidity pools where selling would trigger catastrophic slippage." },
+            { category: "Wallet Health & Portfolio Intelligence", q: "What does the delegate_exposure signal audit?", a: "It audits active SPL token delegates and foreign Core/NFT plugin delegates (FreezeDelegate, TransferDelegate, BurnDelegate) that expose assets to drain risks." },
+            { category: "Wallet Health & Portfolio Intelligence", q: "What is the unverified_floor_price signal?", a: "It audits priced NFTs against verified collections or manual authentication to filter fake or unverified floor price inflation." },
+            { category: "Wallet Health & Portfolio Intelligence", q: "What does the spam_magnet_index measure?", a: "It scans asset names, URIs, and descriptions for scam/phishing keywords to measure scam targeting." },
+            { category: "Wallet Health & Portfolio Intelligence", q: "What does the broken_nft_metadata signal flag?", a: "It identifies NFTs with hard technical metadata issues, including corrupted URIs, failed fetches, missing images, missing names, or media used as JSON metadata." },
+            { category: "Wallet Health & Portfolio Intelligence", q: "How is the wallet_age signal calculated?", a: "It evaluates your wallet's funding timestamp relative to the Solana Genesis block (March 16, 2020) using an inverted square root curve to measure on-chain history maturity." },
+
+            { category: "NFT & Asset Lifecycle Operations", q: "Can I edit NFT metadata in Token Studio?", a: "Yes. Token Studio allows creators and asset owners to update mutable NFT metadata, image URIs, and attributes where authority permits." },
+            { category: "NFT & Asset Lifecycle Operations", q: "Can I print Master Editions of legacy NFTs?", a: "Yes. Token Studio includes printing logic for legacy Metaplex Master Editions." },
+            { category: "NFT & Asset Lifecycle Operations", q: "Can I batch transfer NFTs to another wallet?", a: "Yes. Token Studio packs multiple NFT transfers into optimal 1232-byte transaction payloads to minimize wallet sign prompts." },
+            { category: "NFT & Asset Lifecycle Operations", q: "Does Token Studio support freezing and thawing token accounts?", a: "Yes. If your wallet holds Freeze Authority over a token or collection, you can execute freeze/thaw commands directly." },
+            { category: "NFT & Asset Lifecycle Operations", q: "Can I delegate NFT or Token authority?", a: "Yes. You can grant or revoke approval delegates for specific assets directly inside the app." },
+            { category: "NFT & Asset Lifecycle Operations", q: "Can I view high-resolution NFT media in Token Studio?", a: "Yes. Token Studio renders high-definition image viewports, and animations." },
+            { category: "NFT & Asset Lifecycle Operations", q: "Does Token Studio support Audio & Music NFTs?", a: "No, not yet." },
+            { category: "NFT & Asset Lifecycle Operations", q: "How does Token Studio handle Merkle Tree state compression?", a: "It fetches live concurrent Merkle proofs directly from RPC nodes to construct valid compression proof transactions." },
+            { category: "NFT & Asset Lifecycle Operations", q: "Can I create new NFT collections using Token Studio?", a: "Yes! Token Studio includes asset foundry capabilities for minting and deploying single assets and collection structures." },
+            { category: "NFT & Asset Lifecycle Operations", q: "What happens if an NFT metadata URI is offline?", a: "Token Studio flags the asset under the broken_nft_metadata signal and attempts fallback IPFS/Arweave gateway resolution." },
+
+            { category: "Token Standards & Compatibility", q: "What is the difference between Legacy SPL and Token-2022?", a: "Token-2022 is Solana's upgraded token program introducing extensions like transfer fees, interest calculation, confidential transfers, and transfer hooks." },
+            { category: "Token Standards & Compatibility", q: "Does Token Studio support Token-2022 Transfer Hooks?", a: "Yes. Token Studio resolves transfer hook extra accounts automatically when transferring or managing Token-2022 assets." },
+            { category: "Token Standards & Compatibility", q: "Does Token Studio support Metaplex Core?", a: "Yes. Metaplex Core is a lightweight, single-account NFT standard on Solana, fully supported by Token Studio." },
+            { category: "Token Standards & Compatibility", q: "What are Compressed Tokens (cTokens)?", a: "cTokens use Solana state compression to hold token balances at a fraction of the traditional account rent cost." },
+            { category: "Token Standards & Compatibility", q: "Can I manage cTokens inside Token Studio?", a: "Yes. Token Studio supports viewing and decompressing cTokens." },
+            { category: "Token Standards & Compatibility", q: "What are Metaplex Compressed NFTs (cNFTs)?", a: "cNFTs store NFT data inside Merkle trees using the Bubblegum program, lowering minting costs by up to 99%." },
+            { category: "Token Standards & Compatibility", q: "Can I close empty Token-2022 accounts to reclaim SOL rent?", a: "Yes. Token Studio closes both Legacy SPL and Token-2022 empty accounts." },
+            { category: "Token Standards & Compatibility", q: "Does Token Studio support Solana Name Service (.sol) or Seeker (.skr) domains?", a: "Yes. Domain names are recognized and displayed natively across user profiles." },
+            { category: "Token Standards & Compatibility", q: "How does Token Studio verify collection authenticity?", a: "By cross-referencing Metaplex Certified Collections (MCC) and verified creator signing addresses on-chain." },
+
+            { category: "Staking & Yield Management", q: "Can I stake native SOL inside Token Studio?", a: "Yes. You can delegate SOL to high-performance validators directly inside the app." },
+            { category: "Staking & Yield Management", q: "How does Token Studio help me choose a validator?", a: "Token Studio displays as much information as possible about each validator, including uptime, commissions, location, validator version, and more." },
+            { category: "Staking & Yield Management", q: "Can I stake SKR (Solana Seeker Token)?", a: "Yes. Token Studio provides SKR staking integration for Seeker device owners." },
+            { category: "Staking & Yield Management", q: "Can I manage JUP staking?", a: "Yes. Token Studio tracks JUP governance staking positions." },
+            { category: "Staking & Yield Management", q: "How do I deactivate a SOL stake account?", a: "Select your stake account in Token Studio and execute the Deactivate instruction; SOL becomes withdrawable after epoch cooldown." },
+            { category: "Staking & Yield Management", q: "How do I withdraw SOL from a deactivated stake account?", a: "Once an epoch completes after deactivation, use Token Studio to withdraw 100% of the SOL back to your main address." },
+            { category: "Staking & Yield Management", q: "Does staking SOL lock my funds forever?", a: "No. Staked SOL can be deactivated at any time and withdrawn after the current epoch finishes (~2-3 days)." },
+            { category: "Staking & Yield Management", q: "Is staking natively on Solana safe?", a: "Yes. Native staking delegates consensus voting power without transferring ownership of your principal SOL tokens." },
+            { category: "Staking & Yield Management", q: "Does Token Studio charge a fee on native staking rewards?", a: "No. 100% of native staking rewards generated on-chain belong to your wallet." },
+
+            { category: "DeFi & External Positions", q: "Does Token Studio show Jupiter DCA (Dollar-Cost Averaging) orders?", a: "Yes. Active Jupiter DCA schedules are detected and aggregated into your portfolio view." },
+            { category: "DeFi & External Positions", q: "Can I view Jupiter Limit Orders?", a: "Yes. Open limit orders placed on Jupiter are listed along with fill progress." },
+            { category: "DeFi & External Positions", q: "Does Token Studio track Jupiter Perps positions?", a: "Yes. Open perpetual long/short positions, leverage ratios, and collateral values are displayed." },
+            { category: "DeFi & External Positions", q: "What are Active Staking Rewards (ASR)?", a: "ASR rewards distributed by Jupiter governance voting are tracked and displayed in Token Studio." },
+
+            { category: "DeFi & External Positions", q: "Does Token Studio display Pump.fun creator rewards?", a: "Yes. Creator fee claimables from Pump.fun are tracked in the external positions module." },
+            { category: "DeFi & External Positions", q: "Why is aggregating DeFi positions important for portfolio tracking?", a: "Because standard wallet apps only show wallet balances, hiding locked capital in DCA orders, perps collateral, or staking pools." },
+            { category: "DeFi & External Positions", q: "Are external DeFi positions included in net worth calculations?", a: "Yes. Token Studio aggregates wallet liquid balances plus external positions into a unified net worth total." },
+
+            { category: "Security, Hardware & Privacy", q: "What is the Solana Seed Vault?", a: "Seed Vault is a hardware-backed security enclave built into the Solana Seeker smartphone that isolates private keys from the OS." },
+            { category: "Security, Hardware & Privacy", q: "How does Token Studio integrate with Seed Vault?", a: "Token Studio requests transaction signatures through native Seed Vault APIs, ensuring private keys never touch app memory." },
+            { category: "Security, Hardware & Privacy", q: "Does Token Studio collect personal data or telemetry?", a: "No. Token Studio operates with zero personally identifiable telemetry—no names, emails, or key logging." },
+            { category: "Security, Hardware & Privacy", q: "Where are my private keys stored?", a: "Inside your hardware Seed Vault or connected wallet software (Phantom/Solflare). Token Studio never stores or accesses your keys." },
+            { category: "Security, Hardware & Privacy", q: "Can Token Studio drain my wallet?", a: "No. Token Studio cannot execute transactions without explicit confirmation and signature approval by you." },
+
+            { category: "Security, Hardware & Privacy", q: "Why does Token Studio stress 'No User Tracking'?", a: "Because financial privacy is fundamental in Web3. We believe control surfaces should respect user sovereignty." },
+            { category: "Security, Hardware & Privacy", q: "Can I use Token Studio anonymously?", a: "Yes. No account signup, email verification, or KYC is required to use Token Studio." },
+            { category: "Security, Hardware & Privacy", q: "How does Token Studio protect against malicious dApp delegates?", a: "Its delegate_exposure signal explicitly alerts you to active approvals so you can revoke them immediately." },
+
+            { category: "Performance & Payload Optimization", q: "What is 1232-byte MTU density packing?", a: "Solana transactions have a maximum transmission unit (MTU) size limit of 1232 bytes. Token Studio packs maximum instructions into each transaction to minimize sign prompts." },
+            { category: "Performance & Payload Optimization", q: "Why does MTU packing matter for users?", a: "Instead of approving 50 separate wallet prompts to burn 50 NFTs, Token Studio packs them into minimal batch transactions." },
+
+            { category: "Performance & Payload Optimization", q: "What RPC provider does Token Studio use?", a: "Token Studio utilizes high-performance multi-region Solana RPC endpoints with automatic failover." },
+            { category: "Performance & Payload Optimization", q: "Can I set custom priority fees in Token Studio?", a: "Yes. Priority fees can be configured to ensure transaction execution during network volatility." },
+            { category: "Performance & Payload Optimization", q: "Why do cNFT burns fail on some platforms?", a: "Because Merkle proof trees change when concurrent transactions execute; Token Studio fetches fresh proof paths immediately before signing." },
+            { category: "Performance & Payload Optimization", q: "How fast does Token Studio load portfolio balances?", a: "Token Studio uses asynchronous parallel RPC indexing to render complete wallet footprints in seconds." },
+            { category: "Performance & Payload Optimization", q: "Does Token Studio work on slow mobile connections?", a: "Yes. Payload sizes are minimized to ensure reliable execution over cellular networks, but the app does download the raw image data for the NFTs, so you may want to use a WIFI connection for that." },
+            { category: "Performance & Payload Optimization", q: "What is the maximum number of items Token Studio can burn in one transaction?", a: "As many instructions as fit strictly within Solana's 1232-byte MTU packet boundary (typically 4-10 per tx depending on the type of asset)." },
+            { category: "Performance & Payload Optimization", q: "Does Token Studio store portfolio data on a centralized server?", a: "No. Portfolio data is fetched live from the Solana blockchain and processed locally on your device." },
+
+            { category: "Availability, Roadmap & Ecosystem", q: "Where can I download Token Studio?", a: "On the Solana dApp Store (solanadappstore://details?id=com.tokenstudio.app) and the Google Play Store (com.tokenstudio.dev)" },
+            { category: "Availability, Roadmap & Ecosystem", q: "Is Token Studio optimized for Solana Seeker?", a: "Yes! Token Studio was engineered specifically to turn Solana Seeker into a mobile crypto workstation." },
+            { category: "Availability, Roadmap & Ecosystem", q: "Is there a desktop web application?", a: "No, not yet. The web application is in active development." },
+
+            { category: "Availability, Roadmap & Ecosystem", q: "Does Token Studio support Solana Devnet?", a: "Yes. Environment switching between Mainnet-Beta and Devnet is supported for testing." },
+            { category: "Availability, Roadmap & Ecosystem", q: "How can I submit feature requests or bug reports?", a: "Yes! Absolutely! Join the official Token Studio Discord community at https://discord.gg/mkb9apzpbT." },
+        ];
+
+        function renderFAQs(filter = '') {
+            const container = document.getElementById('faqList');
+            container.innerHTML = '';
+
+            const categories = [...new Set(faqs.map(f => f.category))];
+            let count = 0;
+
+            categories.forEach(cat => {
+                const catFaqs = faqs.filter(f => f.category === cat &&
+                    (f.q.toLowerCase().includes(filter.toLowerCase()) || f.a.toLowerCase().includes(filter.toLowerCase()))
+                );
+
+                if (catFaqs.length > 0) {
+                    const catTitle = document.createElement('h2');
+                    catTitle.className = 'category-title';
+                    catTitle.textContent = cat;
+                    container.appendChild(catTitle);
+
+                    const group = document.createElement('div');
+                    group.className = 'faq-group';
+
+                    catFaqs.forEach(faq => {
+                        count++;
+                        const det = document.createElement('details');
+                        det.innerHTML = `<summary>${faq.q}</summary><div class="faq-answer">${faq.a}</div>`;
+                        group.appendChild(det);
+                    });
+
+                    container.appendChild(group);
+                }
+            });
+
+            if (count === 0) {
+                container.innerHTML = `<p style="text-align:center; color: var(--text-secondary); margin: 40px 0;">No questions matching "${filter}". Try searching for 'rent', or 'Seed Vault'.</p>`;
+            }
+        }
+
+        document.getElementById('faqSearch').addEventListener('input', (e) => {
+            renderFAQs(e.target.value);
+        });
+
+        renderFAQs();
+    </script>
+</body>
+
+</html>

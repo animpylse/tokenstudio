@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog & Release Notes - Token Studio</title>
+    <meta name="description" content="Complete release notes and update history for Token Studio - The Solana Control Surface for NFT lifecycle management and portfolio intelligence.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        :root {
+            --accent: #BBF294;
+            --accent-glow: rgba(187, 242, 148, 0.4);
+            --bg-dark: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --blue: #BCE1F3;
+            --pink: #F294C3;
+            --purple: #94A1F2;
+            --yellow: #F2EB94;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.6;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('assets/connect.png');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.3) blur(20px);
+        }
+
+        .container {
+            max-width: 900px;
+            width: 90%;
+            margin: 60px 0;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(20px);
+            padding: 50px;
+            border-radius: 32px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .back-btn:hover {
+            color: var(--accent);
+        }
+
+        .header-section {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        /* Timeline Entries */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--card-border);
+        }
+
+        .release-entry {
+            position: relative;
+            margin-bottom: 50px;
+            padding-left: 20px;
+        }
+
+        .release-entry::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .release-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .version-tag {
+            background: rgba(187, 242, 148, 0.15);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .release-date {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .change-list {
+            list-style: none;
+        }
+
+        .change-item {
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .badge {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+            margin-top: 3px;
+        }
+
+        .badge-feature {
+            background: rgba(187, 242, 148, 0.2);
+            color: var(--accent);
+            border: 1px solid rgba(187, 242, 148, 0.4);
+        }
+
+        .badge-perf {
+            background: rgba(188, 225, 243, 0.2);
+            color: var(--blue);
+            border: 1px solid rgba(188, 225, 243, 0.4);
+        }
+
+        .badge-fix {
+            background: rgba(242, 148, 195, 0.2);
+            color: var(--pink);
+            border: 1px solid rgba(242, 148, 195, 0.4);
+        }
+
+        .badge-ux {
+            background: rgba(148, 161, 242, 0.2);
+            color: var(--purple);
+            border: 1px solid rgba(148, 161, 242, 0.4);
+        }
+
+        .badge-hotfix {
+            background: rgba(242, 235, 148, 0.2);
+            color: var(--yellow);
+            border: 1px solid rgba(242, 235, 148, 0.4);
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 40px 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background"></div>
+
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Token Studio</a>
+
+        <div class="header-section">
+            <h1>Changelog & Release History</h1>
+            <p class="subtitle">Complete chronological record of features, performance enhancements, and bug fixes across all Token Studio releases.</p>
+        </div>
+
+        <div class="timeline">
+
+            <!-- v0.16.196-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">v0.16.196-beta</span>
+                    <time class="release-date">July 27, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>JUP Stake Withdrawal:</strong> Added support for native JUP stake withdrawal operations.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Profile Dashboard:</strong> Introduced the all-new Profile Dashboard for high-level portfolio overview.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-perf">Performance</span>
+                        <div><strong>Networking Resiliency:</strong> Overhauled and strengthened the networking layer for robust API fetch performance.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div><strong>Core Assets Freeze Audit:</strong> Resolved issue where collection-inherited frozen state of Metaplex Core Assets was misidentified.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div><strong>Android Security:</strong> Removed broad photo/video read permissions on Android for privacy scoping.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Various UI/UX polish and visual improvements.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- v0.14.181-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">v0.14.181-beta</span>
+                    <time class="release-date">July 19, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>JUP Staking:</strong> Added JUP Staking and Unstaking capability.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Claimable Rewards Detection:</strong> Integrated Jupiter ASR and Pump.fun Creator Rewards discovery. Rewards display as external wallet positions with total networth tracking and direct portal claim shortcuts.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div><strong>Compressed Asset Burner Guard:</strong> Burner now safely skips oversized compressed assets exceeding Solana MTU limits rather than failing simulation.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div><strong>SPL Send Compute Limit:</strong> Fixed intermittent "CU Limit Reached" error when sending standard SPL tokens.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Various UI/UX improvements and stability fixes.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- v0.13.163-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">v0.13.163-beta</span>
+                    <time class="release-date">July 13, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-hotfix">Hotfix</span>
+                        <div>Fixed decimal parsing issue where Compressed Tokens rendered incorrect values in the Recent Changes category.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- v0.12.162-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">v0.12.162-beta</span>
+                    <time class="release-date">July 13, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Compressed Token Decompression:</strong> Added Compressed Token discovery and native decompression tool to unpack cTokens into regular SPL tokens.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Token Account Delegation:</strong> Added token delegation tools in asset menus to pre-approve limited token allowances without giving away full key control.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Delegate Revocation & Security Audit:</strong> Introduced approval revocation controls and highlighted exposed balances in red across the Wallet view.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Merkle Tree On-Demand Scanner:</strong> Scans the Solana blockchain for Merkle Trees created or managed by your connected wallet.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>24h Transaction Metrics:</strong> Dashboard now tracks and displays connected wallet transaction counts over the past 24 hours (requested by @wolly.skr).</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Fixed validator fee parsing after StakeWiz API commission response format update.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div>Wallet Health Score now evaluates and incorporates Empty Token Accounts into overall score calculation.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Various UI/UX optimizations and bug fixes.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- v0.11.148-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">v0.11.148-beta</span>
+                    <time class="release-date">July 6, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Native SKR Staking & Unstaking:</strong> Fully integrated native SKR staking leveraging transaction stacking and high-density packing.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Rarity Filter:</strong> Added wallet-relative NFT rarity filtering working alongside search queries (requested by @EvgeniyLEV).</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Advanced Multi-Select:</strong> Added Select All, Deselect All, and Invert Selection controls across multi-select flows.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Universal Send Surface:</strong> Integrated stacked transfer operations supporting SOL, standard SPL, and Token-2022 standards.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Split & Merge Token Accounts:</strong> Industry-first account management enabling users to split or merge multiple token accounts per mint (SPL & Token-2022).</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Media Stack Submenu:</strong> Added native Save Video and Share Video options collapsed into asset Media Stack menus.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Various UI/UX improvements and bug fixes.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- v0.10.132-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">v0.10.132-beta</span>
+                    <time class="release-date">June 29, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Pull-to-Refresh:</strong> Pull down on the Wallet tab to instantly refresh and sync latest on-chain state changes.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Recent Changes Category:</strong> Temporarily surfaces newly discovered or evicted wallet assets right at the top of your wallet view.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Wallet Health Report:</strong> Comprehensive health score breakdown with tools to save, share, or mint your report as collectible artwork.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Asset Media Export:</strong> Direct Save Image and Share Image actions for NFTs in context menus.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>In-App Feedback System:</strong> Submit feature requests, bug reports, and UX notes directly from Token Studio.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Replaced standard numerical keyboards with a custom tactile Dialpad across all minting surfaces.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Fixed issue where manually aborting account sync left the dashboard stuck in "Syncing" state.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- v0.9.119-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">v0.9.119-beta</span>
+                    <time class="release-date">June 19, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Jupiter Position Discovery:</strong> Full automated tracking for external Jupiter positions (Limit Orders, DCA/Recurring, Borrow, Perps, Strategies, and Vesting).</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Jupiter Stake Discovery:</strong> Automated detection and tracking for Jupiter stake accounts.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Deep Wallet Statistics:</strong> Added Wallet Age, Initial Funding source, Funder address, and total burned NFT counters.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-perf">Performance</span>
+                        <div>Overhauled Magic Eden floor price pipeline to adapt to updated API authorization rules.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div>Multi-account token detection per mint with queued account-specific burns.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Added scammer/hacker address tag warnings when exploring public wallet addresses in Read-Only mode.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Improved Metaplex Core frozen asset detection to prevent unhandled burn errors.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- v0.8.111-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">v0.8.111-beta</span>
+                    <time class="release-date">June 13, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Solana Staking & Unstaking:</strong> Direct native SOL staking and batch unstaking with validator distribution, zero service fees, and optional Atomic Packing toggle for Seeker Season 2 activity.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Asset Viewer:</strong> Tap any NFT to view high-resolution media, descriptions, and full on-chain attribute breakdowns.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Wallet Search & Filter:</strong> Deep search across names, addresses, custom tags, attributes, and descriptions.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Multi-Select Actions:</strong> Multi-selection support for Hide, Burn, and Transfer workflows.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Reordered Wallet NFTs alphabetically for faster visual indexing.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- v0.7.100-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">v0.7.100-beta</span>
+                    <time class="release-date">June 8, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-hotfix">Hotfix</span>
+                        <div>Temporarily disabled burns/transfers for Core NFTs containing advanced external plugins to prevent simulation failures while plugin handlers are updated.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- v0.6.97-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">v0.6.97-beta</span>
+                    <time class="release-date">June 6, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Solflare & Phantom Integration:</strong> Expanded wallet adapter support to include Solflare and Phantom mobile wallets alongside Seed Vault.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Multi-Wallet Portfolio Tracker:</strong> Combine multiple wallet addresses into a unified net worth dashboard.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Native Seeker Staking Discovery:</strong> Automatically detects native SKR staking positions.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Solana Domain Name Resolution:</strong> Resolves .sol domain names and wallet identities into human-readable custom aliases.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Custom Avatars & Favorites:</strong> Expanded favorite wallets list up to 16 addresses with custom avatar uploads.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-perf">Performance</span>
+                        <div>Optimized GIF decoding engine with automatic quarantine for oversized payloads to preserve memory and frame rates.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-perf">Performance</span>
+                        <div>15-second inactivity timer that pauses animated GIF playback when idle to preserve device battery life.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Toast notifications for background account sync discovery and eviction events.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- v0.5.53-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">v0.5.53-beta</span>
+                    <time class="release-date">May 28, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-perf">Performance</span>
+                        <div><strong>450% Faster Sync Speeds:</strong> Boosted account sync speeds by up to 450% via asynchronous Magic Eden price resolution.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Added real-time visibility into active background network tasks during account syncs.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- v0.4.38-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">v0.4.38-beta</span>
+                    <time class="release-date">May 25, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Token List Search:</strong> Added search filtering across long lists of tokens.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Dashboard V1:</strong> Real-time Solana network stats, price history, and trading algorithm indicators.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Price History Charts:</strong> Interactive price charts for any fungible asset with Line and Candlestick chart toggles.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div>Integrated Binance, Bybit, and Birdeye price feeds.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-perf">Performance</span>
+                        <div>Optimized Merkle Tree proof array discovery for cNFT batch operations (burn & transfer).</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Replaced default Android gesture controls with intelligent swipe vs. scroll touch logic.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-perf">Performance</span>
+                        <div>Capped asset image thumbnails to 256x256 resolution to maximize rendering speed in large wallets.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- v0.3.16-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">v0.3.16-beta</span>
+                    <time class="release-date">May 12, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Read-Only Exploration Mode:</strong> Explore any public Solana wallet address in Read-Only mode without connecting Seed Vault keys.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Improved GIF and animated WebP playback rendering.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Various UI/UX polish and bug fixes.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- v0.2.52-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">v0.2.52-beta</span>
+                    <time class="release-date">May 4, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Networking Architecture Overhaul:</strong> Completely redesigned networking layer for enhanced connection stability and speed.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-perf">Performance</span>
+                        <div>Significantly reduced Irys media hosting delays through streamlined upload pipelines.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Priority Fee Controls:</strong> Added "Low" and "High" priority fee presets for custom fee tuning.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Native SOL & Stake Support:</strong> Full tracking for native SOL balances and stake accounts.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Real-Time Tickers & Floor Prices:</strong> Live price feeds for fungible tokens and Magic Eden floor prices for NFT collections.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Asset Hiding:</strong> Hide feature to tuck away specific wallet assets from main view.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Network Traffic LED Indicator:</strong> Real-time visual LED status (🟢 Green: Download, 🔴 Red: Upload/Write, 🔵 Blue: Disk Save).</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Fixed issue misidentifying custom NFT interfaces and zero-decimal tokens as standard fungible assets.</div>
+                    </li>
+                </ul>
+            </article>
+
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Token Studio | Built for the Solana Mobile Ecosystem | <a href="index.html">Home</a> • <a href="about.html">About</a> • <a href="privacy.html">Privacy</a>
+    </footer>
+</body>
+
+</html>

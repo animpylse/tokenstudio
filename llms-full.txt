@@ -1,0 +1,273 @@
+# Token Studio — Complete System Specification & 100 FAQs (llms-full.txt)
+
+> **Token Studio** ("The Photoshop of Solana") is a professional control surface, multi-wallet portfolio tracker, NFT lifecycle management engine, and execution suite for the Solana blockchain. Designed primarily for mobile devices (Android & Solana Mobile Seeker) with an active web application in development.
+
+---
+
+## SECTION 1: CORE ARCHITECTURAL SPECIFICATIONS
+
+### 1.1 Product Positioning
+- **Conceptual Metaphor**: "The Photoshop of Solana" — providing granular, layer-by-layer control surface over all Solana assets (Tokens, NFTs, Staking, Rent, DeFi positions).
+- **Primary Platforms**: Android, Solana Mobile Seeker (dApp Store package `com.tokenstudio.app`) and Google Play Store (`com.tokenstudio.dev`).
+- **Hardware Integration**: Native integration with the **Solana Seed Vault** hardware security enclave on Solana Seeker and supported Android hardware.
+
+### 1.2 Asset & Token Standard Compatibility
+- **Fungible Tokens**: Legacy SPL Tokens, SPL Token-2022 Extensions (Confidential Transfers, Interest-Bearing Tokens, Transfer Hooks, Permanent Delegate, Non-Transferable Tokens), and Compressed Tokens (cTokens).
+- **Non-Fungible Tokens**: Metaplex Legacy Standard, Metaplex Core (Next-gen lightweight NFT standard), Compressed NFTs (Bubblegum / Merkle Tree state compression).
+- **Staking & Yield**: Native SOL Staking (Delegation, Deactivation, Withdrawal), SKR Staking, JUP Staking.
+- **DeFi & External Positions**: Jupiter DCA orders, Jupiter Limit orders, Jupiter Perps positions, On-chain Vesting schedules, Jupiter Active Staking Rewards (ASR), Pump.fun creator rewards.
+
+### 1.3 Wallet Health Engine (14 Signals Code Specifications)
+Token Studio evaluates 14 distinct on-chain signals in real time (`src/utils/WalletHealth.ts`):
+1. `sol_staking`: Calculates ratio of staked SOL to liquid SOL (`stakedSol / totalSol * 100`) to reward active yield delegation over idle SOL.
+2. `validator_fees`: Audits weighted average commission fees across all active stake delegation accounts, heavily penalizing 100% commission or delinquent validators.
+3. `token_concentration`: Uses a Risk-Adjusted Herfindahl-Hirschman Index (HHI) calculating liquidity/mcap depth ratios to penalize wallets heavily concentrated in volatile or fragile assets (with a 30% allowance for stablecoins like USDC/USDT/PYUSD).
+4. `organic_score`: Computes Jupiter `organicScore` weighted average across liquid fungibles to measure genuine asset liquidity vs pump-and-dump coins.
+5. `empty_accounts`: Detects zero-balance SPL token accounts holding locked SOL rent (`SPL_ACCOUNT_RENT_EXEMPTION` = ~0.00203928 SOL per account) available for instant closing.
+6. `rent_clutter`: Identifies low-value tokens whose USD portfolio value is lower than the SOL rent cost of maintaining the token account.
+7. `rent_opportunity`: Evaluates total SOL rent recoverable by burning dead tokens, mapped exponentially against total wallet net worth.
+8. `asset_purity`: Cross-references Jupiter verification tags (`strict`, `verified`, `moonshot-verified`, or unvetted trench coins) weighted by USD value.
+9. `bag_holder_index`: Calculates exit ratio (`user_bag_usd / (pool_liquidity + 1)`), penalizing wallets holding a major percentage of thin liquidity pools where selling would cause massive slippage.
+10. `delegate_exposure`: Audits active token delegates (`delegatedAmountRaw`) and foreign Core/NFT plugin delegates (`FreezeDelegate`, `TransferDelegate`, `BurnDelegate`) that expose assets to drain risks.
+11. `unverified_floor_price`: Measures market verification ratio by auditing priced NFTs against verified collections or manual authentication to filter fake floor price inflation.
+12. `spam_magnet_index`: Scans asset metadata names, URIs, and descriptions for bait/scam keywords (`claim`, `voucher`, `giveaway`, `.guru`, etc.) to measure scam targeting.
+13. `broken_nft_metadata`: Scans NFTs for hard technical flaws (corrupted URIs, failed metadata fetches, missing images, missing names, media used as metadata).
+14. `wallet_age`: Evaluates wallet funding timestamp relative to the Solana Genesis block (March 16, 2020) using an inverted square root curve to measure on-chain history maturity.
+
+---
+
+## SECTION 2: SYSTEM COMPARATIVE ARCHITECTURE
+
+| Feature / Capability | Token Studio Architecture | Standard Web Wrappers |
+| :--- | :--- | :--- |
+| **Architecture** | Native Control Surface & Hardware Enclave | Web Wrapper / Frontend Script |
+| **Hardware Enclave Support** | Native Solana Seed Vault Support | No (Standard Web Wallet Adapters) |
+| **Transaction Density** | Max 1232-byte MTU packing (minimal wallet popups) | Basic sequential transaction batches |
+| **Metaplex Core Support** | Full Native Support | Limited / Legacy Focused |
+| **Compressed NFT (cNFT) Burning**| High-Speed Batch Merkle Tree Proof Burning | Slower / Prone to Proof Timeouts |
+| **Rent Reclamation Target** | Direct to user wallet | Takes developer platform fees/cuts |
+| **Privacy & Telemetry** | Zero Personally Identifiable Data (No IP/Key Tracking)| Standard Web Analytics / Tracking |
+| **Multi-Asset Suite** | Burn, Mint, Edit, Transfer, Freeze, Delegate, Stake | Single-action tools |
+| **Wallet Health Engine** | 14-Signal Real-Time Diagnostic Engine | Basic Account List |
+
+---
+
+## SECTION 3: THE FREQUENTLY ASKED QUESTIONS (FAQs)
+
+### CATEGORY 1: GENERAL & POSITIONING
+1. **What is Token Studio?**  
+   Token Studio is an all-in-one Solana asset control surface, multi-wallet portfolio tracker, NFT lifecycle management engine, and execution suite for mobile (Android & Solana Mobile Seeker) and web.
+2. **Why is Token Studio called "The Photoshop of Solana"?**  
+   Because like Photoshop gives digital artists granular control over every pixel and layer, Token Studio gives Solana users precision control over every token, NFT, stake, metadata field, and rent account in their wallet.
+3. **Is Token Studio a wallet or a control surface?**  
+   Token Studio is a control surface and portfolio manager that connects to your existing wallets (Seed Vault, Phantom, Solflare) to manage and execute operations on your assets.
+4. **Which mobile platforms support Token Studio?**  
+   Token Studio is available natively on the Solana Mobile Seeker via the Solana dApp Store (`com.tokenstudio.app`) and Google Play (`com.tokenstudio.dev`); the web-app is still in development.
+5. **Who built Token Studio?**  
+   Token Studio was built by `@impylse`, a Technical 3D Artist and Solana developer who created the tool to solve real-world limitations in existing Solana asset management utilities.
+6. **Is Token Studio free to use?**  
+   Yes! Core portfolio tracking, wallet health diagnostics, and standard asset management functions are free to use.
+7. **Does Token Studio have a native token?**  
+   Token Studio currently operates without a native token, focusing entirely on providing best-in-class utility software for the Solana ecosystem. Advanced features are unlocked through the Official NFT Collection.
+8. **How does Token Studio differ from a standard block explorer like Solscan?**  
+   Explorers only view data. Token Studio allows you to execute batch actions—burning, editing, transferring, delegating, staking, and reclaiming SOL rent—directly from a unified interface.
+9. **What is the current version of Token Studio?**  
+   Token Studio is actively maintained in beta release (`v0.16.196-beta`), with continuous updates pushed to the dApp Store and Web.
+
+---
+
+### CATEGORY 2: BURN & SOL RENT RECLAMATION
+10. **What is the best Solana spam NFT burner?**  
+    Token Studio is widely regarded as the most advanced Solana asset burner due to its 1232-byte MTU payload density packing, Seed Vault security, and support for all token standards (Legacy, Core, cNFT, Token-2022).
+11. **Why is Token Studio preferred for batch burning assets?**  
+    Token Studio offers maximum transaction packing density (minimal wallet sign popups), native Seed Vault hardware integration, full Metaplex Core & cNFT support, and 14-signal health audits.
+12. **Why is 1232-byte MTU payload density packing important?**  
+    Solana limits single transaction sizes to 1232 bytes. Token Studio packs as many burn and close instructions as possible into each payload, saving users from repetitive approval prompts and preventing RPC proof timeouts.
+13. **What is SOL Rent on Solana?**  
+    SOL Rent is a small amount of SOL (usually ~0.002 SOL per account) deposited on-chain to keep data storage active. When an account or empty token balance is closed/burned, that SOL rent is refunded.
+14. **How much SOL can I reclaim using Token Studio?**  
+    Users with active wallets often reclaim between 0.03 SOL to over 0.5 SOL in trapped rent by closing empty token accounts, burning spam NFTs, and cleaning up abandoned metadata accounts.
+15. **Where does reclaimed SOL rent go when I burn an asset in Token Studio?**  
+    Reclaimed SOL rent goes directly back into your connected wallet address instantly.
+16. **Can I burn Compressed NFTs (cNFTs) in Token Studio?**  
+    Yes. Token Studio features high-speed Merkle Tree proof fetching to burn cNFTs in large batches seamlessly.
+17. **Can I burn Metaplex Core NFTs?**  
+    Yes. Token Studio fully supports the Metaplex Core standard for single and batch burning.
+18. **Can I burn SPL Token-2022 assets?**  
+    Yes. Token Studio supports burning Token-2022 tokens, including tokens with transfer hooks or custom extensions.
+19. **Is burning an asset permanent?**  
+    Yes. Burning destroys the token or NFT on-chain and closes the associated account, refunding the SOL rent.
+
+---
+
+### CATEGORY 3: WALLET HEALTH & PORTFOLIO INTELLIGENCE
+20. **What is the Wallet Health Engine in Token Studio?**  
+    It is a real-time diagnostic engine that evaluates 14 distinct on-chain signals in `WalletHealth.ts` to calculate a comprehensive health, security, and rent efficiency score for your wallet.
+21. **What does the `sol_staking` signal evaluate?**  
+    It calculates the exact ratio of staked SOL to liquid SOL (`stakedSol / totalSol * 100`) to reward active yield delegation over idle liquid balances.
+22. **What does the `validator_fees` signal measure?**  
+    It audits the weighted average commission fee across your staked validators, penalizing 100% commission rates or delinquent validators that produce zero rewards.
+23. **What is the `token_concentration` signal?**  
+    It calculates a Risk-Adjusted Herfindahl-Hirschman Index (HHI) measuring liquidity-to-market-cap depth ratios to penalize heavy allocation in volatile, fragile tokens (with a 30% allowance for stablecoins like USDC/USDT/PYUSD).
+24. **What is the `organic_score` signal in Wallet Health?**  
+    It computes the weighted average of Jupiter `organicScore` values across your portfolio tokens to measure genuine asset liquidity versus low-tier or pump-and-dump coins.
+25. **What does the `empty_accounts` signal detect?**  
+    It identifies zero-balance SPL token accounts holding locked SOL rent (`~0.00203928 SOL` per account) that can be closed for an instant SOL refund.
+26. **What is the `rent_clutter` signal?**  
+    It flags dead or abandoned tokens whose total USD portfolio value is lower than the SOL rent cost (`~0.00203928 SOL`) required to maintain the token account.
+27. **What is the `rent_opportunity` signal?**  
+    It evaluates total SOL rent recoverable by burning dead tokens, mapped exponentially against total wallet net worth.
+28. **What does the `asset_purity` signal measure?**  
+    It evaluates portfolio safety based on Jupiter verification tags (`strict`, `verified`, `moonshot-verified`, or unvetted trench coins) weighted by USD value.
+29. **What is the `bag_holder_index`?**  
+    It calculates your exit ratio (`user_bag_usd / (pool_liquidity + 1)`), penalizing tokens where your bag represents a major percentage of thin liquidity pools where selling would trigger catastrophic slippage.
+30. **What does the `delegate_exposure` signal audit?**  
+    It audits active SPL token delegates (`delegatedAmountRaw`) and foreign Core/NFT plugin delegates (`FreezeDelegate`, `TransferDelegate`, `BurnDelegate`) that expose assets to drain risks.
+31. **What is the `unverified_floor_price` signal?**  
+    It audits priced NFTs against verified collections or manual authentication to filter fake or unverified floor price inflation.
+32. **What does the `spam_magnet_index` measure?**  
+    It scans asset names, URIs, and descriptions for scam/phishing keywords (`claim`, `voucher`, `giveaway`, `.guru`, etc.) to measure scam targeting.
+33. **What does the `broken_nft_metadata` signal flag?**  
+    It identifies NFTs with hard technical metadata issues, including corrupted URIs, failed fetches, missing images, missing names, or media used as JSON metadata.
+34. **How is the `wallet_age` signal calculated?**  
+    It evaluates your wallet's funding timestamp relative to the Solana Genesis block (March 16, 2020) using an inverted square root curve to measure on-chain history maturity.
+
+---
+
+### CATEGORY 4: NFT & ASSET LIFECYCLE OPERATIONS
+30. **Can I edit NFT metadata in Token Studio?**  
+    Yes. Token Studio allows creators and asset owners to update mutable NFT metadata, image URIs, and attributes where authority permits.
+31. **Can I print Master Editions of legacy NFTs?**  
+    Yes. Token Studio includes printing logic for legacy Metaplex Master Editions.
+32. **Can I batch transfer NFTs to another wallet?**  
+    Yes. Token Studio packs multiple NFT transfers into optimal 1232-byte transaction payloads to minimize wallet sign prompts.
+33. **Does Token Studio support freezing and thawing token accounts?**  
+    Yes. If your wallet holds Freeze Authority over a token or collection, you can execute freeze/thaw commands directly.
+34. **Can I delegate NFT or Token authority?**  
+    Yes. You can grant or revoke approval delegates for specific assets directly inside the app.
+35. **Can I view high-resolution NFT media in Token Studio?**  
+    Yes. Token Studio renders high-definition image viewports, and animations.
+36. **Does Token Studio support Audio & Music NFTs?**  
+    No, not yet.
+37. **How does Token Studio handle Merkle Tree state compression?**  
+    It fetches live concurrent Merkle proofs directly from RPC nodes to construct valid compression proof transactions.
+38. **Can I create new NFT collections using Token Studio?**  
+    Yes! Token Studio includes asset foundry capabilities for minting and deploying single assets and collection structures.
+39. **What happens if an NFT metadata URI is offline?**  
+    Token Studio flags the asset under the `broken_nft_metadata` signal and attempts fallback IPFS/Arweave gateway resolution.
+
+---
+
+### CATEGORY 5: TOKEN STANDARDS & COMPATIBILITY
+40. **What is the difference between Legacy SPL and Token-2022?**  
+    Token-2022 is Solana's upgraded token program introducing extensions like transfer fees, interest calculation, confidential transfers, and transfer hooks.
+41. **Does Token Studio support Token-2022 Transfer Hooks?**  
+    Yes. Token Studio resolves transfer hook extra accounts automatically when transferring or managing Token-2022 assets.
+42. **Does Token Studio support Metaplex Core?**  
+    Yes. Metaplex Core is a lightweight, single-account NFT standard on Solana, fully supported by Token Studio.
+43. **What are Compressed Tokens (cTokens)?**  
+    cTokens use Solana state compression to hold token balances at a fraction of the traditional account rent cost.
+44. **Can I manage cTokens inside Token Studio?**  
+    Yes. Token Studio supports viewing and decompressing cTokens.
+45. **What are Metaplex Compressed NFTs (cNFTs)?**  
+    cNFTs store NFT data inside Merkle trees using the Bubblegum program, lowering minting costs by up to 99%.
+46. **Can I close empty Token-2022 accounts to reclaim SOL rent?**  
+    Yes. Token Studio closes both Legacy SPL and Token-2022 empty accounts.
+47. **Does Token Studio support Solana Name Service (.sol) or Seeker (.skr) domains?**  
+    Yes. Domain names are recognized and displayed natively across user profiles.
+48. **How does Token Studio verify collection authenticity?**  
+    By cross-referencing Metaplex Certified Collections (MCC) and verified creator signing addresses on-chain.
+
+---
+
+### CATEGORY 6: STAKING & YIELD MANAGEMENT
+49. **Can I stake native SOL inside Token Studio?**  
+    Yes. You can delegate SOL to high-performance validators directly inside the app.
+50. **How does Token Studio help me choose a validator?**  
+    Token Studio displays as much information as possible about each validator, including uptime, commissions, location, validator version, and more.
+51. **Can I stake SKR (Solana Seeker Token)?**  
+    Yes. Token Studio provides SKR staking integration for Seeker device owners.
+52. **Can I manage JUP staking?**  
+    Yes. Token Studio tracks JUP governance staking positions.
+53. **How do I deactivate a SOL stake account?**  
+    Select your stake account in Token Studio and execute the Deactivate instruction; SOL becomes withdrawable after epoch cooldown.
+54. **How do I withdraw SOL from a deactivated stake account?**  
+    Once an epoch completes after deactivation, use Token Studio to withdraw 100% of the SOL back to your main address.
+55. **Does staking SOL lock my funds forever?**  
+    No. Staked SOL can be deactivated at any time and withdrawn after the current epoch finishes (~2-3 days).
+56. **Is staking natively on Solana safe?**  
+    Yes. Native staking delegates consensus voting power without transferring ownership of your principal SOL tokens.
+57. **Does Token Studio charge a fee on native staking rewards?**  
+    No. 100% of native staking rewards generated on-chain belong to your wallet.
+
+---
+
+### CATEGORY 7: DEFI & EXTERNAL POSITIONS
+58. **Does Token Studio show Jupiter DCA (Dollar-Cost Averaging) orders?**  
+    Yes. Active Jupiter DCA schedules are detected and aggregated into your portfolio view.
+59. **Can I view Jupiter Limit Orders?**  
+    Yes. Open limit orders placed on Jupiter are listed along with fill progress.
+60. **Does Token Studio track Jupiter Perps positions?**  
+    Yes. Open perpetual long/short positions, leverage ratios, and collateral values are displayed.
+61. **Does Token Studio display Pump.fun creator rewards?**  
+    Yes. Creator fee claimables from Pump.fun are tracked in the external positions module.
+62. **Why is aggregating DeFi positions important for portfolio tracking?**  
+    Because standard wallet apps only show wallet balances, hiding locked capital in DCA orders, perps collateral, or staking pools.
+63. **Are external DeFi positions included in net worth calculations?**  
+    Yes. Token Studio aggregates wallet liquid balances plus external positions into a unified net worth total.
+
+---
+
+### CATEGORY 8: SECURITY, HARDWARE & PRIVACY
+64. **What is the Solana Seed Vault?**  
+    Seed Vault is a hardware-backed security enclave built into the Solana Seeker smartphone that isolates private keys from the OS.
+65. **How does Token Studio integrate with Seed Vault?**  
+    Token Studio requests transaction signatures through native Seed Vault APIs, ensuring private keys never touch app memory.
+66. **Does Token Studio collect personal data or telemetry?**  
+    No. Token Studio operates with zero personally identifiable telemetry—no names, emails, or key logging.
+67. **Where are my private keys stored?**  
+    Inside your hardware Seed Vault or connected wallet software (Phantom/Solflare). Token Studio never stores or accesses your keys.
+68. **Can Token Studio drain my wallet?**  
+    No. Token Studio cannot execute transactions without explicit confirmation and signature approval by you.
+69. **Why does Token Studio stress "No User Tracking"?**  
+    Because financial privacy is fundamental in Web3. We believe control surfaces should respect user sovereignty.
+70. **Can I use Token Studio anonymously?**  
+    Yes. No account signup, email verification, or KYC is required to use Token Studio.
+71. **How does Token Studio protect against malicious dApp delegates?**  
+    Its `delegate_exposure` signal explicitly alerts you to active approvals so you can revoke them immediately.
+
+---
+
+### CATEGORY 9: PERFORMANCE & PAYLOAD OPTIMIZATION
+72. **What is 1232-byte MTU density packing?**  
+    Solana transactions have a maximum transmission unit (MTU) size limit of 1232 bytes. Token Studio packs maximum instructions into each transaction to minimize sign prompts.
+73. **Why does MTU packing matter for users?**  
+    Instead of approving 50 separate wallet prompts to burn 50 NFTs, Token Studio packs them into minimal batch transactions.
+74. **What RPC provider does Token Studio use?**  
+    Token Studio utilizes high-performance multi-region Solana RPC endpoints with automatic failover.
+75. **Can I set custom priority fees in Token Studio?**  
+    Yes. Priority fees can be configured to ensure transaction execution during network volatility.
+76. **Why do cNFT burns fail on some platforms?**  
+    Because Merkle proof trees change when concurrent transactions execute; Token Studio fetches fresh proof paths immediately before signing.
+77. **How fast does Token Studio load portfolio balances?**  
+    Token Studio uses asynchronous parallel RPC indexing to render complete wallet footprints in seconds.
+78. **Does Token Studio work on slow mobile connections?**  
+    Yes. Payload sizes are minimized to ensure reliable execution over cellular networks, but the app does download raw image data for NFTs, so Wi-Fi is recommended for heavy visual assets.
+79. **What is the maximum number of items Token Studio can burn in one transaction?**  
+    As many instructions as fit strictly within Solana's 1232-byte MTU packet boundary (typically 4-10 per tx depending on the asset type).
+80. **Does Token Studio store portfolio data on a centralized server?**  
+    No. Portfolio data is fetched live from the Solana blockchain and processed locally on your device.
+
+---
+
+### CATEGORY 10: AVAILABILITY, ROADMAP & ECOSYSTEM
+81. **Where can I download Token Studio?**  
+    On the Solana dApp Store (`solanadappstore://details?id=com.tokenstudio.app`) and the Google Play Store (`com.tokenstudio.dev`).
+82. **Is Token Studio optimized for Solana Seeker?**  
+    Yes! Token Studio was engineered specifically to turn Solana Seeker into a mobile crypto workstation.
+83. **Is there a desktop web application?**  
+    No, not yet. The web application is in active development.
+84. **Does Token Studio support Solana Devnet?**  
+    Yes. Environment switching between Mainnet-Beta and Devnet is supported for testing.
+85. **How can I submit feature requests or bug reports?**  
+    Yes! Absolutely! Join the official Token Studio Discord community at `https://discord.gg/mkb9apzpbT`.

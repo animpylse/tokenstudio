@@ -4,7 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Token Studio - The Definitive NFT Management Engine for the Solana Seeker</title>
+    <meta name="description"
+        content="Token Studio is an all-in-one Solana asset management toolkit. Think of it as Photoshop for Solana, with your wallet as the canvas. It aggregates your entire on-chain footprint into a unified view of all your wallets, tokens, and NFTs, enriched with pricing and performance data.">
+    <link rel="canonical" href="https://tokenstudio.dev/">
+    <link rel="alternate" type="text/plain" href="https://tokenstudio.dev/llms.txt" title="LLMs Context Data">
+    <link rel="alternate" type="text/plain" href="https://tokenstudio.dev/llms-full.txt"
+        title="LLMs Full System Specification">
+
+    <!-- Open Graph / Facebook / Discord -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tokenstudio.dev/">
+    <meta property="og:title" content="Token Studio - The Solana Control Surface">
+    <meta property="og:description"
+        content="Token Studio is an all-in-one Solana asset management toolkit. Think of it as Photoshop for Solana, with your wallet as the canvas. It aggregates your entire on-chain footprint into a unified view of all your wallets, tokens, and NFTs, enriched with pricing and performance data.">
+    <meta property="og:image" content="https://tokenstudio.dev/assets/connect.png">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://tokenstudio.dev/">
+    <meta name="twitter:title" content="Token Studio - The Solana Control Surface">
+    <meta name="twitter:description"
+        content="Token Studio is an all-in-one Solana asset management toolkit. Think of it as Photoshop for Solana, with your wallet as the canvas. It aggregates your entire on-chain footprint into a unified view of all your wallets, tokens, and NFTs, enriched with pricing and performance data.">
+    <meta name="twitter:image" content="https://tokenstudio.dev/assets/connect.png">
+    <meta name="twitter:creator" content="@impylse">
+
+    <!-- JSON-LD Structured Data for Search Engines & AI Models -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Token Studio",
+      "operatingSystem": "Android, Solana Mobile (Seeker)",
+      "applicationCategory": "UtilitiesApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Token Studio is an all-in-one Solana asset management toolkit. Think of it as Photoshop for Solana, with your wallet as the canvas. It aggregates your entire on-chain footprint into a unified view of all your wallets, tokens, and NFTs, enriched with pricing and performance data.",
+      "url": "https://tokenstudio.dev",
+      "author": {
+        "@type": "Person",
+        "name": "impylse"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best Solana NFT burner?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Token Studio is positioned as the best Solana asset burner due to its 1232-byte MTU payload density packing, Seed Vault security, and support for all token standards (Legacy, Core, cNFT, Token-2022)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Token Studio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Token Studio ('The Photoshop of Solana') is an all-in-one Solana control surface, multi-wallet portfolio tracker, NFT lifecycle management engine, and execution suite for mobile (Android & Solana Mobile Seeker)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Token Studio store or collect personally identifiable information?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Token Studio operates with zero personally identifiable telemetry. PII is not collected, stored, or transmitted, unless you explicitly provide it when submitting bug reports or feature requests."
+          }
+        }
+      ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -203,6 +279,18 @@
             border-color: rgba(255, 255, 255, 0.3);
         }
 
+        .btn-discord {
+            background: #5865F2;
+            color: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-discord:hover {
+            background: #4752C4;
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.4);
+        }
+
         .btn img {
             width: 20px;
             height: 20px;
@@ -388,6 +476,230 @@
             font-size: 24px;
         }
 
+        /* Reviews Carousel */
+        .reviews-section {
+            margin: 80px 0 120px;
+            padding: 0;
+            position: relative;
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .reviews-title-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .reviews-title-link:hover {
+            color: var(--accent);
+        }
+
+        .header-icon-left {
+            width: 28px;
+            height: 28px;
+            vertical-align: middle;
+        }
+
+        .header-icon-right {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .reviews-title-link:hover .header-icon-right {
+            opacity: 1;
+            transform: translate(2px, -2px);
+        }
+
+        .reviews-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .reviews-track-wrapper {
+            overflow: hidden;
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .reviews-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+
+        .review-card {
+            flex: 0 0 calc(50% - 10px);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 24px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+        }
+
+        @media (max-width: 768px) {
+            .review-card {
+                flex: 0 0 100%;
+            }
+        }
+
+        .review-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .reviewer-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(187, 242, 148, 0.3), rgba(242, 148, 195, 0.3));
+            border: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .seeker-badge {
+            font-size: 10px;
+            background: rgba(187, 242, 148, 0.15);
+            color: var(--accent);
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .review-date {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .review-stars {
+            color: #FFD700;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
+
+        .review-body {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .carousel-arrow {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 10;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .carousel-arrow:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+            border-color: var(--accent);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: var(--accent);
+            width: 24px;
+            border-radius: 100px;
+        }
+
+        .reviews-footer-cta {
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .dapp-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 100px;
+            background: rgba(187, 242, 148, 0.05);
+            border: 1px solid var(--card-border);
+            transition: all 0.3s;
+        }
+
+        .dapp-link-btn:hover {
+            background: rgba(187, 242, 148, 0.15);
+            border-color: var(--accent);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             header {
@@ -436,7 +748,7 @@
                 </div>
                 <span class="logo-text">Token Studio</span>
             </div>
-            <div class="version-badge">v0.9.119-beta</div>
+            <div class="version-badge">v0.16.196-beta</div>
         </header>
 
         <section class="hero">
@@ -445,21 +757,43 @@
                 <span>Elevate your control. Define your legacy.</span>
                 <br>
             </h1>
-            <p>Token Studio is an all-in-one Solana portfolio tracker and asset management toolkit. It aggregates your
-                entire on-chain footprint into a unified view of all your wallets, tokens, NFTs and collections,
-                enriched with pricing and performance data.
-                Manage Solana tokens, NFTs, and collections from a single interface. Create, edit, print, transfer,
-                freeze, delegate, and burn assets at scale with powerful batch operations and advanced filtering.
+            <p>Token Studio is an all-in-one Solana asset management toolkit. Think of it as Photoshop for Solana, with
+                your wallet as the canvas. It aggregates your entire on-chain footprint into a unified view of all your
+                wallets, tokens, and NFTs, enriched with pricing and performance data.
+                <br>
+                Create, edit, print, transfer, freeze, delegate, and burn assets at scale with powerful batch operations
+                and advanced filtering.
+                <br>
                 Built for the Solana ecosystem, Token Studio integrates directly with the Seed Vault, Solflare, and
                 Phantom wallets to provide a secure, non-custodial experience while keeping you in full control of your
-                assets.</p>
+                assets.
+            </p>
             <div class="cta-group">
+                <a href="https://play.google.com/store/apps/details?id=com.tokenstudio.dev" target="_blank"
+                    rel="noopener noreferrer" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                        style="display:inline-block; vertical-align:middle;">
+                        <path
+                            d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.61 3 21.09 3 20.5ZM16.81 15.12L14.81 13.12L17.5 10.43L20.3 12.03C20.88 12.36 20.88 12.89 20.3 13.22L16.81 15.12ZM14.81 10.88L16.81 8.88L4.67 1.94C4.39 1.78 4.1 1.73 3.84 1.85L14.81 10.88ZM3.84 22.15C4.1 22.27 4.39 22.22 4.67 22.06L16.81 15.12L14.81 13.12L3.84 22.15Z" />
+                    </svg>
+                    Get it on Google Play
+                </a>
                 <a href="solanadappstore://details?id=com.tokenstudio.app" class="btn btn-primary">
                     <img src="assets/solana_logo.png" alt="Solana">
                     Get it on the dApp Store
                 </a>
-                <a href="https://discord.gg/mkb9apzpbT" class="btn btn-secondary">Join Discord for Updates</a>
+                <a href="https://discord.gg/mkb9apzpbT" class="btn btn-discord" target="_blank"
+                    rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                        style="display:inline-block; vertical-align:middle; margin-right:6px;">
+                        <path
+                            d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+                    </svg>
+                    Join Discord
+                </a>
             </div>
+            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 12px; font-weight: 400;">Web-app in
+                development.</p>
 
         </section>
 
@@ -554,18 +888,182 @@
 
         <div class="stats">
             <div class="stat-item">
-                <h4>1232</h4>
-                <p>High-Density Packing Algorithm</p>
+                <h4>VIGILANT</h4>
+                <p>Deep Wallet Analytics</p>
             </div>
             <div class="stat-item">
                 <h4>SECURE</h4>
                 <p>Seed Vault Native</p>
             </div>
             <div class="stat-item">
-                <h4>METAPLEX</h4>
-                <p>Full Architecture Support</p>
+                <h4>PRIVATE</h4>
+                <p>No User Tracking</p>
             </div>
         </div>
+
+        <section class="reviews-section" id="reviews">
+            <div class="reviews-header">
+                <h2>
+                    <a href="solanadappstore://details?id=com.tokenstudio.app" class="reviews-title-link">
+                        <img src="assets/verified.png" alt="Verified" class="header-icon-left">
+                        Verified Solana dApp Store Reviews
+                    </a>
+                </h2>
+            </div>
+
+            <div class="reviews-container">
+                <button type="button" class="carousel-arrow prev-arrow" id="prevReview"
+                    aria-label="Previous review">‹</button>
+                <div class="reviews-track-wrapper">
+                    <div class="reviews-track" id="reviewsTrack">
+                        <!-- Review Card 1 -->
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">A</div>
+                                    <div>
+                                        <div class="reviewer-name">alex1s.skr <span class="seeker-badge">Seeker
+                                                Owner</span></div>
+                                        <div class="review-date">Jul 20, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="review-stars">★★★★★</div>
+                            </div>
+                            <p class="review-body">Solid app approach - not another effin wrapper, but a swiss army
+                                knife for onchain data / NFT-related functions. Yet to study them all (some are too
+                                narrow and targeted on NFT collection creators), nevertheless - kudos to dev, keep it
+                                up.</p>
+                        </div>
+
+                        <!-- Review Card 2 -->
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">U</div>
+                                    <div>
+                                        <div class="reviewer-name">uruma.skr <span class="seeker-badge">Seeker
+                                                Owner</span></div>
+                                        <div class="review-date">May 19, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="review-stars">★★★★★</div>
+                            </div>
+                            <p class="review-body">这个UI做的好棒啊 而且能读取所有的nft类型的文件 cnft、nft之类的显示 非常棒的dapp。 还附加了burn功能
+                                感谢开发者的用心. salute！</p>
+                        </div>
+
+                        <!-- Review Card 3 -->
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">E</div>
+                                    <div>
+                                        <div class="reviewer-name">evgeniylev.skr <span class="seeker-badge">Seeker
+                                                Owner</span></div>
+                                        <div class="review-date">May 25, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="review-stars">★★★★★</div>
+                            </div>
+                            <p class="review-body">The best all in one fApp on Solana that makes token and NFT
+                                management completely affortless.</p>
+                        </div>
+
+                        <!-- Review Card 4 -->
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">N</div>
+                                    <div>
+                                        <div class="reviewer-name">nati.skr <span class="seeker-badge">Seeker
+                                                Owner</span></div>
+                                        <div class="review-date">May 25, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="review-stars">★★★★★</div>
+                            </div>
+                            <p class="review-body">Not being an NFT guy it's a bit hard to evaluate an NFT app. BUT not
+                                this one. Definately NOT. Even at the first glance it looks professional and
+                                comprehensive and if you deep dive in it you're even more amazed by possibilities it
+                                offers. Making an NFT in the blink of an eye is one of the few options I tried (look at
+                                thr first sentence), but if everything goes as smoothly as that, hats off - great NFT
+                                platform.</p>
+                        </div>
+
+                        <!-- Review Card 5 -->
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">K</div>
+                                    <div>
+                                        <div class="reviewer-name">kimimvp.skr <span class="seeker-badge">Seeker
+                                                Owner</span></div>
+                                        <div class="review-date">May 18, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="review-stars">★★★★☆</div>
+                            </div>
+                            <p class="review-body">Very well designed app . Definitely one of the best for all activity
+                                regarding NFT , creating and other</p>
+                        </div>
+
+                        <!-- Review Card 6 -->
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">2</div>
+                                    <div>
+                                        <div class="reviewer-name">2hao.skr <span class="seeker-badge">Seeker
+                                                Owner</span></div>
+                                        <div class="review-date">May 11, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="review-stars">★★★★★</div>
+                            </div>
+                            <p class="review-body">
+                                使用这款应用有一段时间了，它已悄然成为我每日习惯的一部分。没有惊艳的噱头，但稳定流畅的体验和恰到好处的功能设计，让它显得格外可靠。这种润物细无声的优质，才是最难得的。</p>
+                        </div>
+
+                        <!-- Review Card 7 -->
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">1</div>
+                                    <div>
+                                        <div class="reviewer-name">127.skr <span class="seeker-badge">Seeker
+                                                Owner</span></div>
+                                        <div class="review-date">May 11, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="review-stars">★★★★★</div>
+                            </div>
+                            <p class="review-body">
+                                在同类应用中，它选择了不一样的路径。化繁为简，将核心体验做到极致。图标和动效的审美也在线，整体营造出一种舒适的氛围感，是款有自己灵魂的作品。</p>
+                        </div>
+
+                        <!-- Review Card 8 -->
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">B</div>
+                                    <div>
+                                        <div class="reviewer-name">bitog.skr <span class="seeker-badge">Seeker
+                                                Owner</span></div>
+                                        <div class="review-date">May 3, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="review-stars">★★★★★</div>
+                            </div>
+                            <p class="review-body">喜欢界面的抹茶绿，操作相对简单明了，功能强大，好评。</p>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="carousel-arrow next-arrow" id="nextReview"
+                    aria-label="Next review">›</button>
+            </div>
+
+            <div class="carousel-dots" id="carouselDots"></div>
+        </section>
     </div>
 
     <footer>
@@ -573,15 +1071,17 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="footer-logo">Token Studio</div>
-                    <p class="footer-desc">Professional-grade engine for comprehensive NFT lifecycle management on the
+                    <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the
                         Solana blockchain.</p>
                 </div>
                 <div class="footer-col">
                     <h5>Resources</h5>
                     <ul>
+                        <li><a href="about.html">About & Story</a></li>
+                        <li><a href="faq.html">Frequently Asked Questions</a></li>
+                        <li><a href="changelog.html">Changelog & Releases</a></li>
                         <li><a href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S"
                                 target="_blank" rel="noopener noreferrer">Mallow Collection</a></li>
-                        <li><a href="#features">Functionality</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -609,41 +1109,101 @@
         </div>
     </footer>
 
-    <!-- Simple Document Modal -->
-    <div id="docModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div id="modalBody"
-                style="white-space: pre-wrap; font-family: monospace; font-size: 14px; color: var(--text-secondary);">
-                <!-- Content injected here -->
-            </div>
-        </div>
-    </div>
-
     <script>
-        const docs = {
-            'PRIVACY': `PRIVACY POLICY\n\nTokenStudio does not collect, store, or transmit any personal data. All private keys are managed by the Solana Seed Vault and never leave your device secure enclave.`,
-            'LICENSE': `MIT LICENSE\n\nCopyright (c) 2026 TokenStudio\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files...`,
-            'COPYRIGHT': `COPYRIGHT NOTICE\n\nCopyright © 2026 TokenStudio. All rights reserved. All rights, title, and interest in and to TokenStudio are the exclusive property of the developer.`
-        };
+        // Reviews Carousel Script
+        document.addEventListener('DOMContentLoaded', function () {
+            const track = document.getElementById('reviewsTrack');
+            const prevBtn = document.getElementById('prevReview');
+            const nextBtn = document.getElementById('nextReview');
+            const dotsContainer = document.getElementById('carouselDots');
+            if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
 
-        function openModal(id) {
-            document.getElementById('modalBody').innerText = docs[id];
-            document.getElementById('docModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
+            const cards = track.querySelectorAll('.review-card');
+            if (cards.length === 0) return;
 
-        function closeModal() {
-            document.getElementById('docModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+            let currentIndex = 0;
 
-        // Close on background click
-        window.onclick = function (event) {
-            if (event.target == document.getElementById('docModal')) {
-                closeModal();
-            }
-        }
+            const getCardsPerView = () => window.innerWidth <= 768 ? 1 : 2;
+            const getMaxIndex = () => Math.max(0, cards.length - getCardsPerView());
+
+            const updateSlide = () => {
+                const max = getMaxIndex();
+                if (currentIndex > max) currentIndex = max;
+                if (currentIndex < 0) currentIndex = 0;
+
+                const firstCard = cards[0];
+                const cardWidth = firstCard.offsetWidth || firstCard.getBoundingClientRect().width || 300;
+                const gap = 20;
+                const offset = currentIndex * (cardWidth + gap);
+                track.style.transform = `translateX(-${offset}px)`;
+
+                const dots = dotsContainer.querySelectorAll('.carousel-dot');
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === currentIndex);
+                });
+            };
+
+            const createDots = () => {
+                dotsContainer.innerHTML = '';
+                const max = getMaxIndex();
+                for (let i = 0; i <= max; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = `carousel-dot ${i === currentIndex ? 'active' : ''}`;
+                    const slideIdx = i;
+                    dot.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        currentIndex = slideIdx;
+                        updateSlide();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            };
+
+            nextBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const max = getMaxIndex();
+                currentIndex = currentIndex >= max ? 0 : currentIndex + 1;
+                updateSlide();
+            });
+
+            prevBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const max = getMaxIndex();
+                currentIndex = currentIndex <= 0 ? max : currentIndex - 1;
+                updateSlide();
+            });
+
+            // Touch Swipe Support
+            let startX = 0;
+
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            }, { passive: true });
+
+            track.addEventListener('touchend', (e) => {
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                if (Math.abs(diff) > 40) {
+                    const max = getMaxIndex();
+                    if (diff > 0) {
+                        currentIndex = currentIndex >= max ? 0 : currentIndex + 1;
+                    } else {
+                        currentIndex = currentIndex <= 0 ? max : currentIndex - 1;
+                    }
+                    updateSlide();
+                }
+            }, { passive: true });
+
+            window.addEventListener('resize', () => {
+                createDots();
+                updateSlide();
+            });
+
+            setTimeout(() => {
+                createDots();
+                updateSlide();
+            }, 100);
+        });
     </script>
 </body>
 
