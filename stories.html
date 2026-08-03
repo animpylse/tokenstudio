@@ -4,26 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About & Story - Token Studio</title>
+    <title>Stories & Case Studies in the Wild - Token Studio</title>
     <meta name="description"
-        content="The story behind Token Studio - Built from the ground up for the Solana Mobile Ecosystem as a professional control surface for digital asset management.">
-    <link rel="canonical" href="https://tokenstudio.dev/about.html">
+        content="Real-world stories, case studies, and field notes on Solana digital asset management, high-density transaction packing, and mobile workstation engineering.">
+    <link rel="canonical" href="https://tokenstudio.dev/stories.html">
 
     <!-- Open Graph / Facebook / Discord -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tokenstudio.dev/about.html">
-    <meta property="og:title" content="About & Vision - Token Studio">
+    <meta property="og:url" content="https://tokenstudio.dev/stories.html">
+    <meta property="og:title" content="Stories & Case Studies in the Wild - Token Studio">
     <meta property="og:description"
-        content="The story behind Token Studio - Built from the ground up for the Solana Mobile Ecosystem as a professional control surface for digital asset management.">
+        content="Real-world stories, case studies, and field notes on Solana digital asset management, high-density transaction packing, and mobile workstation engineering.">
     <meta property="og:image" content="https://tokenstudio.dev/assets/og_preview.png">
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://tokenstudio.dev/about.html">
-    <meta name="twitter:title" content="About & Vision - Token Studio">
+    <meta name="twitter:url" content="https://tokenstudio.dev/stories.html">
+    <meta name="twitter:title" content="Stories & Case Studies in the Wild - Token Studio">
     <meta name="twitter:description"
-        content="The story behind Token Studio - Built from the ground up for the Solana Mobile Ecosystem as a professional control surface for digital asset management.">
+        content="Real-world stories, case studies, and field notes on Solana digital asset management, high-density transaction packing, and mobile workstation engineering.">
     <meta name="twitter:image" content="https://tokenstudio.dev/assets/og_preview.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Token Studio Stories & Case Studies",
+      "description": "Real-world stories, case studies, and field notes from the Solana ecosystem.",
+      "url": "https://tokenstudio.dev/stories.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Token Studio",
+        "logo": "https://tokenstudio.dev/assets/logo_grad.png"
+      }
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,20 +56,27 @@
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
             --text-primary: #FFFFFF;
-            --text-secondary: rgba(255, 255, 255, 0.9);
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --blue: #BCE1F3;
+            --pink: #F294C3;
+            --purple: #94A1F2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-primary);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            line-height: 1.6;
         }
 
         .background {
@@ -70,9 +93,9 @@
         }
 
         .container {
-            max-width: 850px;
+            max-width: 950px;
             width: 90%;
-            margin: 60px auto 40px;
+            margin: 60px 0;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             backdrop-filter: blur(20px);
@@ -86,32 +109,10 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        h1 {
-            font-size: 36px;
-            margin-bottom: 30px;
-            color: var(--accent);
-        }
-
-        h2 {
-            font-size: 22px;
-            margin-top: 40px;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-            border-left: 3px solid var(--accent);
-            padding-left: 15px;
-        }
-
-        p {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            font-size: 16px;
         }
 
         .back-btn {
@@ -131,28 +132,126 @@
             transform: translateX(-3px);
         }
 
-        .roadmap-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-top: 20px;
+        .header-section {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 30px;
         }
 
-        .roadmap-item {
+        h1 {
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 17px;
+            max-width: 800px;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 28px;
+        }
+
+        .story-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 16px 20px;
-            font-size: 14px;
+            border-radius: 24px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .story-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .story-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 13px;
             color: var(--text-secondary);
         }
 
-        .roadmap-item strong {
-            display: block;
+        .tag-badge {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: rgba(187, 242, 148, 0.15);
             color: var(--accent);
-            margin-bottom: 4px;
-            font-size: 16px;
+            border: 1px solid var(--accent);
+        }
+
+        .story-card h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            line-height: 1.35;
+        }
+
+        .story-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .story-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 20px;
+        }
+
+        .read-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s ease;
+        }
+
+        .read-link:hover {
+            gap: 10px;
+        }
+
+        .share-x-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 8px 14px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .share-x-btn:hover {
+            background: #FFFFFF;
+            color: #000000;
+            border-color: #FFFFFF;
         }
 
         /* Footer */
@@ -242,100 +341,62 @@
                 text-align: center;
             }
         }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="background"></div>
+
     <div class="container">
         <a href="index.html" class="back-btn">← Back to Token Studio</a>
-        <h1>About & The Story Behind Token Studio</h1>
 
-        <div id="content">
-            <h2>The Origins</h2>
-            <p>Token Studio was born out of an artist's need for granular control tools on Solana. My background
-                over
-                the past 6-7 years has been as a Technical 3D Artist. Octane Render is what first drew me into 3D
-                graphics, and when Octane migrated to Solana via the RENDER Token, I was already deeply familiar with
-                the speed and capabilities of the network.</p>
+        <div class="header-section">
+            <h1>Stories & Field Notes</h1>
+            <p class="subtitle">Real-world case studies, technical breakthroughs, and uncompromised insights from building and using Token Studio across the Solana ecosystem.</p>
+        </div>
 
-            <h2>The Catalyst</h2>
-            <p>In 2021 I began creating crypto-themed 3D animations. By mid-2025, when I set out to mint those
-                animations as digital art collectibles on Solana, I quickly ran into a major wall: not a single
-                marketplace or tool out there allowed me to do exactly what I wanted with my NFTs. I spent a month going
-                back and forth with minting platforms, identifying several bugs in their systems, and yet even after
-                their fixes, existing tools still lacked the granular control I was looking for. Eventually I decided to
-                take matters into my own hands, writing custom scripts and minting my collection through the Solana CLI
-                to ensure my art was presented properly with zero compromise.</p>
+        <div class="stories-grid">
 
-            <h2>Building the Control Surface</h2>
-            <p>A few months later, I saw fellow artists and collectors in the Solana community asking similar questions,
-                and I realized that others were also forced to settle for clunky tools that didn't meet their standards.
-                I decided to pack all the custom scripts I had built for my collection into an app: <strong>Token
-                    Studio</strong>.</p>
+            <!-- Featured Story -->
+            <article class="story-card">
+                <div>
+                    <div class="story-meta">
+                        <span class="tag-badge">Case Study</span>
+                        <time datetime="2026-08-03">Aug 3, 2026</time>
+                        <span>• 3 min read</span>
+                    </div>
+                    <h2>96 Stake Accounts and $250 in Missing USDC</h2>
+                    <p>What began as a simple unstaking question in the Solana Mobile Discord became a perfect demonstration of why Token Studio exposes account details ordinary wallet balances hide.</p>
+                </div>
+                <div class="story-footer">
+                    <a href="stories/96-stake-accounts-and-250-missing-usdc.html" class="read-link">Read Story →</a>
+                    <a href="https://x.com/intent/post?text=96%20Stake%20Accounts%20and%20%24250%20in%20Missing%20USDC&url=https%3A%2F%2Ftokenstudio.dev%2Fstories%2F96-stake-accounts-and-250-missing-usdc.html" target="_blank" rel="noopener noreferrer" class="share-x-btn">
+                        <svg width="12" height="12" viewBox="0 0 1200 1227" fill="currentColor">
+                            <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/>
+                        </svg>
+                        Share on X
+                    </a>
+                </div>
+            </article>
 
-            <h2>Design & Engineering Philosophy</h2>
-            <p>Anything created is only as good as the visual language it conveys. Token Studio adheres to strict core
-                principles:</p>
-            <ul style="margin-left: 20px; color: var(--text-secondary); margin-bottom: 20px;">
-                <li><strong>Hardware-Backed Security:</strong> Native Seed Vault integration ensures private keys never
-                    leave your secure enclave.</li>
-                <li><strong>High-Density Payload Efficiency:</strong> High-density transaction packing up to Solana's
-                    1232-byte MTU limit to minimize execution costs and wallet interactions.</li>
-                <li><strong>Tactile Real-Time Feedback:</strong> Live activity telemetry (downloads, uploads, disk
-                    writes) keeps you completely in the loop.</li>
-                <li><strong>Decentralized Sovereignty:</strong> No backend tracking, zero personal data collection, and
-                    independence from centralized middleman servers.</li>
-            </ul>
+        </div>
 
-            <h2>Future Vision & Roadmap</h2>
-            <p>The overarching objective of Token Studio is to transform mobile devices like the Solana Seeker into
-                professional workstations, placing desktop CLI power directly into the palm of your hand.</p>
-
-            <div class="roadmap-list">
-                <div class="roadmap-item">
-                    <strong>1. Metaplex & Bubblegum Parity</strong>
-                    Complete feature parity across Metaplex Legacy, Core, and Compressed NFT (Bubblegum) programs.
-                </div>
-                <div class="roadmap-item">
-                    <strong>2. Legacy SPL & Token-2022 Support</strong>
-                    Comprehensive asset management suite for both the Legacy SPL and Token-2022 extension standard.
-                </div>
-                <div class="roadmap-item">
-                    <strong>3. Extended On-Chain Storage</strong>
-                    Expanding permanent asset metadata & media hosting options across Irys, IPFS, and Arweave.
-                </div>
-                <div class="roadmap-item">
-                    <strong>4. Deep Portfolio Intelligence & Health Analytics</strong>
-                    Real-time Wallet Health Reporter, historical networth tracking, and richer Recent Changes
-                    notifications.
-                </div>
-                <div class="roadmap-item">
-                    <strong>5. Integrated Swap & DeFi Utilities</strong>
-                    Seamless in-app token swaps through Jupiter without having to leave the application.
-                </div>
-                <div class="roadmap-item">
-                    <strong>6. Rich Interactive Media Viewports (3D & Audio)</strong>
-                    Bringing interactive 3D model viewports (GLB / glTF) and native audio/music playback directly into
-                    the wallet view.
-                </div>
-                <div class="roadmap-item">
-                    <strong>7. Encrypted In-App Wallet Messaging</strong>
-                    Encrypted wallet-to-wallet messaging.
-                </div>
-                <div class="roadmap-item">
-                    <strong>8. Web Application & Desktop Cross-Platform Suite</strong>
-                    Expanding Token Studio beyond mobile to desktop web browsers.
-                </div>
-                <div class="roadmap-item">
-                    <strong>9. Multi-Source Portfolio Expansion</strong>
-                    Support for additional portfolio sources, including read-only CEX API connections, custom asset
-                    tracking inputs, and manual balance aggregation.
-                </div>
-            </div>
-            <div style="margin-top: 50px;">
-                <a href="index.html" class="back-btn">← Back to Token Studio</a>
-            </div>
+        <div style="margin-top: 50px;">
+            <a href="index.html" class="back-btn">← Back to Token Studio</a>
         </div>
     </div>
 

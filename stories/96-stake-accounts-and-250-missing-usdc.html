@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>96 Stake Accounts and $250 in Missing USDC - Token Studio</title>
+    <meta name="description"
+        content="What began as a simple unstaking question became a perfect demonstration of why Token Studio exposes account details ordinary wallet balances hide.">
+    <link rel="canonical" href="https://tokenstudio.dev/stories/96-stake-accounts-and-250-missing-usdc.html">
+
+    <!-- Open Graph / Facebook / Discord -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tokenstudio.dev/stories/96-stake-accounts-and-250-missing-usdc.html">
+    <meta property="og:title" content="96 Stake Accounts and $250 in Missing USDC">
+    <meta property="og:description"
+        content="What began as a simple unstaking question became a perfect demonstration of why Token Studio exposes account details ordinary wallet balances hide.">
+    <meta property="og:image" content="https://tokenstudio.dev/assets/telemetry_96_unstake.png">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://tokenstudio.dev/stories/96-stake-accounts-and-250-missing-usdc.html">
+    <meta name="twitter:title" content="96 Stake Accounts and $250 in Missing USDC">
+    <meta name="twitter:description"
+        content="What began as a simple unstaking question became a perfect demonstration of why Token Studio exposes account details ordinary wallet balances hide.">
+    <meta name="twitter:image" content="https://tokenstudio.dev/assets/telemetry_96_unstake.png">
+    <meta name="twitter:creator" content="@impylse">
+
+    <!-- JSON-LD Structured Data for SEO / GEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "96 Stake Accounts and $250 in Missing USDC",
+      "description": "What began as a simple unstaking question became a perfect demonstration of why Token Studio exposes account details ordinary wallet balances hide.",
+      "url": "https://tokenstudio.dev/stories/96-stake-accounts-and-250-missing-usdc.html",
+      "datePublished": "2026-08-03",
+      "author": {
+        "@type": "Person",
+        "name": "impylse"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Token Studio",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://tokenstudio.dev/assets/logo_grad.png"
+        }
+      }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        :root {
+            --accent: #BBF294;
+            --accent-glow: rgba(187, 242, 148, 0.4);
+            --bg-dark: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.7;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('../assets/connect.png');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.3) blur(20px);
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            margin: 60px 0;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(20px);
+            padding: 60px;
+            border-radius: 32px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-btn:hover {
+            opacity: 0.8;
+            transform: translateX(-3px);
+        }
+
+        .article-header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 30px;
+        }
+
+        .tag-badge {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: rgba(187, 242, 148, 0.15);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+
+        .article-meta {
+            color: var(--text-secondary);
+            font-size: 14px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .article-content h2 {
+            font-size: 24px;
+            margin-top: 36px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            border-left: 3px solid var(--accent);
+            padding-left: 14px;
+        }
+
+        .article-content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .article-content ul {
+            list-style: none;
+            margin-bottom: 24px;
+            padding-left: 0;
+        }
+
+        .article-content li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .article-content li::before {
+            content: "•";
+            color: var(--accent);
+            font-size: 20px;
+            position: absolute;
+            left: 6px;
+            top: -2px;
+        }
+
+        .article-content strong {
+            color: var(--text-primary);
+        }
+
+        .highlight-quote {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            margin: 28px 0;
+            border-radius: 0 16px 16px 0;
+            color: var(--text-primary);
+            font-size: 17px;
+        }
+
+        /* Terminal Viewer */
+        .terminal-window {
+            background: #323339;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 32px 0 12px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .terminal-header {
+            background: rgba(0, 0, 0, 0.25);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .terminal-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .terminal-dots .dot.red { background: #FF5F56; }
+        .terminal-dots .dot.yellow { background: #FFBD2E; }
+        .terminal-dots .dot.green { background: #27C93F; }
+
+        .terminal-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        .terminal-body {
+            padding: 20px;
+            background: #323339;
+            display: flex;
+            justify-content: center;
+        }
+
+        .terminal-body .story-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: none;
+            box-shadow: none;
+        }
+
+        .img-caption {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .share-bar {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .share-btn-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .copy-link-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 10px 18px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .copy-link-btn:hover {
+            background: rgba(255, 255, 255, 0.16);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .toast-notification {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #111;
+            border: 1px solid var(--accent);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 2000;
+            pointer-events: none;
+        }
+
+        .toast-notification.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .share-x-btn {
+            background: #FFFFFF;
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .share-x-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            padding: 60px 0 40px;
+            border-top: 1px solid var(--card-border);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .footer-desc {
+            color: var(--text-secondary);
+            max-width: 300px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer-col h5 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--card-border);
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+            .share-bar {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background"></div>
+
+    <div class="container">
+        <a href="../stories.html" class="back-btn">← Back to Stories</a>
+
+        <header class="article-header">
+            <span class="tag-badge">Case Study</span>
+            <h1>96 Stake Accounts and $250 in Missing USDC</h1>
+            <div class="article-meta">
+                <span>By impylse</span>
+                <span>•</span>
+                <time datetime="2026-08-03">August 3, 2026</time>
+                <span>•</span>
+                <span>3 min read</span>
+            </div>
+        </header>
+
+        <main class="article-content">
+            <p>A user came to the <a href="https://discord.gg/solanamobile" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">Solana Mobile Discord</a> asking how to unstake accounts containing less than 1 SOL. The process through Seed Vault can be unclear at first, especially when many separate stake accounts are involved.</p>
+
+            <p>I suggested trying Token Studio, which allows stake accounts to be selected and deactivated in batches.</p>
+
+            <p>A few minutes later, Token Studio’s anonymous telemetry showed that someone had just deactivated <strong>96 stake accounts</strong>. Seconds later, the user returned to Discord to confirm it had worked.</p>
+
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="terminal-title">token-studio-telemetry.log</div>
+                </div>
+                <div class="terminal-body">
+                    <img src="../assets/telemetry_96_unstake.png" alt="Token Studio telemetry log showing 96 stake accounts deactivated" class="story-img">
+                </div>
+            </div>
+            <p class="img-caption">Real-time anonymous telemetry showing 96 stake accounts deactivated in batch.</p>
+
+            <h2>96 accounts. 3 clicks. 4 transactions.</h2>
+            <p>Instead of managing every position individually, the user selected all 96 accounts and Token Studio divided the operation into four batched transactions.</p>
+
+            <p>While we were talking, the user mentioned another problem: approximately <strong>250 USDC had disappeared</strong> from their wallet.</p>
+
+            <p>I asked whether their USDC balance appeared red in Token Studio. It did.</p>
+
+            <p>A red token balance indicates that the underlying account has an active delegate, another address authorized to transfer its tokens. That gave us the lead we needed.</p>
+
+            <p>We traced a delegated transfer of <strong>255 USDC</strong> through Solana’s Subscriptions and Allowances program into a Squads smart account, and from there into Kamino Finance.</p>
+
+            <p>The funds had not been drained. Loyal’s automatic yield system had moved the user’s idle USDC into Kamino lending, leaving 5 USDC in the original wallet.</p>
+
+            <h2>One conversation, two problems solved</h2>
+            <ul>
+                <li><strong>96 stake accounts</strong> deactivated in four transactions</li>
+                <li><strong>255 USDC</strong> located in a Kamino position</li>
+                <li>An unfamiliar delegated transfer explained</li>
+                <li>No funds lost</li>
+            </ul>
+
+            <div class="highlight-quote">
+                What began as a simple unstaking question became a perfect demonstration of why Token Studio exposes the account details that ordinary wallet balances often hide.
+                <br><br>
+                In a standard wallet, unstaking 96 separate accounts would have easily consumed an entire afternoon by approving transaction after transaction one by one. Token Studio turned that into a single 1-operation flow executed in just a few clicks.
+                <br><br>
+                <strong>This is exactly why I'm building Token Studio.</strong>
+            </div>
+        </main>
+
+        <div class="share-bar">
+            <span>Enjoyed this story?</span>
+            <div class="share-btn-group">
+                <button type="button" class="copy-link-btn" id="copyBtn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    Copy Link
+                </button>
+                <a href="https://x.com/intent/post?text=96%20Stake%20Accounts%20and%20%24250%20in%20Missing%20USDC&url=https%3A%2F%2Ftokenstudio.dev%2Fstories%2F96-stake-accounts-and-250-missing-usdc.html" target="_blank" rel="noopener noreferrer" class="share-x-btn">
+                    <svg width="14" height="14" viewBox="0 0 1200 1227" fill="currentColor">
+                        <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/>
+                    </svg>
+                    Post on X
+                </a>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <a href="../index.html" class="back-btn">← Back to Token Studio</a>
+        </div>
+    </div>
+
+    <div id="toast" class="toast-notification">
+        <span style="color: var(--accent);">✓</span> Link copied to clipboard!
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">Token Studio</div>
+                    <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the Solana blockchain.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="../about.html">About & Vision</a></li>
+                        <li><a href="../stories.html">Stories & Field Notes</a></li>
+                        <li><a href="../faq.html">Frequently Asked Questions</a></li>
+                        <li><a href="../changelog.html">Changelog & Releases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Social</h5>
+                    <ul>
+                        <li><a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
+                        <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank" rel="noopener noreferrer">Discord Community</a></li>
+                        <li><a href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S" target="_blank" rel="noopener noreferrer">Mallow Collection</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Compliance</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Service</a></li>
+                        <li><a href="../copyright.html">Copyright Notice</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2026 TokenStudio. All rights reserved.</div>
+                <div>Built for the Solana Mobile Ecosystem.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2500);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        });
+    </script>
+</body>
+
+</html>

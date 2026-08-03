@@ -5,7 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Changelog & Release Notes - Token Studio</title>
-    <meta name="description" content="Complete release notes and update history for Token Studio - The Solana Control Surface for NFT lifecycle management and portfolio intelligence.">
+    <meta name="description"
+        content="Complete release notes and update history for Token Studio - The Solana Control Surface for NFT lifecycle management and portfolio intelligence.">
+    <link rel="canonical" href="https://tokenstudio.dev/changelog.html">
+
+    <!-- Open Graph / Facebook / Discord -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tokenstudio.dev/changelog.html">
+    <meta property="og:title" content="Changelog & Release Notes - Token Studio">
+    <meta property="og:description"
+        content="Complete release notes and update history for Token Studio - The Solana Control Surface for NFT lifecycle management and portfolio intelligence.">
+    <meta property="og:image" content="https://tokenstudio.dev/assets/og_preview.png">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://tokenstudio.dev/changelog.html">
+    <meta name="twitter:title" content="Changelog & Release Notes - Token Studio">
+    <meta name="twitter:description"
+        content="Complete release notes and update history for Token Studio - The Solana Control Surface for NFT lifecycle management and portfolio intelligence.">
+    <meta name="twitter:image" content="https://tokenstudio.dev/assets/og_preview.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -83,16 +102,20 @@
         }
 
         .back-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             margin-bottom: 30px;
-            color: var(--text-secondary);
+            color: var(--accent);
             text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
+            font-size: 15px;
+            font-weight: 600;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .back-btn:hover {
-            color: var(--accent);
+            opacity: 0.8;
+            transform: translateX(-3px);
         }
 
         .header-section {
@@ -214,22 +237,93 @@
             border: 1px solid rgba(242, 235, 148, 0.4);
         }
 
+        /* Footer */
         footer {
+            width: 100%;
+            padding: 60px 0 40px;
+            border-top: 1px solid var(--card-border);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
             margin-top: auto;
-            padding: 40px 0;
-            font-size: 14px;
-            color: var(--text-secondary);
-            text-align: center;
         }
 
-        footer a {
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .footer-desc {
+            color: var(--text-secondary);
+            max-width: 300px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer-col h5 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
             color: var(--text-secondary);
             text-decoration: none;
+            font-size: 14px;
             transition: color 0.3s;
         }
 
-        footer a:hover {
+        .footer-col a:hover {
             color: var(--accent);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--card-border);
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
         }
 
         @media (max-width: 600px) {
@@ -252,10 +346,40 @@
 
         <div class="header-section">
             <h1>Changelog & Release History</h1>
-            <p class="subtitle">Complete chronological record of features, performance enhancements, and bug fixes across all Token Studio releases.</p>
+            <p class="subtitle">Complete chronological record of features, performance enhancements, and bug fixes
+                across all Token Studio releases.</p>
         </div>
 
         <div class="timeline">
+
+            <!-- v0.17.210-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">v0.17.209-beta</span>
+                    <time class="release-date">August 3, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Token Explorer:</strong> Expanded the Token Explorer with a dedicated Token view,
+                            letting you tap on any Fungible Token to view its full details.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Operation Abort:</strong> Added the ability to abort ongoing operations directly
+                            from the main action/progress button if a transaction is unconfirmed within 10–15s without
+                            waiting for blockchain timeouts.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Various UI/UX improvements and responsive refinements.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Various stability enhancements and bug fixes.</div>
+                    </li>
+                </ul>
+            </article>
 
             <!-- v0.16.196-beta -->
             <article class="release-entry">
@@ -266,23 +390,28 @@
                 <ul class="change-list">
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>JUP Stake Withdrawal:</strong> Added support for native JUP stake withdrawal operations.</div>
+                        <div><strong>JUP Stake Withdrawal:</strong> Added support for native JUP stake withdrawal
+                            operations.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Profile Dashboard:</strong> Introduced the all-new Profile Dashboard for high-level portfolio overview.</div>
+                        <div><strong>Profile Dashboard:</strong> Introduced the all-new Profile Dashboard for high-level
+                            portfolio overview.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-perf">Performance</span>
-                        <div><strong>Networking Resiliency:</strong> Overhauled and strengthened the networking layer for robust API fetch performance.</div>
+                        <div><strong>Networking Resiliency:</strong> Overhauled and strengthened the networking layer
+                            for robust API fetch performance.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-fix">Fix</span>
-                        <div><strong>Core Assets Freeze Audit:</strong> Resolved issue where collection-inherited frozen state of Metaplex Core Assets was misidentified.</div>
+                        <div><strong>Core Assets Freeze Audit:</strong> Resolved issue where collection-inherited frozen
+                            state of Metaplex Core Assets was misidentified.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-ux">UX</span>
-                        <div><strong>Android Security:</strong> Removed broad photo/video read permissions on Android for privacy scoping.</div>
+                        <div><strong>Android Security:</strong> Removed broad photo/video read permissions on Android
+                            for privacy scoping.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-ux">UX</span>
@@ -304,15 +433,19 @@
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Claimable Rewards Detection:</strong> Integrated Jupiter ASR and Pump.fun Creator Rewards discovery. Rewards display as external wallet positions with total networth tracking and direct portal claim shortcuts.</div>
+                        <div><strong>Claimable Rewards Detection:</strong> Integrated Jupiter ASR and Pump.fun Creator
+                            Rewards discovery. Rewards display as external wallet positions with total networth tracking
+                            and direct portal claim shortcuts.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-fix">Fix</span>
-                        <div><strong>Compressed Asset Burner Guard:</strong> Burner now safely skips oversized compressed assets exceeding Solana MTU limits rather than failing simulation.</div>
+                        <div><strong>Compressed Asset Burner Guard:</strong> Burner now safely skips oversized
+                            compressed assets exceeding Solana MTU limits rather than failing simulation.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-fix">Fix</span>
-                        <div><strong>SPL Send Compute Limit:</strong> Fixed intermittent "CU Limit Reached" error when sending standard SPL tokens.</div>
+                        <div><strong>SPL Send Compute Limit:</strong> Fixed intermittent "CU Limit Reached" error when
+                            sending standard SPL tokens.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-ux">UX</span>
@@ -330,7 +463,8 @@
                 <ul class="change-list">
                     <li class="change-item">
                         <span class="badge badge-hotfix">Hotfix</span>
-                        <div>Fixed decimal parsing issue where Compressed Tokens rendered incorrect values in the Recent Changes category.</div>
+                        <div>Fixed decimal parsing issue where Compressed Tokens rendered incorrect values in the Recent
+                            Changes category.</div>
                     </li>
                 </ul>
             </article>
@@ -344,23 +478,28 @@
                 <ul class="change-list">
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Compressed Token Decompression:</strong> Added Compressed Token discovery and native decompression tool to unpack cTokens into regular SPL tokens.</div>
+                        <div><strong>Compressed Token Decompression:</strong> Added Compressed Token discovery and
+                            native decompression tool to unpack cTokens into regular SPL tokens.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Token Account Delegation:</strong> Added token delegation tools in asset menus to pre-approve limited token allowances without giving away full key control.</div>
+                        <div><strong>Token Account Delegation:</strong> Added token delegation tools in asset menus to
+                            pre-approve limited token allowances without giving away full key control.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Delegate Revocation & Security Audit:</strong> Introduced approval revocation controls and highlighted exposed balances in red across the Wallet view.</div>
+                        <div><strong>Delegate Revocation & Security Audit:</strong> Introduced approval revocation
+                            controls and highlighted exposed balances in red across the Wallet view.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Merkle Tree On-Demand Scanner:</strong> Scans the Solana blockchain for Merkle Trees created or managed by your connected wallet.</div>
+                        <div><strong>Merkle Tree On-Demand Scanner:</strong> Scans the Solana blockchain for Merkle
+                            Trees created or managed by your connected wallet.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>24h Transaction Metrics:</strong> Dashboard now tracks and displays connected wallet transaction counts over the past 24 hours (requested by @wolly.skr).</div>
+                        <div><strong>24h Transaction Metrics:</strong> Dashboard now tracks and displays connected
+                            wallet transaction counts over the past 24 hours (requested by @wolly.skr).</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-fix">Fix</span>
@@ -368,7 +507,8 @@
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div>Wallet Health Score now evaluates and incorporates Empty Token Accounts into overall score calculation.</div>
+                        <div>Wallet Health Score now evaluates and incorporates Empty Token Accounts into overall score
+                            calculation.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-ux">UX</span>
@@ -386,27 +526,33 @@
                 <ul class="change-list">
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Native SKR Staking & Unstaking:</strong> Fully integrated native SKR staking leveraging transaction stacking and high-density packing.</div>
+                        <div><strong>Native SKR Staking & Unstaking:</strong> Fully integrated native SKR staking
+                            leveraging transaction stacking and high-density packing.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Rarity Filter:</strong> Added wallet-relative NFT rarity filtering working alongside search queries (requested by @EvgeniyLEV).</div>
+                        <div><strong>Rarity Filter:</strong> Added wallet-relative NFT rarity filtering working
+                            alongside search queries (requested by @EvgeniyLEV).</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Advanced Multi-Select:</strong> Added Select All, Deselect All, and Invert Selection controls across multi-select flows.</div>
+                        <div><strong>Advanced Multi-Select:</strong> Added Select All, Deselect All, and Invert
+                            Selection controls across multi-select flows.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Universal Send Surface:</strong> Integrated stacked transfer operations supporting SOL, standard SPL, and Token-2022 standards.</div>
+                        <div><strong>Universal Send Surface:</strong> Integrated stacked transfer operations supporting
+                            SOL, standard SPL, and Token-2022 standards.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Split & Merge Token Accounts:</strong> Industry-first account management enabling users to split or merge multiple token accounts per mint (SPL & Token-2022).</div>
+                        <div><strong>Split & Merge Token Accounts:</strong> Industry-first account management enabling
+                            users to split or merge multiple token accounts per mint (SPL & Token-2022).</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Media Stack Submenu:</strong> Added native Save Video and Share Video options collapsed into asset Media Stack menus.</div>
+                        <div><strong>Media Stack Submenu:</strong> Added native Save Video and Share Video options
+                            collapsed into asset Media Stack menus.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-ux">UX</span>
@@ -424,31 +570,38 @@
                 <ul class="change-list">
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Pull-to-Refresh:</strong> Pull down on the Wallet tab to instantly refresh and sync latest on-chain state changes.</div>
+                        <div><strong>Pull-to-Refresh:</strong> Pull down on the Wallet tab to instantly refresh and sync
+                            latest on-chain state changes.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Recent Changes Category:</strong> Temporarily surfaces newly discovered or evicted wallet assets right at the top of your wallet view.</div>
+                        <div><strong>Recent Changes Category:</strong> Temporarily surfaces newly discovered or evicted
+                            wallet assets right at the top of your wallet view.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Wallet Health Report:</strong> Comprehensive health score breakdown with tools to save, share, or mint your report as collectible artwork.</div>
+                        <div><strong>Wallet Health Report:</strong> Comprehensive health score breakdown with tools to
+                            save, share, or mint your report as collectible artwork.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Asset Media Export:</strong> Direct Save Image and Share Image actions for NFTs in context menus.</div>
+                        <div><strong>Asset Media Export:</strong> Direct Save Image and Share Image actions for NFTs in
+                            context menus.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>In-App Feedback System:</strong> Submit feature requests, bug reports, and UX notes directly from Token Studio.</div>
+                        <div><strong>In-App Feedback System:</strong> Submit feature requests, bug reports, and UX notes
+                            directly from Token Studio.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-ux">UX</span>
-                        <div>Replaced standard numerical keyboards with a custom tactile Dialpad across all minting surfaces.</div>
+                        <div>Replaced standard numerical keyboards with a custom tactile Dialpad across all minting
+                            surfaces.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-fix">Fix</span>
-                        <div>Fixed issue where manually aborting account sync left the dashboard stuck in "Syncing" state.</div>
+                        <div>Fixed issue where manually aborting account sync left the dashboard stuck in "Syncing"
+                            state.</div>
                     </li>
                 </ul>
             </article>
@@ -462,19 +615,23 @@
                 <ul class="change-list">
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Jupiter Position Discovery:</strong> Full automated tracking for external Jupiter positions (Limit Orders, DCA/Recurring, Borrow, Perps, Strategies, and Vesting).</div>
+                        <div><strong>Jupiter Position Discovery:</strong> Full automated tracking for external Jupiter
+                            positions (Limit Orders, DCA/Recurring, Borrow, Perps, Strategies, and Vesting).</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Jupiter Stake Discovery:</strong> Automated detection and tracking for Jupiter stake accounts.</div>
+                        <div><strong>Jupiter Stake Discovery:</strong> Automated detection and tracking for Jupiter
+                            stake accounts.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Deep Wallet Statistics:</strong> Added Wallet Age, Initial Funding source, Funder address, and total burned NFT counters.</div>
+                        <div><strong>Deep Wallet Statistics:</strong> Added Wallet Age, Initial Funding source, Funder
+                            address, and total burned NFT counters.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-perf">Performance</span>
-                        <div>Overhauled Magic Eden floor price pipeline to adapt to updated API authorization rules.</div>
+                        <div>Overhauled Magic Eden floor price pipeline to adapt to updated API authorization rules.
+                        </div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
@@ -482,7 +639,8 @@
                     </li>
                     <li class="change-item">
                         <span class="badge badge-ux">UX</span>
-                        <div>Added scammer/hacker address tag warnings when exploring public wallet addresses in Read-Only mode.</div>
+                        <div>Added scammer/hacker address tag warnings when exploring public wallet addresses in
+                            Read-Only mode.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-fix">Fix</span>
@@ -500,19 +658,24 @@
                 <ul class="change-list">
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Solana Staking & Unstaking:</strong> Direct native SOL staking and batch unstaking with validator distribution, zero service fees, and optional Atomic Packing toggle for Seeker Season 2 activity.</div>
+                        <div><strong>Solana Staking & Unstaking:</strong> Direct native SOL staking and batch unstaking
+                            with validator distribution, zero service fees, and optional Atomic Packing toggle for
+                            Seeker Season 2 activity.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Asset Viewer:</strong> Tap any NFT to view high-resolution media, descriptions, and full on-chain attribute breakdowns.</div>
+                        <div><strong>Asset Viewer:</strong> Tap any NFT to view high-resolution media, descriptions, and
+                            full on-chain attribute breakdowns.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Wallet Search & Filter:</strong> Deep search across names, addresses, custom tags, attributes, and descriptions.</div>
+                        <div><strong>Wallet Search & Filter:</strong> Deep search across names, addresses, custom tags,
+                            attributes, and descriptions.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Multi-Select Actions:</strong> Multi-selection support for Hide, Burn, and Transfer workflows.</div>
+                        <div><strong>Multi-Select Actions:</strong> Multi-selection support for Hide, Burn, and Transfer
+                            workflows.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-ux">UX</span>
@@ -530,7 +693,8 @@
                 <ul class="change-list">
                     <li class="change-item">
                         <span class="badge badge-hotfix">Hotfix</span>
-                        <div>Temporarily disabled burns/transfers for Core NFTs containing advanced external plugins to prevent simulation failures while plugin handlers are updated.</div>
+                        <div>Temporarily disabled burns/transfers for Core NFTs containing advanced external plugins to
+                            prevent simulation failures while plugin handlers are updated.</div>
                     </li>
                 </ul>
             </article>
@@ -544,31 +708,38 @@
                 <ul class="change-list">
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Solflare & Phantom Integration:</strong> Expanded wallet adapter support to include Solflare and Phantom mobile wallets alongside Seed Vault.</div>
+                        <div><strong>Solflare & Phantom Integration:</strong> Expanded wallet adapter support to include
+                            Solflare and Phantom mobile wallets alongside Seed Vault.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Multi-Wallet Portfolio Tracker:</strong> Combine multiple wallet addresses into a unified net worth dashboard.</div>
+                        <div><strong>Multi-Wallet Portfolio Tracker:</strong> Combine multiple wallet addresses into a
+                            unified net worth dashboard.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Native Seeker Staking Discovery:</strong> Automatically detects native SKR staking positions.</div>
+                        <div><strong>Native Seeker Staking Discovery:</strong> Automatically detects native SKR staking
+                            positions.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Solana Domain Name Resolution:</strong> Resolves .sol domain names and wallet identities into human-readable custom aliases.</div>
+                        <div><strong>Solana Domain Name Resolution:</strong> Resolves .sol domain names and wallet
+                            identities into human-readable custom aliases.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Custom Avatars & Favorites:</strong> Expanded favorite wallets list up to 16 addresses with custom avatar uploads.</div>
+                        <div><strong>Custom Avatars & Favorites:</strong> Expanded favorite wallets list up to 16
+                            addresses with custom avatar uploads.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-perf">Performance</span>
-                        <div>Optimized GIF decoding engine with automatic quarantine for oversized payloads to preserve memory and frame rates.</div>
+                        <div>Optimized GIF decoding engine with automatic quarantine for oversized payloads to preserve
+                            memory and frame rates.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-perf">Performance</span>
-                        <div>15-second inactivity timer that pauses animated GIF playback when idle to preserve device battery life.</div>
+                        <div>15-second inactivity timer that pauses animated GIF playback when idle to preserve device
+                            battery life.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-ux">UX</span>
@@ -586,7 +757,8 @@
                 <ul class="change-list">
                     <li class="change-item">
                         <span class="badge badge-perf">Performance</span>
-                        <div><strong>450% Faster Sync Speeds:</strong> Boosted account sync speeds by up to 450% via asynchronous Magic Eden price resolution.</div>
+                        <div><strong>450% Faster Sync Speeds:</strong> Boosted account sync speeds by up to 450% via
+                            asynchronous Magic Eden price resolution.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-ux">UX</span>
@@ -604,15 +776,18 @@
                 <ul class="change-list">
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Token List Search:</strong> Added search filtering across long lists of tokens.</div>
+                        <div><strong>Token List Search:</strong> Added search filtering across long lists of tokens.
+                        </div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Dashboard V1:</strong> Real-time Solana network stats, price history, and trading algorithm indicators.</div>
+                        <div><strong>Dashboard V1:</strong> Real-time Solana network stats, price history, and trading
+                            algorithm indicators.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Price History Charts:</strong> Interactive price charts for any fungible asset with Line and Candlestick chart toggles.</div>
+                        <div><strong>Price History Charts:</strong> Interactive price charts for any fungible asset with
+                            Line and Candlestick chart toggles.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
@@ -620,15 +795,18 @@
                     </li>
                     <li class="change-item">
                         <span class="badge badge-perf">Performance</span>
-                        <div>Optimized Merkle Tree proof array discovery for cNFT batch operations (burn & transfer).</div>
+                        <div>Optimized Merkle Tree proof array discovery for cNFT batch operations (burn & transfer).
+                        </div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-ux">UX</span>
-                        <div>Replaced default Android gesture controls with intelligent swipe vs. scroll touch logic.</div>
+                        <div>Replaced default Android gesture controls with intelligent swipe vs. scroll touch logic.
+                        </div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-perf">Performance</span>
-                        <div>Capped asset image thumbnails to 256x256 resolution to maximize rendering speed in large wallets.</div>
+                        <div>Capped asset image thumbnails to 256x256 resolution to maximize rendering speed in large
+                            wallets.</div>
                     </li>
                 </ul>
             </article>
@@ -642,7 +820,8 @@
                 <ul class="change-list">
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Read-Only Exploration Mode:</strong> Explore any public Solana wallet address in Read-Only mode without connecting Seed Vault keys.</div>
+                        <div><strong>Read-Only Exploration Mode:</strong> Explore any public Solana wallet address in
+                            Read-Only mode without connecting Seed Vault keys.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-ux">UX</span>
@@ -664,7 +843,8 @@
                 <ul class="change-list">
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Networking Architecture Overhaul:</strong> Completely redesigned networking layer for enhanced connection stability and speed.</div>
+                        <div><strong>Networking Architecture Overhaul:</strong> Completely redesigned networking layer
+                            for enhanced connection stability and speed.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-perf">Performance</span>
@@ -672,36 +852,86 @@
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Priority Fee Controls:</strong> Added "Low" and "High" priority fee presets for custom fee tuning.</div>
+                        <div><strong>Priority Fee Controls:</strong> Added "Low" and "High" priority fee presets for
+                            custom fee tuning.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Native SOL & Stake Support:</strong> Full tracking for native SOL balances and stake accounts.</div>
+                        <div><strong>Native SOL & Stake Support:</strong> Full tracking for native SOL balances and
+                            stake accounts.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Real-Time Tickers & Floor Prices:</strong> Live price feeds for fungible tokens and Magic Eden floor prices for NFT collections.</div>
+                        <div><strong>Real-Time Tickers & Floor Prices:</strong> Live price feeds for fungible tokens and
+                            Magic Eden floor prices for NFT collections.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Asset Hiding:</strong> Hide feature to tuck away specific wallet assets from main view.</div>
+                        <div><strong>Asset Hiding:</strong> Hide feature to tuck away specific wallet assets from main
+                            view.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-feature">Feature</span>
-                        <div><strong>Network Traffic LED Indicator:</strong> Real-time visual LED status (🟢 Green: Download, 🔴 Red: Upload/Write, 🔵 Blue: Disk Save).</div>
+                        <div><strong>Network Traffic LED Indicator:</strong> Real-time visual LED status (🟢 Green:
+                            Download, 🔴 Red: Upload/Write, 🔵 Blue: Disk Save).</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-fix">Fix</span>
-                        <div>Fixed issue misidentifying custom NFT interfaces and zero-decimal tokens as standard fungible assets.</div>
+                        <div>Fixed issue misidentifying custom NFT interfaces and zero-decimal tokens as standard
+                            fungible assets.</div>
                     </li>
                 </ul>
             </article>
 
         </div>
+
+        <div style="margin-top: 50px;">
+            <a href="index.html" class="back-btn">← Back to Token Studio</a>
+        </div>
     </div>
 
     <footer>
-        © 2026 Token Studio | Built for the Solana Mobile Ecosystem | <a href="index.html">Home</a> • <a href="about.html">About</a> • <a href="privacy.html">Privacy</a>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">Token Studio</div>
+                    <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the
+                        Solana blockchain.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="about.html">About & Vision</a></li>
+                        <li><a href="stories.html">Stories & Field Notes</a></li>
+                        <li><a href="faq.html">Frequently Asked Questions</a></li>
+                        <li><a href="changelog.html">Changelog & Releases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Social</h5>
+                    <ul>
+                        <li><a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+                        </li>
+                        <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank"
+                                rel="noopener noreferrer">Discord Community</a></li>
+                        <li><a href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S"
+                                target="_blank" rel="noopener noreferrer">Mallow Collection</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Compliance</h5>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="copyright.html">Copyright Notice</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2026 TokenStudio. All rights reserved.</div>
+                <div>Built for the Solana Mobile Ecosystem.</div>
+            </div>
+        </div>
     </footer>
 </body>
 

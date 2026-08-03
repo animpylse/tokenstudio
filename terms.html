@@ -4,6 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Terms of Service for Token Studio - The Solana Control Surface. Asset management software usage terms and liability disclaimers.">
+    <link rel="canonical" href="https://tokenstudio.dev/terms.html">
+
+    <!-- Open Graph / Facebook / Discord -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tokenstudio.dev/terms.html">
+    <meta property="og:title" content="Terms of Service - Token Studio">
+    <meta property="og:description"
+        content="Terms of Service for Token Studio - The Solana Control Surface. Asset management software usage terms and liability disclaimers.">
+    <meta property="og:image" content="https://tokenstudio.dev/assets/og_preview.png">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://tokenstudio.dev/terms.html">
+    <meta name="twitter:title" content="Terms of Service - Token Studio">
+    <meta name="twitter:description"
+        content="Terms of Service for Token Studio - The Solana Control Surface. Asset management software usage terms and liability disclaimers.">
+    <meta name="twitter:image" content="https://tokenstudio.dev/assets/og_preview.png">
+
     <title>License Agreement - Token Studio</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -46,11 +66,11 @@
         .container {
             max-width: 800px;
             width: 90%;
-            margin: 80px 0;
+            margin: 60px auto 40px;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             backdrop-filter: blur(20px);
-            padding: 60px;
+            padding: 50px;
             border-radius: 32px;
             animation: fadeIn 0.6s ease-out;
         }
@@ -86,16 +106,20 @@
         }
 
         .back-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             margin-bottom: 40px;
-            color: var(--text-secondary);
+            color: var(--accent);
             text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
+            font-size: 15px;
+            font-weight: 600;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .back-btn:hover {
-            color: var(--accent);
+            opacity: 0.8;
+            transform: translateX(-3px);
         }
 
         pre {
@@ -105,11 +129,92 @@
             font-size: 15px;
         }
 
+        /* Footer */
         footer {
+            width: 100%;
+            padding: 60px 0 40px;
+            border-top: 1px solid var(--card-border);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
             margin-top: auto;
-            padding: 40px 0;
-            font-size: 12px;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .footer-desc {
             color: var(--text-secondary);
+            max-width: 300px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer-col h5 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--card-border);
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -237,9 +342,50 @@
             <h2>20. Changes to Terms</h2>
             <p>These Terms may be updated at any time. Continued use of the application following any modifications
                 constitutes your acceptance of the revised Terms.</p>
+            <div style="margin-top: 50px;">
+                <a href="index.html" class="back-btn">← Back to Token Studio</a>
+            </div>
         </div>
     </div>
-    <footer>© 2026 Token Studio | <a href="index.html" style="color: var(--text-secondary); text-decoration: none;">Home</a> • <a href="about.html" style="color: var(--accent); text-decoration: none;">About</a> • <a href="changelog.html" style="color: var(--accent); text-decoration: none;">Changelog</a></footer>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">Token Studio</div>
+                    <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the Solana blockchain.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="about.html">About & Vision</a></li>
+                        <li><a href="stories.html">Stories & Field Notes</a></li>
+                        <li><a href="faq.html">Frequently Asked Questions</a></li>
+                        <li><a href="changelog.html">Changelog & Releases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Social</h5>
+                    <ul>
+                        <li><a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
+                        <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank" rel="noopener noreferrer">Discord Community</a></li>
+                        <li><a href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S" target="_blank" rel="noopener noreferrer">Mallow Collection</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Compliance</h5>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="copyright.html">Copyright Notice</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2026 TokenStudio. All rights reserved.</div>
+                <div>Built for the Solana Mobile Ecosystem.</div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

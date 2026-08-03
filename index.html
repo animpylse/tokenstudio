@@ -16,16 +16,16 @@
     <meta property="og:url" content="https://tokenstudio.dev/">
     <meta property="og:title" content="Token Studio - The Solana Control Surface">
     <meta property="og:description"
-        content="Token Studio is an all-in-one Solana asset management toolkit. Think of it as Photoshop for Solana, with your wallet as the canvas. It aggregates your entire on-chain footprint into a unified view of all your wallets, tokens, and NFTs, enriched with pricing and performance data.">
-    <meta property="og:image" content="https://tokenstudio.dev/assets/connect.png">
+        content="Elevate your control. Define your legacy. Token Studio is the professional-grade Solana control surface for comprehensive asset lifecycle management.">
+    <meta property="og:image" content="https://tokenstudio.dev/assets/og_preview.png">
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://tokenstudio.dev/">
     <meta name="twitter:title" content="Token Studio - The Solana Control Surface">
     <meta name="twitter:description"
-        content="Token Studio is an all-in-one Solana asset management toolkit. Think of it as Photoshop for Solana, with your wallet as the canvas. It aggregates your entire on-chain footprint into a unified view of all your wallets, tokens, and NFTs, enriched with pricing and performance data.">
-    <meta name="twitter:image" content="https://tokenstudio.dev/assets/connect.png">
+        content="Elevate your control. Define your legacy. Token Studio is the professional-grade Solana control surface for comprehensive asset lifecycle management.">
+    <meta name="twitter:image" content="https://tokenstudio.dev/assets/og_preview.png">
     <meta name="twitter:creator" content="@impylse">
 
     <!-- JSON-LD Structured Data for Search Engines & AI Models -->
@@ -160,8 +160,8 @@
         }
 
         .logo-container {
-            width: 96px;
-            height: 96px;
+            width: 58px;
+            height: 58px;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -169,16 +169,15 @@
         }
 
         .logo-img {
-            width: 96px;
-            height: 96px;
+            width: 58px;
+            height: 58px;
             position: relative;
-            /*filter: drop-shadow(0 0 10px var(--accent-glow));*/
         }
 
         .logo-text {
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: -1px;
             background: linear-gradient(135deg, #fff 0%, var(--text-secondary) 100%);
             -webkit-background-clip: text;
             background-clip: text;
@@ -198,7 +197,8 @@
 
         /* Hero Section */
         .hero {
-            padding: 36px 0 40px;
+            padding: 36px 0 0;
+            margin-bottom: 80px;
             text-align: center;
             animation: fadeIn 0.8s ease-out;
         }
@@ -224,8 +224,10 @@
 
         .hero h1 span {
             display: block;
+            width: fit-content;
+            margin: 0 auto;
             font-size: 32px;
-            background: linear-gradient(135deg, #BBF294 0%, #94A1F2 100%);
+            background: linear-gradient(90deg, #BBF294 0%, #68DFE9 50%, #94A1F2 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -296,9 +298,69 @@
             height: 20px;
         }
 
+        /* Screenshots Section */
+        .screenshots-section {
+            margin: 0 0 80px;
+            padding: 0;
+        }
+
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .screenshot-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: zoom-in;
+            backdrop-filter: blur(20px);
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Image Lightbox Modal */
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(20px);
+            cursor: zoom-out;
+        }
+
+        .image-modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+            object-fit: contain;
+        }
+
         /* Features */
         .features {
-            padding: 50px 0 100px;
+            margin: 0 0 80px;
+            padding: 0;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
@@ -316,6 +378,7 @@
         .feature-card:hover {
             border-color: var(--accent);
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--accent-glow);
         }
 
         .feature-icon {
@@ -359,8 +422,15 @@
             display: flex;
             justify-content: space-around;
             text-align: center;
-            margin-bottom: 100px;
+            margin: 0 0 80px;
             backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .stats:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--accent-glow);
         }
 
         .stat-item h4 {
@@ -478,7 +548,7 @@
 
         /* Reviews Carousel */
         .reviews-section {
-            margin: 80px 0 120px;
+            margin: 0 0 80px;
             padding: 0;
             position: relative;
         }
@@ -532,7 +602,8 @@
         .reviews-track-wrapper {
             overflow: hidden;
             width: 100%;
-            border-radius: 20px;
+            padding: 16px 12px 35px;
+            margin: -16px -12px -35px;
         }
 
         .reviews-track {
@@ -554,6 +625,13 @@
             flex-direction: column;
             justify-content: space-between;
             min-height: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--accent-glow);
         }
 
         @media (max-width: 768px) {
@@ -707,7 +785,15 @@
             }
 
             .hero {
-                padding: 24px 0 32px;
+                padding: 24px 0 0;
+            }
+
+            .hero,
+            .reviews-section,
+            .features,
+            .screenshots-section,
+            .stats {
+                margin-bottom: 48px;
             }
 
             .hero h1 {
@@ -748,7 +834,7 @@
                 </div>
                 <span class="logo-text">Token Studio</span>
             </div>
-            <div class="version-badge">v0.16.196-beta</div>
+            <div class="version-badge">v0.17.209-beta</div>
         </header>
 
         <section class="hero">
@@ -796,110 +882,6 @@
                 development.</p>
 
         </section>
-
-        <section class="features" id="features">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <img src="assets/wallet.png" alt="Wallet"
-                        style="left: -100px; filter: drop-shadow(100px 0 0 #F294C3);">
-                </div>
-                <h3>Wallet</h3>
-                <p>A unified view of your entire Solana footprint aggregated into a
-                    single control surface.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <img src="assets/master.png" alt="Asset Foundry"
-                        style="left: -100px; filter: drop-shadow(100px 0 0 #BBF294);">
-                </div>
-                <h3>Asset Foundry</h3>
-                <p>Create, Edit, Verify, Print, Transfer, Autograph, Freeze, Delegate, and Burn NFTs with deterministic
-                    precision.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <img src="assets/search.png" alt="Search"
-                        style="left: -100px; filter: drop-shadow(100px 0 0 #BCE1F3);">
-                </div>
-                <h3>Seeker</h3>
-                <p>Powerful filtering lets you query everything across your holdings by name,
-                    address, category, or metadata property.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <img src="assets/burn.png" alt="Burn" style="left: -100px; filter: drop-shadow(100px 0 0 #F294C3);">
-                </div>
-                <h3>Burner</h3>
-                <p>Large-scale asset cleanup with thorough safety validations, letting you process mixed sets of
-                    hundreds of tokens at once.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <img src="assets/data.png" alt="Density"
-                        style="left: -100px; filter: drop-shadow(100px 0 0 #BBF294);">
-                </div>
-                <h3>High-Density</h3>
-                <p>High-Density transaction packing, up to the 1232 byte payload limit, minimizing total transaction
-                    count
-                    and execution costs with byte-perfect precision.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <img src="assets/airdrop.png" alt="Airdrop"
-                        style="top: -100px; left: 0; filter: drop-shadow(0 100px 0 #BCE1F3); transform: scaleX(-1);">
-                </div>
-                <h3>Control Surface</h3>
-                <p>Navigate the Solana blockchain at scale through a unified, responsive interface with a
-                    real-time tactile feedback that keeps you in the loop.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <img src="assets/hide.png" alt="Independance"
-                        style="left: -100px; filter: drop-shadow(100px 0 0 #F294C3);">
-                </div>
-                <h3>Independence</h3>
-                <p>The blockchain is public, but your workspace shouldn't be. No backend reliance, zero personal
-                    tracking.
-                    Your
-                    data
-                    never leaves your device.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <img src="assets/collection.png" alt="Seed Vault"
-                        style="left: -100px; filter: drop-shadow(100px 0 0 #BBF294);">
-                </div>
-                <h3>Seed Vault Native</h3>
-                <p>Built from the ground up for the Solana Mobile ecosystem. Every transaction is signed locally using
-                    the hardware-backed security of the Seed Vault.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <img src="assets/read_only.png" alt="Read-Only"
-                        style="left: -100px; filter: drop-shadow(100px 0 0 #BCE1F3);">
-                </div>
-                <h3>Read-Only</h3>
-                <p>Extract the same deep intelligence from any public Solana wallet address, without ever connecting
-                    your keys.</p>
-            </div>
-
-
-        </section>
-
-        <div class="stats">
-            <div class="stat-item">
-                <h4>VIGILANT</h4>
-                <p>Deep Wallet Analytics</p>
-            </div>
-            <div class="stat-item">
-                <h4>SECURE</h4>
-                <p>Seed Vault Native</p>
-            </div>
-            <div class="stat-item">
-                <h4>PRIVATE</h4>
-                <p>No User Tracking</p>
-            </div>
-        </div>
 
         <section class="reviews-section" id="reviews">
             <div class="reviews-header">
@@ -1064,6 +1046,122 @@
 
             <div class="carousel-dots" id="carouselDots"></div>
         </section>
+
+        <section class="features" id="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="assets/wallet.png" alt="Wallet"
+                        style="left: -100px; filter: drop-shadow(100px 0 0 #F294C3);">
+                </div>
+                <h3>Wallet</h3>
+                <p>A unified view of your entire Solana footprint aggregated into a
+                    single control surface.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="assets/master.png" alt="Asset Foundry"
+                        style="left: -100px; filter: drop-shadow(100px 0 0 #BBF294);">
+                </div>
+                <h3>Asset Foundry</h3>
+                <p>Create, Edit, Verify, Print, Transfer, Autograph, Freeze, Delegate, and Burn NFTs with deterministic
+                    precision.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="assets/search.png" alt="Search"
+                        style="left: -100px; filter: drop-shadow(100px 0 0 #BCE1F3);">
+                </div>
+                <h3>Seeker</h3>
+                <p>Powerful filtering lets you query everything across your holdings by name,
+                    address, category, or metadata property.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="assets/burn.png" alt="Burn" style="left: -100px; filter: drop-shadow(100px 0 0 #F294C3);">
+                </div>
+                <h3>Burner</h3>
+                <p>Large-scale asset cleanup with thorough safety validations, letting you process mixed sets of
+                    hundreds of tokens at once.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="assets/data.png" alt="Density"
+                        style="left: -100px; filter: drop-shadow(100px 0 0 #BBF294);">
+                </div>
+                <h3>High-Density</h3>
+                <p>High-Density transaction packing, up to the 1232 byte payload limit, minimizing total transaction
+                    count
+                    and execution costs with byte-perfect precision.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="assets/airdrop.png" alt="Airdrop"
+                        style="top: -100px; left: 0; filter: drop-shadow(0 100px 0 #BCE1F3); transform: scaleX(-1);">
+                </div>
+                <h3>Control Surface</h3>
+                <p>Navigate the Solana blockchain at scale through a unified, responsive interface with a
+                    real-time tactile feedback that keeps you in the loop.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="assets/hide.png" alt="Independance"
+                        style="left: -100px; filter: drop-shadow(100px 0 0 #F294C3);">
+                </div>
+                <h3>Independence</h3>
+                <p>The blockchain is public, but your workspace shouldn't be. No backend reliance, zero personal
+                    tracking.
+                    Your
+                    data
+                    never leaves your device.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="assets/collection.png" alt="Seed Vault"
+                        style="left: -100px; filter: drop-shadow(100px 0 0 #BBF294);">
+                </div>
+                <h3>Seed Vault Native</h3>
+                <p>Built from the ground up for the Solana Mobile ecosystem. Every transaction is signed locally using
+                    the hardware-backed security of the Seed Vault.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="assets/read_only.png" alt="Read-Only"
+                        style="left: -100px; filter: drop-shadow(100px 0 0 #BCE1F3);">
+                </div>
+                <h3>Read-Only</h3>
+                <p>Extract the same deep intelligence from any public Solana wallet address, without ever connecting
+                    your keys.</p>
+            </div>
+        </section>
+
+        <section class="screenshots-section" id="screenshots">
+            <div class="screenshot-gallery">
+                <div class="screenshot-item">
+                    <img src="screenshots/Screenshot_1.png" alt="Token Studio Screenshot 1">
+                </div>
+                <div class="screenshot-item">
+                    <img src="screenshots/Screenshot_2.png" alt="Token Studio Screenshot 2">
+                </div>
+                <div class="screenshot-item">
+                    <img src="screenshots/Screenshot_3.png" alt="Token Studio Screenshot 3">
+                </div>
+            </div>
+        </section>
+
+        <div class="stats">
+            <div class="stat-item">
+                <h4>VIGILANT</h4>
+                <p>Deep Wallet Analytics</p>
+            </div>
+            <div class="stat-item">
+                <h4>SECURE</h4>
+                <p>Seed Vault Native</p>
+            </div>
+            <div class="stat-item">
+                <h4>PRIVATE</h4>
+                <p>No User Tracking</p>
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -1077,11 +1175,10 @@
                 <div class="footer-col">
                     <h5>Resources</h5>
                     <ul>
-                        <li><a href="about.html">About & Story</a></li>
+                        <li><a href="about.html">About & Vision</a></li>
+                        <li><a href="stories.html">Stories & Field Notes</a></li>
                         <li><a href="faq.html">Frequently Asked Questions</a></li>
                         <li><a href="changelog.html">Changelog & Releases</a></li>
-                        <li><a href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S"
-                                target="_blank" rel="noopener noreferrer">Mallow Collection</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1091,6 +1188,8 @@
                         </li>
                         <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank"
                                 rel="noopener noreferrer">Discord Community</a></li>
+                        <li><a href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S"
+                                target="_blank" rel="noopener noreferrer">Mallow Collection</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1204,6 +1303,32 @@
                 updateSlide();
             }, 100);
         });
+    </script>
+
+    <div id="imageModal" class="image-modal">
+        <img class="image-modal-content" id="modalImg" alt="Enlarged screenshot">
+    </div>
+
+    <script>
+        // Screenshot Lightbox Modal Script
+        (function () {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImg");
+            const screenshots = document.querySelectorAll(".screenshot-item img");
+
+            if (modal && modalImg && screenshots.length > 0) {
+                screenshots.forEach(img => {
+                    img.parentElement.addEventListener('click', function () {
+                        modal.style.display = "flex";
+                        modalImg.src = this.querySelector("img").src;
+                    });
+                });
+
+                modal.addEventListener('click', function () {
+                    modal.style.display = "none";
+                });
+            }
+        })();
     </script>
 </body>
 
