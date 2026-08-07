@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Studio - Twitch Stream Banner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Standard 720p stream resolution */
+            width: 1280px;
+            height: 720px;
+            background-color: #0A0A0A;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Ambient Glow Backdrop */
+        .glow-mesh {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            background: 
+                radial-gradient(circle at 50% 40%, rgba(187, 242, 148, 0.16) 0%, transparent 60%),
+                radial-gradient(circle at 50% 65%, rgba(148, 161, 242, 0.14) 0%, transparent 65%),
+                radial-gradient(circle at 15% 20%, rgba(104, 223, 233, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(148, 161, 242, 0.08) 0%, transparent 45%);
+        }
+
+        /* Tech Grid Dot Pattern */
+        .grid-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* Card Container Boundary */
+        .card-container {
+            width: 1160px;
+            height: 620px;
+            background: rgba(18, 19, 23, 0.7);
+            border: 1px solid rgba(187, 242, 148, 0.22);
+            border-radius: 40px;
+            backdrop-filter: blur(30px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 60px 40px 80px; /* Increased left padding to 80px for symmetry */
+            text-align: left;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 50px rgba(187, 242, 148, 0.08);
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            flex: 1;
+        }
+
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 28px;
+            width: 62%; /* Increased from 55% to give tagline more space */
+        }
+
+        .right-panel {
+            width: 38%; /* Decreased from 45% */
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .app-mockup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 125%;
+            max-height: 750px;
+            border-radius: 24px;
+            box-shadow: -15px 25px 60px rgba(0,0,0,0.8), 0 0 30px rgba(187, 242, 148, 0.15);
+            border: 3px solid rgba(255,255,255,0.1);
+            transform: translate(-40%, -50%) perspective(1000px) rotateY(-15deg) rotateX(5deg);
+            transition: transform 0.5s ease;
+            object-fit: cover;
+        }
+
+        /* Brand Row Header */
+        .brand-header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 24px;
+        }
+
+        .logo-img {
+            width: 144px; /* +20% */
+            height: 144px;
+            object-fit: contain;
+        }
+
+        /* White to Gray Gradient Title matching homepage */
+        .title {
+            font-size: 72px; /* Kept same */
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1;
+            background: linear-gradient(135deg, #FFFFFF 0%, #A0A0A0 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 3-Stop Luminous Vibrant Gradient Tagline (Lime -> Turquoise -> Periwinkle) */
+        .tagline {
+            display: inline-block;
+            font-size: 35px; /* +10% */
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+            background: linear-gradient(90deg, #BBF294 0%, #68DFE9 50%, #94A1F2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 15px rgba(104, 223, 233, 0.25));
+        }
+
+        .bottom-section {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 40px;
+            margin-top: 16px;
+            width: 100%;
+        }
+
+        .cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 18px 35px; /* +10% */
+            border-radius: 18px; /* +10% */
+            font-size: 18px; /* +10% */
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 330px; /* +10% */
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: #FFFFFF;
+            color: #0A0A0A;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn img, .btn svg {
+            width: 26px; /* +10% */
+            height: 26px;
+        }
+
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .qr-img {
+            width: 132px; /* +10% */
+            height: 132px;
+            background: #FFFFFF;
+            border-radius: 13px; /* +10% */
+            padding: 9px; /* +10% */
+            object-fit: contain;
+        }
+
+        .qr-text {
+            font-size: 15px; /* +10% */
+            font-weight: 700;
+            color: #BBF294;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Web3 Enterprise Footer Bar */
+        .card-footer {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 32px;
+            margin-top: 16px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 17px; /* +10% */
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            gap: 16px;
+        }
+
+        .footer-domain {
+            color: #BBF294;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-divider {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .status-dot {
+            width: 11px; /* +10% */
+            height: 11px;
+            border-radius: 50%;
+            background: #BBF294;
+            box-shadow: 0 0 11px #BBF294; /* +10% */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glow-mesh"></div>
+    <div class="grid-pattern"></div>
+    <div class="card-container">
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="brand-header">
+                    <img src="assets/logo_grad.png" alt="Token Studio Logo" class="logo-img">
+                    <h1 class="title">Token Studio</h1>
+                </div>
+                <p class="tagline">Elevate your control. Define your legacy.</p>
+
+                <div class="bottom-section">
+                    <div class="cta-group">
+                        <a href="#" class="btn btn-primary">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.61 3 21.09 3 20.5ZM16.81 15.12L14.81 13.12L17.5 10.43L20.3 12.03C20.88 12.36 20.88 12.89 20.3 13.22L16.81 15.12ZM14.81 10.88L16.81 8.88L4.67 1.94C4.39 1.78 4.1 1.73 3.84 1.85L14.81 10.88ZM3.84 22.15C4.1 22.27 4.39 22.22 4.67 22.06L16.81 15.12L14.81 13.12L3.84 22.15Z" />
+                            </svg>
+                            Get it on Google Play
+                        </a>
+                        <a href="#" class="btn btn-primary">
+                            <img src="assets/solana_logo.png" alt="Solana">
+                            Get it on the dApp Store
+                        </a>
+                    </div>
+
+                    <div class="qr-section">
+                        <img src="assets/tokenstudio-qr.svg" alt="Token Studio QR" class="qr-img">
+                        <div class="qr-text">Scan to Explore</div>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="footer-domain">
+                        <span class="status-dot"></span>
+                        tokenstudio.dev
+                    </div>
+                    <div class="footer-divider">|</div>
+                    <div>The Solana Control Surface</div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <img src="screenshots/Screenshot_1.png" alt="App Preview" class="app-mockup">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
