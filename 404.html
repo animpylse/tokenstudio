@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Token Studio</title>
+    <meta name="description" content="The page you are looking for could not be found. Return to Token Studio.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <style>
+        :root {
+            --accent: #BBF294;
+            --accent-glow: rgba(187, 242, 148, 0.4);
+            --bg-dark: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('assets/connect.png');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4) blur(40px);
+        }
+
+        .glow-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% -20%, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 36px 24px 40px;
+            animation: fadeIn 0.6s ease-out;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .error-code {
+            font-size: 120px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 0 0 40px var(--accent-glow);
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+
+        p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 40px;
+            background: rgba(187, 242, 148, 0.15);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 100px;
+            border: 1px solid var(--accent);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(187, 242, 148, 0.2);
+        }
+
+        .home-btn:hover {
+            background: rgba(187, 242, 148, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(187, 242, 148, 0.3);
+        }
+
+        /* Header */
+        header {
+            width: 100%;
+            max-width: 1200px;
+            padding: 32px 24px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+        }
+
+        .logo-container {
+            width: 58px;
+            height: 58px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-img {
+            width: 58px;
+            height: 58px;
+            position: relative;
+        }
+
+        .logo-text {
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            padding: 60px 0 40px;
+            border-top: 1px solid var(--card-border);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .footer-desc {
+            color: var(--text-secondary);
+            max-width: 300px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer-col h5 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--card-border);
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-container"></div>
+    <div class="glow-overlay"></div>
+
+    <header>
+        <a href="index.html" class="logo-group">
+            <div class="logo-container">
+                <img src="assets/logo_grad.png" alt="Token Studio" class="logo-img">
+            </div>
+            <div class="logo-text">Token Studio</div>
+        </a>
+    </header>
+
+    <div class="container">
+        <div class="error-code">404</div>
+        <h1>Lost in the Network</h1>
+        <p>The page you are looking for has been burned, transferred, or never existed in the first place.</p>
+        <a href="index.html" class="home-btn">Return to Base</a>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">Token Studio</div>
+                    <div class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the Solana blockchain.</div>
+                </div>
+                <div class="footer-col">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="about.html">About & Vision</a></li>
+                        <li><a href="features.html">Features & Toolset</a></li>
+                        <li><a href="stories.html">Stories & Field Notes</a></li>
+                        <li><a href="faq.html">Frequently Asked Questions</a></li>
+                        <li><a href="changelog.html">Changelog & Releases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Social</h5>
+                    <ul>
+                        <li><a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
+                        <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank" rel="noopener noreferrer">Discord Community</a></li>
+                        <li><a href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S" target="_blank" rel="noopener noreferrer">Mallow Collection</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Compliance</h5>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="copyright.html">Copyright Notice</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2026 TokenStudio. All rights reserved.</div>
+                <div>Built for the Solana Mobile Ecosystem.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

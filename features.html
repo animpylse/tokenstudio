@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features & Tools | Solana Wallet Tracker - Token Studio</title>
+    <meta name="description"
+        content="Explore Token Studio's powerful tools: batch burn NFTs, track 16 wallets, mint and edit metadata, split/merge token accounts, and manage Solana delegates.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <style>
+        :root {
+            --accent: #BBF294;
+            --accent-glow: rgba(187, 242, 148, 0.4);
+            --bg-dark: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('assets/connect.png');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4) blur(40px);
+        }
+
+        .glow-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% -20%, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .logo-container {
+            width: 58px;
+            height: 58px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-img {
+            width: 58px;
+            height: 58px;
+            position: relative;
+        }
+
+        /* Header */
+        header {
+            padding: 32px 0 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero {
+            padding: 36px 0 0px;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Feature Categories */
+        .category-section {
+            margin:  40px 0 60px;
+        }
+
+        .category-title {
+            font-size: 32px;
+            margin: 0 auto 30px;
+            width: fit-content;
+            text-align: center;
+            color: var(--accent);
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            border: 1px solid var(--card-border);
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+        }
+
+        .feature-row {
+            display: flex;
+            flex-direction: column;
+            padding: 32px 40px;
+            border-bottom: 1px solid var(--card-border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 4px solid transparent;
+            position: relative;
+        }
+        
+        .feature-row:last-child {
+            border-bottom: none;
+        }
+
+        .feature-row:hover {
+            padding-left: 56px;
+            border-left-color: var(--accent);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0%, transparent 100%);
+        }
+
+        .feature-row h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .feature-row:hover h3 {
+            color: var(--accent);
+        }
+
+        .feature-row p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            max-width: 800px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-btn:hover {
+            opacity: 0.8;
+            transform: translateX(-3px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 100px 0 60px;
+            border-top: 1px solid var(--card-border);
+            background: rgba(0, 0, 0, 0.3);
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-desc {
+            color: var(--text-secondary);
+            max-width: 300px;
+            font-size: 14px;
+        }
+
+        .footer-col h5 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--card-border);
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-container"></div>
+    <div class="glow-overlay"></div>
+
+    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; box-sizing: border-box;">
+        <header>
+            <a href="index.html" class="logo-group">
+                <div class="logo-container">
+                    <img src="assets/logo_grad.png" alt="Token Studio" class="logo-img">
+                </div>
+                <div class="logo-text">Token Studio</div>
+            </a>
+            <a href="index.html" style="color: var(--text-secondary); text-decoration: none; font-weight: 600; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">Back to Home</a>
+        </header>
+    </div>
+    
+    <div class="container">
+
+        <section class="hero">
+            <h1>The Photoshop of Solana</h1>
+            <p>The ultimate all-in-one Solana tool. Whether you need to bulk burn spam NFTs, batch send tokens, clean up
+                your wallet, or manage your entire portfolio at scale, Token Studio has everything you need in one
+                place.</p>
+        </section>
+
+        <!-- Network & Market Intelligence -->
+        <section class="category-section">
+            <h2 class="category-title">Network & Market Intelligence</h2>
+            <div class="features-list">
+                <div class="feature-row">
+                    <h3>Solana Network Stats</h3>
+                    <p>Live dashboard displaying essential Solana network statistics like real-time TPS, current epoch
+                        progress, and SOL price data.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>180-Day Price History</h3>
+                    <p>Detailed historical charting of Solana's price action over a massive 180-day window for long-term
+                        perspective.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>Fragrance™ Trading Algo</h3>
+                    <p>An exclusive, custom trading algorithm overlay that provides clear buy and sell signals directly
+                        within your chart views. This is the lite version, catch the full version live on <a
+                            href="https://twitch.tv/impylse" target="_blank" rel="noopener noreferrer"
+                            style="color: var(--accent); text-decoration: none;">twitch.tv/impylse</a>.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>Live Token Pricing</h3>
+                    <p>Real-time pricing for all your tokens powered by Jupiter, alongside Magic Eden floor pricing for
+                        your NFT collections.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Identity & Wallet Health -->
+        <section class="category-section">
+            <h2 class="category-title">Identity & Wallet Health</h2>
+            <div class="features-list">
+                <div class="feature-row">
+                    <h3>User Profile Dashboard</h3>
+                    <p>Visualize your currently connected wallet identity featuring wallet metrics like age, net
+                        worth, and shareable health ranks.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>Wallet Health Reporter</h3>
+                    <p>A highly unique wallet health scoring system that evaluates your wallet across multiple data
+                        points
+                        and provides actionable feedback on how to improve it.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Multi-Wallet Tracking -->
+        <section class="category-section">
+            <h2 class="category-title">Multi-Wallet Portfolio Tracking</h2>
+            <div class="features-list">
+                <div class="feature-row">
+                    <h3>16-Wallet Aggregation</h3>
+                    <p>View the total combined net worth of up to 16 different wallets at the same time in a single,
+                        unified view.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>Comprehensive Asset Support</h3>
+                    <p>We show absolutely everything: fungible tokens, all NFT types, domains, merkle trees, and
+                        compressed tokens.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>Rewards Scanner</h3>
+                    <p>Automatically scans your wallets for any unclaimed rewards you might have missed.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wallet Management -->
+        <section class="category-section">
+            <h2 class="category-title">Wallet Management & Discovery</h2>
+            <div class="features-list">
+                <div class="feature-row">
+                    <h3>Recent Changes Tracker</h3>
+                    <p>Instantly see newly discovered or recently evicted assets from your wallet since your last sync.
+                    </p>
+                </div>
+                <div class="feature-row">
+                    <h3>Deep Wallet Search</h3>
+                    <p>Search your entire wallet by asset names, addresses, metadata, attributes, and descriptions.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>Rarity Distribution Filter</h3>
+                    <p>Auto-generates a list of all NFT rarities you own and allows you to instantly filter your wallet
+                        by specific rarity tiers.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>Token Explorer Viewer</h3>
+                    <p>A dedicated viewer that reveals all underlying metadata and market data for any selected asset,
+                        far beyond just the image.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Execution & Batch Operations -->
+        <section class="category-section">
+            <h2 class="category-title">Execution & Batch Operations</h2>
+            <div class="features-list">
+                <div class="feature-row">
+                    <h3>Multi-Select Tool</h3>
+                    <p>Select all, deselect all, invert selection, or manually pick mixed assets to instantly add to a
+                        burn/transfer queue or hide them.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>1-Click Cleanup & Recycle</h3>
+                    <p>Burn any mixed batch of assets with a single click. Token Studio auto-sorts and tightly packs NFTs into full
+                        1232-byte payload transactions.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>Batch Transfer</h3>
+                    <p>Move huge selections of assets across wallets effortlessly, optimized to minimize required wallet
+                        approvals.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>Performance Engine</h3>
+                    <p>Features transaction stacking (4x, 8x, 16x) and atomic packing to optimize speed, minimize fees,
+                        and guarantee correct execution order.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Creation & Lifecycle -->
+        <section class="category-section">
+            <h2 class="category-title">Creation & Lifecycle</h2>
+            <div class="features-list">
+                <div class="feature-row">
+                    <h3>Mint Any NFT Type</h3>
+                    <p>From Master Editions to Compressed NFTs—if it exists on the Solana blockchain, you can mint it
+                        and edit its metadata.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>Master Edition Printing</h3>
+                    <p>Easily airdrop and print new editions from your Master NFTs directly from the transfer tab.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>Merkle Tree Creation</h3>
+                    <p>Create and manage your own Merkle trees directly within Token Studio.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Token & Account Control -->
+        <section class="category-section">
+            <h2 class="category-title">Token & Account Control</h2>
+            <div class="features-list">
+                <div class="feature-row">
+                    <h3>Stake & Unstake</h3>
+                    <p>Natively stake, unstake, and withdraw SOL, SKR, and JUP without leaving the app.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>Account Splitting & Merging</h3>
+                    <p>Advanced token account management: easily split or merge your token accounts as needed.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>Precise Delegation</h3>
+                    <p>Approve or revoke token delegates with exact amount controls to manage your security.</p>
+                </div>
+                <div class="feature-row">
+                    <h3>Asset Utility Tools</h3>
+                    <p>Copy metadata/URLs, download high-quality images from any asset, and share them instantly.</p>
+                </div>
+            </div>
+        </section>
+
+        <div style="margin-top: 50px;">
+            <a href="index.html" class="back-btn">← Back to Token Studio</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">Token Studio</div>
+                    <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the
+                        Solana blockchain.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="about.html">About & Vision</a></li>
+                        <li><a href="features.html">Features & Toolset</a></li>
+                        <li><a href="stories.html">Stories & Field Notes</a></li>
+                        <li><a href="faq.html">Frequently Asked Questions</a></li>
+                        <li><a href="changelog.html">Changelog & Releases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Social</h5>
+                    <ul>
+                        <li><a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+                        </li>
+                        <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank"
+                                rel="noopener noreferrer">Discord Community</a></li>
+                        <li><a href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S"
+                                target="_blank" rel="noopener noreferrer">Mallow Collection</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Compliance</h5>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="copyright.html">Copyright Notice</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2026 TokenStudio. All rights reserved.</div>
+                <div>Built for the Solana Mobile Ecosystem.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

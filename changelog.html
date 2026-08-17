@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Changelog & Release Notes - Token Studio</title>
+    <title>Changelog & Updates | Token Studio Releases</title>
     <meta name="description"
-        content="Complete release notes and update history for Token Studio - The Solana Control Surface for NFT lifecycle management and portfolio intelligence.">
+        content="Track updates for Token Studio. Stay informed on new features for Solana wallet tracking, NFT batch burning, staking, minting, and portfolio analytics.">
     <link rel="canonical" href="https://tokenstudio.dev/changelog.html">
 
     <!-- Open Graph / Facebook / Discord -->
@@ -40,7 +40,7 @@
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
             --text-primary: #FFFFFF;
-            --text-secondary: rgba(255, 255, 255, 0.8);
+            --text-secondary: rgba(255, 255, 255, 0.9);
             --blue: #BCE1F3;
             --pink: #F294C3;
             --purple: #94A1F2;
@@ -64,7 +64,7 @@
             line-height: 1.6;
         }
 
-        .background {
+        .background-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -74,18 +74,24 @@
             background-image: url('assets/connect.png');
             background-size: cover;
             background-position: center;
-            filter: brightness(0.3) blur(20px);
+            filter: brightness(0.4) blur(40px);
+        }
+
+        .glow-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% -20%, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .container {
             max-width: 900px;
-            width: 90%;
-            margin: 60px 0;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(20px);
-            padding: 50px;
-            border-radius: 32px;
+            margin: 0 auto 40px;
+            padding: 36px 24px 40px;
             animation: fadeIn 0.6s ease-out;
         }
 
@@ -99,6 +105,46 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        .logo-container {
+            width: 58px;
+            height: 58px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-img {
+            width: 58px;
+            height: 58px;
+            position: relative;
+        }
+
+        /* Header */
+        header {
+            padding: 32px 0 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .back-btn {
@@ -120,20 +166,25 @@
 
         .header-section {
             margin-bottom: 40px;
-            border-bottom: 1px solid var(--card-border);
-            padding-bottom: 30px;
+            
+            text-align: center;
         }
 
         h1 {
-            font-size: 36px;
+            font-size: 48px;
             font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 10px;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 24px;
+            line-height: 1.2;
         }
 
         .subtitle {
-            color: var(--text-secondary);
-            font-size: 16px;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         /* Timeline Entries */
@@ -170,18 +221,14 @@
         }
 
         .version-tag {
-            background: rgba(187, 242, 148, 0.15);
-            border: 1px solid var(--accent);
             color: var(--accent);
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 14px;
+            font-size: 32px;
             font-weight: 700;
         }
 
         .release-date {
             color: var(--text-secondary);
-            font-size: 14px;
+            font-size: 24px;
         }
 
         .change-list {
@@ -190,7 +237,7 @@
 
         .change-item {
             margin-bottom: 12px;
-            font-size: 15px;
+            font-size: 18px;
             color: var(--text-secondary);
             display: flex;
             align-items: flex-start;
@@ -198,7 +245,7 @@
         }
 
         .badge {
-            font-size: 11px;
+            font-size: 24px;
             font-weight: 700;
             text-transform: uppercase;
             padding: 2px 8px;
@@ -339,23 +386,155 @@
 </head>
 
 <body>
-    <div class="background"></div>
+    <div class="background-container"></div>
+    <div class="glow-overlay"></div>
 
+    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; box-sizing: border-box;">
+        <header>
+            <a href="index.html" class="logo-group">
+                <div class="logo-container">
+                    <img src="assets/logo_grad.png" alt="Token Studio" class="logo-img">
+                </div>
+                <div class="logo-text">Token Studio</div>
+            </a>
+            <a href="index.html"
+                style="color: var(--text-secondary); text-decoration: none; font-weight: 600; transition: color 0.3s;"
+                onmouseover="this.style.color='var(--accent)'"
+                onmouseout="this.style.color='var(--text-secondary)'">Back to Home</a>
+        </header>
+    </div>
     <div class="container">
-        <a href="index.html" class="back-btn">← Back to Token Studio</a>
 
         <div class="header-section">
             <h1>Changelog & Release History</h1>
-            <p class="subtitle">Complete chronological record of features, performance enhancements, and bug fixes
+            <p class="subtitle">Complete chronological record of features, Perf enhancements, and bug fixes
                 across all Token Studio releases.</p>
         </div>
 
         <div class="timeline">
 
-            <!-- v0.17.210-beta -->
+            <!-- 0.19.424-beta -->
             <article class="release-entry">
                 <div class="release-header">
-                    <span class="version-tag">v0.17.209-beta</span>
+                    <span class="version-tag">0.19.242-beta</span>
+                    <time class="release-date">August 17, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Domain Resolver:</strong> Added a Domain Resolver in the Favorites Address Browser.
+                            You can now send to .sol and .skr domains. I chose this implementation method because I
+                            believe it is safer than just typing a domain name and not seeing the actual address.
+                            Additionally there is now a safety check running every 10 minutes before you send any
+                            transaction to make sure the domain is still pointing to the address you are sending to,
+                            since domains can be burned, transfered, or expire. In combination with the other new
+                            feature, that should make it a lot less likely to accidentally send a transaction to the
+                            wrong address. Not sure why wallets are not deploying safety measures like that, but I think
+                            it's a gamechanger.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Receipts:</strong> Added Receipts for safer transfers. Successful sends/transfers
+                            are now recorded per favorite address, with clear familiarity indicators and an extra
+                            confirmation prompt before sending or delegating to an address used fewer than two times.
+                        </div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-perf">Perf</span>
+                        <div><strong>Favorites Separation:</strong> Favorites and Portfolio Addresses are now separate.
+                            Favorites now support up to 256 addresses for everyone. Existing Portfolio Addresses must be
+                            re-added to the new Portfolio list in the Dashboard.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-perf">Perf</span>
+                        <div>Significantly Improved the application's responsiveness during heavy operations.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-perf">Perf</span>
+                        <div><strong>Priority Fees:</strong> Priority Fees Off state is now Min. Min applies a virtually
+                            insignificant priority fee across transactions to improve reliability during network
+                            congestion while keeping the extra cost close to zero. I will be adding a dynamic priority
+                            fee option at some point, but for now this should do.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Improved NFT mint transaction confirmation handling. Legacy NFT mints no longer show an
+                            unrelated error when network confirmation is delayed.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Various UI/UX improvements.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Various bug fixes.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- 0.18.228-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">0.18.228-beta</span>
+                    <time class="release-date">August 8, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Recast™ Button:</strong> Added the Recast™ button. A brand new floating action
+                            button that appears after you execute a repeatable transaction (like sending or staking).
+                            Tapping it instantly re-broadcasts your last operation without having to dive back into any
+                            menus or parameters! Exclusive to TTV collectors.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Legacy/Core NFTs Workflow:</strong> Expanded the Legacy/Core NFTs workflow with
+                            much deeper metadata control. You can now manage Creator Royalty Splits, Primary Sale
+                            Happened, Uses (Consumables), and Update Authority directly from the mint and edit flows.
+                        </div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Transaction Stacking:</strong> Added Transaction Stacking to Legacy/Core Collection
+                            creation. You can now mint 4x, 8x, or 16x collections in one operation using the same source
+                            media and metadata.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div><strong>Keypad Improvements:</strong> Improved the Keypad with a brand new Percentage
+                            Slider for easier 0 to 100 value inputs.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Fixed JUP Staking to dynamically detect and reuse existing on-chain escrows, preventing
+                            "already in use" transaction failures.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Fixed SKR Staking real-time cooldowns to instantly unlock the withdraw button without
+                            requiring a sync.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Fixed SKR Withdrawals clearing the active staked position from the UI at successful
+                            withdrawal.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Various UI/UX improvements.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Various bug fixes and Perf improvements.</div>
+                    </li>
+                </ul>
+            </article>
+
+
+            <!-- 0.17.210-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">0.17.209-beta</span>
                     <time class="release-date">August 3, 2026</time>
                 </div>
                 <ul class="change-list">
@@ -381,10 +560,10 @@
                 </ul>
             </article>
 
-            <!-- v0.16.196-beta -->
+            <!-- 0.16.196-beta -->
             <article class="release-entry">
                 <div class="release-header">
-                    <span class="version-tag">v0.16.196-beta</span>
+                    <span class="version-tag">0.16.196-beta</span>
                     <time class="release-date">July 27, 2026</time>
                 </div>
                 <ul class="change-list">
@@ -399,9 +578,9 @@
                             portfolio overview.</div>
                     </li>
                     <li class="change-item">
-                        <span class="badge badge-perf">Performance</span>
+                        <span class="badge badge-perf">Perf</span>
                         <div><strong>Networking Resiliency:</strong> Overhauled and strengthened the networking layer
-                            for robust API fetch performance.</div>
+                            for robust API fetch Perf.</div>
                     </li>
                     <li class="change-item">
                         <span class="badge badge-fix">Fix</span>
@@ -420,10 +599,10 @@
                 </ul>
             </article>
 
-            <!-- v0.14.181-beta -->
+            <!-- 0.14.181-beta -->
             <article class="release-entry">
                 <div class="release-header">
-                    <span class="version-tag">v0.14.181-beta</span>
+                    <span class="version-tag">0.14.181-beta</span>
                     <time class="release-date">July 19, 2026</time>
                 </div>
                 <ul class="change-list">
@@ -454,10 +633,10 @@
                 </ul>
             </article>
 
-            <!-- v0.13.163-beta -->
+            <!-- 0.13.163-beta -->
             <article class="release-entry">
                 <div class="release-header">
-                    <span class="version-tag">v0.13.163-beta</span>
+                    <span class="version-tag">0.13.163-beta</span>
                     <time class="release-date">July 13, 2026</time>
                 </div>
                 <ul class="change-list">
@@ -469,10 +648,10 @@
                 </ul>
             </article>
 
-            <!-- v0.12.162-beta -->
+            <!-- 0.12.162-beta -->
             <article class="release-entry">
                 <div class="release-header">
-                    <span class="version-tag">v0.12.162-beta</span>
+                    <span class="version-tag">0.12.162-beta</span>
                     <time class="release-date">July 13, 2026</time>
                 </div>
                 <ul class="change-list">
@@ -517,10 +696,10 @@
                 </ul>
             </article>
 
-            <!-- v0.11.148-beta -->
+            <!-- 0.11.148-beta -->
             <article class="release-entry">
                 <div class="release-header">
-                    <span class="version-tag">v0.11.148-beta</span>
+                    <span class="version-tag">0.11.148-beta</span>
                     <time class="release-date">July 6, 2026</time>
                 </div>
                 <ul class="change-list">
@@ -561,10 +740,10 @@
                 </ul>
             </article>
 
-            <!-- v0.10.132-beta -->
+            <!-- 0.10.132-beta -->
             <article class="release-entry">
                 <div class="release-header">
-                    <span class="version-tag">v0.10.132-beta</span>
+                    <span class="version-tag">0.10.132-beta</span>
                     <time class="release-date">June 29, 2026</time>
                 </div>
                 <ul class="change-list">
@@ -606,10 +785,10 @@
                 </ul>
             </article>
 
-            <!-- v0.9.119-beta -->
+            <!-- 0.9.119-beta -->
             <article class="release-entry">
                 <div class="release-header">
-                    <span class="version-tag">v0.9.119-beta</span>
+                    <span class="version-tag">0.9.119-beta</span>
                     <time class="release-date">June 19, 2026</time>
                 </div>
                 <ul class="change-list">
@@ -629,7 +808,7 @@
                             address, and total burned NFT counters.</div>
                     </li>
                     <li class="change-item">
-                        <span class="badge badge-perf">Performance</span>
+                        <span class="badge badge-perf">Perf</span>
                         <div>Overhauled Magic Eden floor price pipeline to adapt to updated API authorization rules.
                         </div>
                     </li>
@@ -649,10 +828,10 @@
                 </ul>
             </article>
 
-            <!-- v0.8.111-beta -->
+            <!-- 0.8.111-beta -->
             <article class="release-entry">
                 <div class="release-header">
-                    <span class="version-tag">v0.8.111-beta</span>
+                    <span class="version-tag">0.8.111-beta</span>
                     <time class="release-date">June 13, 2026</time>
                 </div>
                 <ul class="change-list">
@@ -684,10 +863,10 @@
                 </ul>
             </article>
 
-            <!-- v0.7.100-beta -->
+            <!-- 0.7.100-beta -->
             <article class="release-entry">
                 <div class="release-header">
-                    <span class="version-tag">v0.7.100-beta</span>
+                    <span class="version-tag">0.7.100-beta</span>
                     <time class="release-date">June 8, 2026</time>
                 </div>
                 <ul class="change-list">
@@ -699,10 +878,10 @@
                 </ul>
             </article>
 
-            <!-- v0.6.97-beta -->
+            <!-- 0.6.97-beta -->
             <article class="release-entry">
                 <div class="release-header">
-                    <span class="version-tag">v0.6.97-beta</span>
+                    <span class="version-tag">0.6.97-beta</span>
                     <time class="release-date">June 6, 2026</time>
                 </div>
                 <ul class="change-list">
@@ -732,12 +911,12 @@
                             addresses with custom avatar uploads.</div>
                     </li>
                     <li class="change-item">
-                        <span class="badge badge-perf">Performance</span>
+                        <span class="badge badge-perf">Perf</span>
                         <div>Optimized GIF decoding engine with automatic quarantine for oversized payloads to preserve
                             memory and frame rates.</div>
                     </li>
                     <li class="change-item">
-                        <span class="badge badge-perf">Performance</span>
+                        <span class="badge badge-perf">Perf</span>
                         <div>15-second inactivity timer that pauses animated GIF playback when idle to preserve device
                             battery life.</div>
                     </li>
@@ -748,15 +927,15 @@
                 </ul>
             </article>
 
-            <!-- v0.5.53-beta -->
+            <!-- 0.5.53-beta -->
             <article class="release-entry">
                 <div class="release-header">
-                    <span class="version-tag">v0.5.53-beta</span>
+                    <span class="version-tag">0.5.53-beta</span>
                     <time class="release-date">May 28, 2026</time>
                 </div>
                 <ul class="change-list">
                     <li class="change-item">
-                        <span class="badge badge-perf">Performance</span>
+                        <span class="badge badge-perf">Perf</span>
                         <div><strong>450% Faster Sync Speeds:</strong> Boosted account sync speeds by up to 450% via
                             asynchronous Magic Eden price resolution.</div>
                     </li>
@@ -767,10 +946,10 @@
                 </ul>
             </article>
 
-            <!-- v0.4.38-beta -->
+            <!-- 0.4.38-beta -->
             <article class="release-entry">
                 <div class="release-header">
-                    <span class="version-tag">v0.4.38-beta</span>
+                    <span class="version-tag">0.4.38-beta</span>
                     <time class="release-date">May 25, 2026</time>
                 </div>
                 <ul class="change-list">
@@ -794,7 +973,7 @@
                         <div>Integrated Binance, Bybit, and Birdeye price feeds.</div>
                     </li>
                     <li class="change-item">
-                        <span class="badge badge-perf">Performance</span>
+                        <span class="badge badge-perf">Perf</span>
                         <div>Optimized Merkle Tree proof array discovery for cNFT batch operations (burn & transfer).
                         </div>
                     </li>
@@ -804,17 +983,17 @@
                         </div>
                     </li>
                     <li class="change-item">
-                        <span class="badge badge-perf">Performance</span>
+                        <span class="badge badge-perf">Perf</span>
                         <div>Capped asset image thumbnails to 256x256 resolution to maximize rendering speed in large
                             wallets.</div>
                     </li>
                 </ul>
             </article>
 
-            <!-- v0.3.16-beta -->
+            <!-- 0.3.16-beta -->
             <article class="release-entry">
                 <div class="release-header">
-                    <span class="version-tag">v0.3.16-beta</span>
+                    <span class="version-tag">0.3.16-beta</span>
                     <time class="release-date">May 12, 2026</time>
                 </div>
                 <ul class="change-list">
@@ -834,10 +1013,10 @@
                 </ul>
             </article>
 
-            <!-- v0.2.52-beta -->
+            <!-- 0.2.52-beta -->
             <article class="release-entry">
                 <div class="release-header">
-                    <span class="version-tag">v0.2.52-beta</span>
+                    <span class="version-tag">0.2.52-beta</span>
                     <time class="release-date">May 4, 2026</time>
                 </div>
                 <ul class="change-list">
@@ -847,7 +1026,7 @@
                             for enhanced connection stability and speed.</div>
                     </li>
                     <li class="change-item">
-                        <span class="badge badge-perf">Performance</span>
+                        <span class="badge badge-perf">Perf</span>
                         <div>Significantly reduced Irys media hosting delays through streamlined upload pipelines.</div>
                     </li>
                     <li class="change-item">
@@ -883,6 +1062,20 @@
                 </ul>
             </article>
 
+            <!-- 0.1.131-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">0.1.131-beta</span>
+                    <time class="release-date">April 11, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Initial Release:</strong> The first public beta release of Token Studio.</div>
+                    </li>
+                </ul>
+            </article>
+
         </div>
 
         <div style="margin-top: 50px;">
@@ -902,6 +1095,7 @@
                     <h5>Resources</h5>
                     <ul>
                         <li><a href="about.html">About & Vision</a></li>
+                        <li><a href="features.html">Features & Toolset</a></li>
                         <li><a href="stories.html">Stories & Field Notes</a></li>
                         <li><a href="faq.html">Frequently Asked Questions</a></li>
                         <li><a href="changelog.html">Changelog & Releases</a></li>

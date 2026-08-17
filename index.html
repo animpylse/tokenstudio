@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solana Wallet Tracker & NFT Tool | Token Studio</title>
     <meta name="description"
-        content="Token Studio is an all-in-one Solana asset management toolkit. Think of it as Photoshop for Solana, with your wallet as the canvas. It aggregates your entire on-chain footprint into a unified view of all your wallets, tokens, and NFTs, enriched with pricing and performance data.">
+        content="The ultimate Solana wallet tracker and NFT tool. Batch burn spam NFTs, track multi-wallet portfolios, mint and edit NFTs, stake SOL, and manage token accounts.">
     <link rel="canonical" href="https://tokenstudio.dev/">
     <link rel="alternate" type="text/plain" href="https://tokenstudio.dev/llms.txt" title="LLMs Context Data">
     <link rel="alternate" type="text/plain" href="https://tokenstudio.dev/llms-full.txt"
@@ -200,7 +201,6 @@
             padding: 36px 0 0;
             margin-bottom: 80px;
             text-align: center;
-            animation: fadeIn 0.8s ease-out;
         }
 
         @keyframes fadeIn {
@@ -215,10 +215,18 @@
             }
         }
 
+        header { animation: fadeIn 0.8s ease-out backwards; animation-delay: 0s; }
+        .hero { animation: fadeIn 0.8s ease-out backwards; animation-delay: 0.1s; }
+        .reviews-section { animation: fadeIn 0.8s ease-out backwards; animation-delay: 0.2s; }
+        .features { animation: fadeIn 0.8s ease-out backwards; animation-delay: 0.3s; }
+        .screenshots-section { animation: fadeIn 0.8s ease-out backwards; animation-delay: 0.4s; }
+        .stats { animation: fadeIn 0.8s ease-out backwards; animation-delay: 0.5s; }
+        footer { animation: fadeIn 0.8s ease-out backwards; animation-delay: 0.6s; }
+
         .hero h1 {
             font-size: 64px;
             font-weight: 700;
-            margin-bottom: 24px;
+            margin-bottom: 48px;
             line-height: 1.1;
         }
 
@@ -235,7 +243,7 @@
 
         .hero p {
             font-size: 20px;
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, 0.9);
             max-width: 900px;
             margin: 0 auto 40px;
         }
@@ -602,19 +610,19 @@
         .reviews-track-wrapper {
             overflow: hidden;
             width: 100%;
-            padding: 16px 12px 35px;
-            margin: -16px -12px -35px;
+            padding: 40px 40px 50px;
+            margin: -40px -40px -50px;
         }
 
         .reviews-track {
             display: flex;
-            gap: 20px;
+            gap: 40px;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform;
         }
 
         .review-card {
-            flex: 0 0 calc(50% - 10px);
+            flex: 0 0 calc(50% - 20px);
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             backdrop-filter: blur(20px);
@@ -834,14 +842,13 @@
                 </div>
                 <span class="logo-text">Token Studio</span>
             </div>
-            <div class="version-badge">v0.17.209-beta</div>
+            <div class="version-badge">v0.19.242-beta</div>
         </header>
 
         <section class="hero">
             <h1>The Solana Control Surface
                 <br>
                 <span>Elevate your control. Define your legacy.</span>
-                <br>
             </h1>
             <p>Token Studio is an all-in-one Solana asset management toolkit. Think of it as Photoshop for Solana, with
                 your wallet as the canvas. It aggregates your entire on-chain footprint into a unified view of all your
@@ -1176,6 +1183,7 @@
                     <h5>Resources</h5>
                     <ul>
                         <li><a href="about.html">About & Vision</a></li>
+                        <li><a href="features.html">Features & Toolset</a></li>
                         <li><a href="stories.html">Stories & Field Notes</a></li>
                         <li><a href="faq.html">Frequently Asked Questions</a></li>
                         <li><a href="changelog.html">Changelog & Releases</a></li>
@@ -1232,7 +1240,7 @@
 
                 const firstCard = cards[0];
                 const cardWidth = firstCard.offsetWidth || firstCard.getBoundingClientRect().width || 300;
-                const gap = 20;
+                const gap = 40;
                 const offset = currentIndex * (cardWidth + gap);
                 track.style.transform = `translateX(-${offset}px)`;
 

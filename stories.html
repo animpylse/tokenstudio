@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stories & Case Studies in the Wild - Token Studio</title>
+    <title>Stories & Case Studies | Token Studio Blog</title>
     <meta name="description"
-        content="Real-world stories, case studies, and field notes on Solana digital asset management, high-density transaction packing, and mobile workstation engineering.">
+        content="Real-world stories and case studies using Token Studio on Solana. Read about high-density batch burning, recovering lost USDC, and digital asset management.">
     <link rel="canonical" href="https://tokenstudio.dev/stories.html">
 
     <!-- Open Graph / Facebook / Discord -->
@@ -56,7 +56,7 @@
             --card-bg: rgba(255, 255, 255, 0.05);
             --card-border: rgba(255, 255, 255, 0.1);
             --text-primary: #FFFFFF;
-            --text-secondary: rgba(255, 255, 255, 0.8);
+            --text-secondary: rgba(255, 255, 255, 0.9);
             --blue: #BCE1F3;
             --pink: #F294C3;
             --purple: #94A1F2;
@@ -79,7 +79,7 @@
             line-height: 1.6;
         }
 
-        .background {
+        .background-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -89,18 +89,24 @@
             background-image: url('assets/connect.png');
             background-size: cover;
             background-position: center;
-            filter: brightness(0.3) blur(20px);
+            filter: brightness(0.4) blur(40px);
+        }
+
+        .glow-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% -20%, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .container {
-            max-width: 950px;
-            width: 90%;
-            margin: 60px 0;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(20px);
-            padding: 50px;
-            border-radius: 32px;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            padding: 36px 24px 40px;
             animation: fadeIn 0.6s ease-out;
         }
 
@@ -113,6 +119,46 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        .logo-container {
+            width: 58px;
+            height: 58px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-img {
+            width: 58px;
+            height: 58px;
+            position: relative;
+        }
+
+        /* Header */
+        header {
+            padding: 32px 0 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .back-btn {
@@ -134,21 +180,25 @@
 
         .header-section {
             margin-bottom: 40px;
-            border-bottom: 1px solid var(--card-border);
-            padding-bottom: 30px;
+            
+            text-align: center;
         }
 
         h1 {
-            font-size: 38px;
+            font-size: 48px;
             font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 12px;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 24px;
+            line-height: 1.2;
         }
 
         .subtitle {
-            color: var(--text-secondary);
-            font-size: 17px;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
             max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .stories-grid {
@@ -196,16 +246,20 @@
         }
 
         .story-card h2 {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
-            color: var(--text-primary);
+            background: linear-gradient(90deg, #BBF294 0%, #68DFE9 50%, #94A1F2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            width: fit-content;
             margin-bottom: 12px;
             line-height: 1.35;
         }
 
         .story-card p {
             color: var(--text-secondary);
-            font-size: 15px;
+            font-size: 18px;
             margin-bottom: 24px;
             flex-grow: 1;
         }
@@ -359,10 +413,21 @@
 </head>
 
 <body>
-    <div class="background"></div>
+    <div class="background-container"></div>
+    <div class="glow-overlay"></div>
 
+    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; box-sizing: border-box;">
+        <header>
+            <a href="index.html" class="logo-group">
+                <div class="logo-container">
+                    <img src="assets/logo_grad.png" alt="Token Studio" class="logo-img">
+                </div>
+                <div class="logo-text">Token Studio</div>
+            </a>
+            <a href="index.html" style="color: var(--text-secondary); text-decoration: none; font-weight: 600; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">Back to Home</a>
+        </header>
+    </div>
     <div class="container">
-        <a href="index.html" class="back-btn">← Back to Token Studio</a>
 
         <div class="header-section">
             <h1>Stories & Field Notes</h1>
@@ -379,7 +444,7 @@
                         <time datetime="2026-08-03">Aug 3, 2026</time>
                         <span>• 3 min read</span>
                     </div>
-                    <h2>96 Stake Accounts and $250 in Missing USDC</h2>
+                    <h2><a href="stories/96-stake-accounts-and-250-missing-usdc.html" style="text-decoration: none; color: inherit;">96 Stake Accounts and $250 in Missing USDC</a></h2>
                     <p>What began as a simple unstaking question in the Solana Mobile Discord became a perfect demonstration of why Token Studio exposes account details ordinary wallet balances hide.</p>
                 </div>
                 <div class="story-footer">
@@ -411,6 +476,7 @@
                     <h5>Resources</h5>
                     <ul>
                         <li><a href="about.html">About & Vision</a></li>
+                        <li><a href="features.html">Features & Toolset</a></li>
                         <li><a href="stories.html">Stories & Field Notes</a></li>
                         <li><a href="faq.html">Frequently Asked Questions</a></li>
                         <li><a href="changelog.html">Changelog & Releases</a></li>

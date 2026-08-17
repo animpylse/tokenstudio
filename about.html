@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About & Story - Token Studio</title>
+    <title>About Us | The Story Behind Token Studio</title>
     <meta name="description"
-        content="The story behind Token Studio - Built from the ground up for the Solana Mobile Ecosystem as a professional control surface for digital asset management.">
+        content="Learn the story behind Token Studio. Built from the ground up for the Solana Mobile Ecosystem as a professional digital asset management tool.">
     <link rel="canonical" href="https://tokenstudio.dev/about.html">
 
     <!-- Open Graph / Facebook / Discord -->
@@ -43,6 +43,12 @@
             --text-secondary: rgba(255, 255, 255, 0.9);
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg-dark);
@@ -56,7 +62,7 @@
             align-items: center;
         }
 
-        .background {
+        .background-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -66,18 +72,24 @@
             background-image: url('assets/connect.png');
             background-size: cover;
             background-position: center;
-            filter: brightness(0.3) blur(20px);
+            filter: brightness(0.4) blur(40px);
+        }
+
+        .glow-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% -20%, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .container {
-            max-width: 850px;
-            width: 90%;
-            margin: 60px auto 40px;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(20px);
-            padding: 50px;
-            border-radius: 32px;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            padding: 36px 24px 40px;
             animation: fadeIn 0.6s ease-out;
         }
 
@@ -100,7 +112,7 @@
         }
 
         h2 {
-            font-size: 22px;
+            font-size: 24px;
             margin-top: 40px;
             margin-bottom: 16px;
             color: var(--text-primary);
@@ -111,7 +123,64 @@
         p {
             color: var(--text-secondary);
             margin-bottom: 20px;
-            font-size: 16px;
+            font-size: 18px;
+        }
+
+        .logo-container {
+            width: 58px;
+            height: 58px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-img {
+            width: 58px;
+            height: 58px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Header */
+        header {
+            padding: 32px 0 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .back-btn {
@@ -144,15 +213,19 @@
             border: 1px solid var(--card-border);
             border-radius: 12px;
             padding: 16px 20px;
-            font-size: 14px;
+            font-size: 18px;
             color: var(--text-secondary);
         }
 
         .roadmap-item strong {
             display: block;
-            color: var(--accent);
+            background: linear-gradient(90deg, #BBF294 0%, #68DFE9 50%, #94A1F2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            width: fit-content;
             margin-bottom: 4px;
-            font-size: 16px;
+            font-size: 24px;
         }
 
         /* Footer */
@@ -236,20 +309,66 @@
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
+
             .footer-bottom {
                 flex-direction: column;
                 gap: 12px;
                 text-align: center;
             }
         }
+
+        .progress-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .progress-bar-container {
+            flex-grow: 1;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            min-width: 40px;
+            text-align: right;
+        }
     </style>
 </head>
 
 <body>
-    <div class="background"></div>
+    <div class="background-container"></div>
+    <div class="glow-overlay"></div>
+    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; box-sizing: border-box;">
+        <header>
+            <a href="index.html" class="logo-group">
+                <div class="logo-container">
+                    <img src="assets/logo_grad.png" alt="Token Studio" class="logo-img">
+                </div>
+                <div class="logo-text">Token Studio</div>
+            </a>
+            <a href="index.html"
+                style="color: var(--text-secondary); text-decoration: none; font-weight: 600; transition: color 0.3s;"
+                onmouseover="this.style.color='var(--accent)'"
+                onmouseout="this.style.color='var(--text-secondary)'">Back to Home</a>
+        </header>
+    </div>
     <div class="container">
-        <a href="index.html" class="back-btn">← Back to Token Studio</a>
-        <h1>About & The Story Behind Token Studio</h1>
+        <h1>The Story Behind Token Studio</h1>
+        <div class="subtitle" style="margin-bottom: 40px;">How a necessity evolved into the ultimate Solana control
+            surface.</div>
 
         <div id="content">
             <h2>The Origins</h2>
@@ -275,15 +394,15 @@
                     Studio</strong>.</p>
 
             <h2>Design & Engineering Philosophy</h2>
-            <p>Anything created is only as good as the visual language it conveys. Token Studio adheres to strict core
-                principles:</p>
-            <ul style="margin-left: 20px; color: var(--text-secondary); margin-bottom: 20px;">
-                <li><strong>Hardware-Backed Security:</strong> Native Seed Vault integration ensures private keys never
-                    leave your secure enclave.</li>
+            <p>Token Studio adheres to strict core principles:</p>
+            <ul style="margin-left: 20px; color: var(--text-secondary); margin-bottom: 20px; font-size: 18px;">
+                <li><strong>Uncompromised Visual Language:</strong> Anything created is only as good as the visual
+                    language it conveys. Every pixel is crafted to look and feel premium.</li>
+                <li><strong>Ergonomic Mobile UX:</strong> Fluid navigation designed for physical mobile constraints, placing all critical actions squarely within the thumb's natural operating area to eliminate the need to hunt for tiny, out-of-reach buttons.</li>
                 <li><strong>High-Density Payload Efficiency:</strong> High-density transaction packing up to Solana's
                     1232-byte MTU limit to minimize execution costs and wallet interactions.</li>
                 <li><strong>Tactile Real-Time Feedback:</strong> Live activity telemetry (downloads, uploads, disk
-                    writes) keeps you completely in the loop.</li>
+                    writes) and real-time progress updates for every operation keeps you completely in the loop.</li>
                 <li><strong>Decentralized Sovereignty:</strong> No backend tracking, zero personal data collection, and
                     independence from centralized middleman servers.</li>
             </ul>
@@ -296,43 +415,130 @@
                 <div class="roadmap-item">
                     <strong>1. Metaplex & Bubblegum Parity</strong>
                     Complete feature parity across Metaplex Legacy, Core, and Compressed NFT (Bubblegum) programs.
+                    <div class="progress-wrapper">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 90%;"></div>
+                        </div>
+                        <span class="progress-text">90%</span>
+                    </div>
                 </div>
                 <div class="roadmap-item">
                     <strong>2. Legacy SPL & Token-2022 Support</strong>
                     Comprehensive asset management suite for both the Legacy SPL and Token-2022 extension standard.
+                    <div class="progress-wrapper">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 20%;"></div>
+                        </div>
+                        <span class="progress-text">20%</span>
+                    </div>
                 </div>
                 <div class="roadmap-item">
                     <strong>3. Extended On-Chain Storage</strong>
                     Expanding permanent asset metadata & media hosting options across Irys, IPFS, and Arweave.
+                    <div class="progress-wrapper">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 66%;"></div>
+                        </div>
+                        <span class="progress-text">66%</span>
+                    </div>
                 </div>
                 <div class="roadmap-item">
                     <strong>4. Deep Portfolio Intelligence & Health Analytics</strong>
                     Real-time Wallet Health Reporter, historical networth tracking, and richer Recent Changes
                     notifications.
+                    <div class="progress-wrapper">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 85%;"></div>
+                        </div>
+                        <span class="progress-text">85%</span>
+                    </div>
                 </div>
                 <div class="roadmap-item">
                     <strong>5. Integrated Swap & DeFi Utilities</strong>
                     Seamless in-app token swaps through Jupiter without having to leave the application.
+                    <div class="progress-wrapper">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 0%;"></div>
+                        </div>
+                        <span class="progress-text">0%</span>
+                    </div>
                 </div>
                 <div class="roadmap-item">
                     <strong>6. Rich Interactive Media Viewports (3D & Audio)</strong>
                     Bringing interactive 3D model viewports (GLB / glTF) and native audio/music playback directly into
                     the wallet view.
+                    <div class="progress-wrapper">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 0%;"></div>
+                        </div>
+                        <span class="progress-text">0%</span>
+                    </div>
                 </div>
                 <div class="roadmap-item">
                     <strong>7. Encrypted In-App Wallet Messaging</strong>
                     Encrypted wallet-to-wallet messaging.
+                    <div class="progress-wrapper">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 0%;"></div>
+                        </div>
+                        <span class="progress-text">0%</span>
+                    </div>
                 </div>
                 <div class="roadmap-item">
                     <strong>8. Web Application & Desktop Cross-Platform Suite</strong>
                     Expanding Token Studio beyond mobile to desktop web browsers.
+                    <div class="progress-wrapper">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 10%;"></div>
+                        </div>
+                        <span class="progress-text">10%</span>
+                    </div>
                 </div>
                 <div class="roadmap-item">
                     <strong>9. Multi-Source Portfolio Expansion</strong>
                     Support for additional portfolio sources, including read-only CEX API connections, custom asset
                     tracking inputs, and manual balance aggregation.
+                    <div class="progress-wrapper">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 40%;"></div>
+                        </div>
+                        <span class="progress-text">40%</span>
+                    </div>
                 </div>
             </div>
+            <h2 style="margin-top: 60px;">About the Creator</h2>
+            <div
+                style="display: flex; gap: 30px; background: var(--card-bg); border: 1px solid var(--card-border); padding: 30px; border-radius: 16px; margin-top: 20px; align-items: center; flex-wrap: wrap;">
+                <img src="pfp.jpg" alt="impylse"
+                    style="width: 120px; height: 120px; border-radius: 50%; border: 2px solid var(--accent); object-fit: cover;">
+                <div>
+                    <div style="font-size: 24px; font-weight: 700; color: var(--accent); margin-bottom: 4px;">impylse
+                    </div>
+                    <div style="color: var(--text-secondary); font-size: 16px; margin-bottom: 12px;">Technical 3D Artist
+                        & Blockchain Dev • Varna 🇧🇬 / Tokyo 🇯🇵</div>
+                    <p style="font-size: 16px; margin-bottom: 16px; max-width: 600px;">
+                        High-Fidelity digital asset developer. Octane Render addict and @rendernetwork Node Operator.
+                    </p>
+                    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer"
+                            style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 15px; transition: opacity 0.3s;"
+                            onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Twitter / X</a>
+                        <a href="https://www.youtube.com/@impylse" target="_blank" rel="noopener noreferrer"
+                            style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 15px; transition: opacity 0.3s;"
+                            onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">YouTube</a>
+                        <a href="https://www.instagram.com/an.impylse" target="_blank" rel="noopener noreferrer"
+                            style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 15px; transition: opacity 0.3s;"
+                            onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Instagram</a>
+                        <a href="https://www.behance.net/impylse" target="_blank" rel="noopener noreferrer"
+                            style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 15px; transition: opacity 0.3s;"
+                            onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Behance</a>
+                        <a href="https://discord.gg/mkb9apzpbT" target="_blank" rel="noopener noreferrer"
+                            style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 15px; transition: opacity 0.3s;"
+                            onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Discord</a>
+                    </div>
+                </div>
+            </div>
+
             <div style="margin-top: 50px;">
                 <a href="index.html" class="back-btn">← Back to Token Studio</a>
             </div>
@@ -344,12 +550,14 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="footer-logo">Token Studio</div>
-                    <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the Solana blockchain.</p>
+                    <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the
+                        Solana blockchain.</p>
                 </div>
                 <div class="footer-col">
                     <h5>Resources</h5>
                     <ul>
                         <li><a href="about.html">About & Vision</a></li>
+                        <li><a href="features.html">Features & Toolset</a></li>
                         <li><a href="stories.html">Stories & Field Notes</a></li>
                         <li><a href="faq.html">Frequently Asked Questions</a></li>
                         <li><a href="changelog.html">Changelog & Releases</a></li>
@@ -358,9 +566,12 @@
                 <div class="footer-col">
                     <h5>Social</h5>
                     <ul>
-                        <li><a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
-                        <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank" rel="noopener noreferrer">Discord Community</a></li>
-                        <li><a href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S" target="_blank" rel="noopener noreferrer">Mallow Collection</a></li>
+                        <li><a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+                        </li>
+                        <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank"
+                                rel="noopener noreferrer">Discord Community</a></li>
+                        <li><a href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S"
+                                target="_blank" rel="noopener noreferrer">Mallow Collection</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
