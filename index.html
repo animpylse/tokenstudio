@@ -609,7 +609,8 @@
 
         .reviews-track-wrapper {
             overflow: hidden;
-            width: 100%;
+            flex: 1;
+            min-width: 0;
             padding: 40px 40px 50px;
             margin: -40px -40px -50px;
         }
@@ -664,6 +665,7 @@
         .reviewer-avatar {
             width: 40px;
             height: 40px;
+            flex-shrink: 0;
             border-radius: 50%;
             background: linear-gradient(135deg, rgba(187, 242, 148, 0.3), rgba(242, 148, 195, 0.3));
             border: 1px solid var(--card-border);
@@ -825,6 +827,15 @@
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
+            }
+
+            .reviews-track-wrapper {
+                padding: 40px 24px 50px;
+                margin: -40px -24px -50px;
+            }
+
+            .carousel-arrow {
+                display: none;
             }
         }
     </style>
