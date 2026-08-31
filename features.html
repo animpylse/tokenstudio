@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Features & Tools | Solana Wallet Tracker - Token Studio</title>
+    <title>Solana Toolset: Batch Burner, Swaps, Staking, NFT Minting & Editing | Token Studio</title>
     <meta name="description"
-        content="Explore Token Studio's powerful tools: batch burn NFTs, track 16 wallets, mint and edit metadata, split/merge token accounts, and manage Solana delegates.">
+        content="High-density transaction packing, secure batch NFT & cNFT burning, deep wallet analytics, token delegation, and decentralized swaps. Everything you need to manage your on-chain footprint.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -121,6 +121,7 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -146,7 +147,7 @@
 
         /* Feature Categories */
         .category-section {
-            margin:  40px 0 60px;
+            margin: 40px 0 60px;
         }
 
         .category-title {
@@ -177,7 +178,7 @@
             border-left: 4px solid transparent;
             position: relative;
         }
-        
+
         .feature-row:last-child {
             border-bottom: none;
         }
@@ -315,10 +316,13 @@
                 </div>
                 <div class="logo-text">Token Studio</div>
             </a>
-            <a href="index.html" style="color: var(--text-secondary); text-decoration: none; font-weight: 600; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">Back to Home</a>
+            <a href="index.html"
+                style="color: var(--text-secondary); text-decoration: none; font-weight: 600; transition: color 0.3s;"
+                onmouseover="this.style.color='var(--accent)'"
+                onmouseout="this.style.color='var(--text-secondary)'">Back to Home</a>
         </header>
     </div>
-    
+
     <div class="container">
 
         <section class="hero">
@@ -427,13 +431,23 @@
             <h2 class="category-title">Execution & Batch Operations</h2>
             <div class="features-list">
                 <div class="feature-row">
+                    <h3>Native Solana Swaps</h3>
+                    <p>Our Solana swap execution engine is powered by <a href="https://jup.ag" target="_blank"
+                            rel="noopener noreferrer" style="color: var(--accent); text-decoration: none;">Jupiter</a>
+                        liquidity aggregator quotes but built entirely in-house. This native transaction construction
+                        enables us to offer swap fees 2x–5x lower than standard jup.ag frontends, maximizing capital
+                        efficiency for Solana token swaps. Furthermore, users holding an official Token Studio NFT
+                        automatically qualify for zero-fee decentralized exchange (DEX) routing.</p>
+                </div>
+                <div class="feature-row">
                     <h3>Multi-Select Tool</h3>
                     <p>Select all, deselect all, invert selection, or manually pick mixed assets to instantly add to a
                         burn/transfer queue or hide them.</p>
                 </div>
                 <div class="feature-row">
                     <h3>1-Click Cleanup & Recycle</h3>
-                    <p>Burn any mixed batch of assets with a single click. Token Studio auto-sorts and tightly packs NFTs into full
+                    <p>Burn any mixed batch of assets with a single click. Token Studio auto-sorts and tightly packs
+                        NFTs into full
                         1232-byte payload transactions.</p>
                 </div>
                 <div class="feature-row">

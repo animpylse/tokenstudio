@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Changelog & Updates | Token Studio Releases</title>
+    <title>App Updates & Changelog | Token Studio Releases</title>
     <meta name="description"
-        content="Track updates for Token Studio. Stay informed on new features for Solana wallet tracking, NFT batch burning, staking, minting, and portfolio analytics.">
+        content="Track the latest updates, feature releases, and improvements to Token Studio, the premier Solana asset management application.">
     <link rel="canonical" href="https://tokenstudio.dev/changelog.html">
 
     <!-- Open Graph / Facebook / Discord -->
@@ -166,7 +166,7 @@
 
         .header-section {
             margin-bottom: 40px;
-            
+
             text-align: center;
         }
 
@@ -245,7 +245,7 @@
         }
 
         .badge {
-            font-size: 24px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             padding: 2px 8px;
@@ -412,6 +412,83 @@
         </div>
 
         <div class="timeline">
+
+            <!-- 0.22.269-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">0.22.269-beta</span>
+                    <time class="release-date">August 30, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">New</span>
+                        <div>Token Studio is now available in Japanese, Korean, and Simplified Chinese, with more
+                            languages coming soon.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">New</span>
+                        <div>Added a swap loss Firewall warning before execution above 10% estimated value loss and
+                            blocking swaps at 20% or higher, just in case Jupiter returns a weird quote and you're not
+                            paying attention.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Bugfix</span>
+                        <div>Fixed incorrect estimated swap costs when selecting an empty token account as the
+                            destination.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Various UI/UX improvements.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Various bug fixes.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- 0.21.259-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">0.21.259-beta</span>
+                    <time class="release-date">August 26, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-hotfix">Hotfix</span>
+                        <div>Improved the Estimated Cost of each swap to pull freshest prices possible and not include
+                            ATA creation since that's not a permanent cost.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- 0.20.254-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">0.20.254-beta</span>
+                    <time class="release-date">August 24, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">New Feature</span>
+                        <div>Added Swaps, combining Jupiter liquidity routing with Token Studio's EDGE execution mode to
+                            offer fees up to 5x lower than jup.ag on supported pairs.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Bugfix</span>
+                        <div>Fixed Unicode and emoji domains failing recipient verification and causing token sends to
+                            stall before the wallet opened.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Various UI/UX improvements.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Various bug fixes.</div>
+                    </li>
+                </ul>
+            </article>
 
             <!-- 0.19.424-beta -->
             <article class="release-entry">
