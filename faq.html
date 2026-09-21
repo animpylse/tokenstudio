@@ -781,6 +781,148 @@
                 </div>
             </div>
 
+            <h2 class="category-title">Address Lookup Tables (LUTs)</h2>
+            <div class="faq-group">
+                <div class="faq-item">
+                    <h3 class="faq-question">What are Solana address lookup tables (LUTs)?</h3>
+                    <div class="faq-answer">
+                        <p>Address lookup tables (LUTs) are on-chain accounts that store up to 256 addresses. By
+                            referencing a LUT instead of listing every address individually (essentially like a
+                            shortcut), developers can compress transaction sizes, bypassing Solana's strict transaction
+                            size limits to enable complex, multi-account operations.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What is the maximum capacity of a LUT?</h3>
+                    <div class="faq-answer">
+                        <p>A single Address Lookup Table can hold a maximum of 256 addresses.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Why are LUTs necessary on Solana?</h3>
+                    <div class="faq-answer">
+                        <p>Solana has a strict 1,232-byte size limit for transactions, which normally caps you at
+                            referencing around 35 accounts. LUTs compress 32-byte public keys into 1-byte indexes,
+                            making complex transactions—like multi-hop DeFi swaps—possible within the size limit.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Do LUTs work with standard or legacy transactions?</h3>
+                    <div class="faq-answer">
+                        <p>No, LUTs require Solana's Versioned Transactions (v0). Legacy transactions do not support
+                            them.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Is there a delay when adding new addresses to a LUT?</h3>
+                    <div class="faq-answer">
+                        <p>Yes, after extending a LUT with new addresses, you must wait at least one slot before those
+                            new addresses can be referenced in a transaction.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Is there a global directory of all LUTs?</h3>
+                    <div class="faq-answer">
+                        <p>There is no centralized public list of LUTs provided by the network. Developers typically
+                            manage their own tables for specific dApps, or rely on ones provided by major protocols like
+                            Jupiter.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">How can I deactivate or close Solana address lookup tables?</h3>
+                    <div class="faq-answer">
+                        <p>If your wallet is the authority of a LUT, you have the right to deactivate and close it.
+                            Token Studio allows you to easily discover wallet-owned LUTs and batch deactivate or close
+                            them seamlessly.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Are LUTs safe to deactivate?</h3>
+                    <div class="faq-answer">
+                        <p>Deactivating a LUT carries risks. If a dApp, program, or automation script actively relies on
+                            your LUT to construct transactions, deactivating it may cause those transactions to fail.
+                            You should only deactivate LUTs if you know what they are used for, or if you are fully
+                            cleaning up an old wallet.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What are the benefits of closing a LUT?</h3>
+                    <div class="faq-answer">
+                        <p>Closing a LUT permanently deletes it from the blockchain, which frees up storage and refunds
+                            the SOL rent that was required to maintain the account.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I find out what app uses a specific LUT?</h3>
+                    <div class="faq-answer">
+                        <p>In Token Studio, you can inspect all on-chain properties of a LUT, including every address it
+                            contains. However, the Solana blockchain does not explicitly record which program created or
+                            uses it. As a helpful exception, Token Studio’s own internal LUTs can be identified by their
+                            first address, which is a vanity address starting with <code>studio111111111111...</code>.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">How long is the deactivation cooldown?</h3>
+                    <div class="faq-answer">
+                        <p>Once a LUT is deactivated, there is a mandatory cooldown period of exactly 512 slots
+                            (typically a few minutes) before the network allows you to permanently close the account and
+                            recover the rent.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="category-title">Merkle Trees & Compression</h2>
+            <div class="faq-group">
+                <div class="faq-item">
+                    <h3 class="faq-question">What is a Merkle Tree on Solana?</h3>
+                    <div class="faq-answer">
+                        <p>Think of a Merkle Tree like a family tree of digital fingerprints. At the bottom, every piece of data (like an NFT) is turned into a unique fingerprint. These fingerprints are paired up and combined repeatedly until you reach the very top, resulting in one single master fingerprint called the <strong>Merkle Root</strong>. On Solana, the network only stores this single root on-chain, while the actual data is kept off-chain by indexers. This allows millions of assets to be securely verified without paying the massive on-chain rent costs for each one.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What are Merkle Proofs?</h3>
+                    <div class="faq-answer">
+                        <p>A Merkle Proof is a piece of mathematical evidence used to verify that your specific asset exists inside the tree. Instead of downloading or checking every single item, you only need the specific "path" of fingerprints that connects your asset to the master Merkle Root. The network checks your proof against the on-chain root, and if they match, your transaction is securely approved.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">How can I create a Merkle Tree?</h3>
+                    <div class="faq-answer">
+                        <p>You can easily create your own Merkle Trees directly within Token Studio. The platform
+                            supports creating both V1 and V2 Merkle Trees, complete with custom sizing parameters
+                            depending on how many assets you plan to mint.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">How much does creating a Merkle Tree cost?</h3>
+                    <div class="faq-answer">
+                        <p>The cost varies drastically depending on the parameters you choose (specifically the max
+                            depth and max buffer size, which determine how many assets the tree can hold and how many
+                            concurrent updates it supports). The cheapest, smallest trees can cost around 0.2 SOL, while
+                            massive trees capable of holding millions of assets can cost several SOL to deploy.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I burn or close a Merkle Tree to recover rent?</h3>
+                    <div class="faq-answer">
+                        <p>No, you currently cannot close a Merkle Tree to recover the SOL rent. Because a Merkle Tree
+                            permanently secures the cryptographic proofs for all assets inside it, destroying the tree
+                            would invalidate the assets it holds. The SPL Account Compression program intentionally
+                            prevents closing these accounts to protect the integrity of the compressed data.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What is the difference between a public and a private Merkle Tree?</h3>
+                    <div class="faq-answer">
+                        <p>A <strong>public</strong> Merkle Tree allows anyone (any wallet or program) to append data or
+                            mint compressed assets to it. A <strong>private</strong> Merkle Tree restricts access so
+                            that only the designated authority (usually the creator) can mint or append data, ensuring
+                            strict control over the collection.</p>
+                    </div>
+                </div>
+            </div>
+
             <h2 class="category-title">Staking & Yield Management</h2>
             <div class="faq-group">
                 <div class="faq-item">

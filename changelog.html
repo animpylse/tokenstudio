@@ -414,6 +414,90 @@
 
         <div class="timeline">
 
+            <!-- 0.24.0-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">0.24.0-beta</span>
+                    <time class="release-date">September 21, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">New Feature</span>
+                        <div><strong>Solana cNFT Editing:</strong> Edit compressed NFT metadata, creators, royalties, primary-sale state, collection membership, verification, and leaf delegates. Handle complex multi-transaction metadata updates seamlessly.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">New Feature</span>
+                        <div><strong>Address Lookup Table (LUT) Management:</strong> Token Studio automatically discovers wallet-owned LUTs during synchronization, allowing you to easily Deactivate or Close unused Address Lookup Tables for complete Solana wallet cleanup.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">New Feature</span>
+                        <div><strong>Split-Authority SOL Stake Recovery:</strong> Automatically discover native Solana stake accounts where your wallet is the staker or withdraw authority. Easily reclaim staker authority and recover hidden SOL staking positions that most wallets fail to display.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Various UI/UX improvements to enhance your Solana asset management workflow.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Various bug fixes for improved platform stability.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- 0.23.290-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">0.23.290-beta</span>
+                    <time class="release-date">September 10, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">New Feature</span>
+                        <div><strong>Trim - Reclaim Excess SOL Rent:</strong> As Solana reduces rent requirements, existing accounts hold more SOL than needed. Trim withdraws this excess rent from SPL Token and Token-2022 accounts without altering your assets. At 0.00001 SOL per transaction, it's up to 10x cheaper than Sol Incinerator.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">Feature</span>
+                        <div><strong>Gateway V3 Networking Upgrade:</strong> A major RPC networking overhaul featuring intelligent load balancing and four layers of redundancy. Transient Solana RPC disruptions are now handled in the background for a flawless user experience.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-perf">Perf</span>
+                        <div><strong>Burn Recovery Accuracy:</strong> Improved the calculation accuracy of Estimated Recovery for selected assets during Solana token and NFT burn operations.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div><strong>Swap Enhancements:</strong> Reversing a token swap pair now accurately reverses the quoted token amount as well.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Fixed an Unknown Error where successfully submitted swaps were falsely reported as failed due to RPCs returning already processed responses.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Resolved older legacy Solana NFT burn failures related to updated network rent requirements.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Fixed an issue where withdrawn SKR and JUP tokens did not immediately appear in wallets lacking an existing liquid token balance.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Fixed Token-2022 accounts with withheld transfer fees failing during burn operations.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Restored the detailed Wallet Health Report after a recent language update regression.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Various UI/UX improvements.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Various bug fixes to improve platform stability.</div>
+                    </li>
+                </ul>
+            </article>
+
             <!-- 0.22.269-beta -->
             <article class="release-entry">
                 <div class="release-header">
