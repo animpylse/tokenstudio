@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preventing Costly Mistakes When Transferring To A Solana Domain | Token Studio</title>
+    <meta name="description"
+        content="A real-world case study on Solana domain typos and how Token Studio's four layers of transaction verification prevent expensive crypto mistakes when transferring to a domain.">
+    <link rel="canonical" href="https://tokenstudio.dev/stories/one-character-300-no-undo.html">
+
+    <!-- Open Graph / Facebook / Discord -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Preventing Costly Mistakes When Transferring To A Solana Domain">
+    <meta property="og:description"
+        content="A real-world case study on Solana domain typos and how Token Studio's four layers of transaction verification prevent expensive crypto mistakes when transferring to a domain.">
+    <meta property="og:image" content="https://tokenstudio.dev/assets/og-card.png">
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://tokenstudio.dev/stories/one-character-300-no-undo.html">
+    <meta name="twitter:title" content="Preventing Costly Mistakes When Transferring To A Solana Domain">
+    <meta name="twitter:description"
+        content="A real-world case study on Solana domain typos and how Token Studio's four layers of transaction verification prevent expensive crypto mistakes when transferring to a domain.">
+    <meta name="twitter:image" content="https://tokenstudio.dev/assets/og-card.png">
+    <meta name="twitter:creator" content="@impylse">
+
+    <!-- JSON-LD Structured Data for SEO / GEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Preventing Costly Mistakes When Transferring To A Solana Domain",
+      "description": "A real-world case study on Solana domain typos and how Token Studio's four layers of transaction verification prevent expensive crypto mistakes when transferring to a domain.",
+      "url": "https://tokenstudio.dev/stories/one-character-300-no-undo.html",
+      "datePublished": "2026-09-06",
+      "keywords": "Solana domain resolution, Solana transaction safety, Prevent mistaken crypto transfers, Verify Solana transaction address, Secure Solana asset management, Transfer to a domain",
+      "author": {
+        "@type": "Person",
+        "name": "impylse"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Token Studio",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://tokenstudio.dev/assets/logo_grad.png"
+        }
+      }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        :root {
+            --accent: #BBF294;
+            --accent-glow: rgba(187, 242, 148, 0.4);
+            --accent-glow: rgba(187, 242, 148, 0.4);
+            --bg-dark: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.7;
+        }
+
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('../assets/connect.png');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4) blur(40px);
+        }
+
+        .glow-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% -20%, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto 40px;
+            padding: 36px 24px 40px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-btn:hover {
+            opacity: 0.8;
+            transform: translateX(-3px);
+        }
+
+        .article-header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 30px;
+        }
+
+        .tag-badge {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: rgba(187, 242, 148, 0.15);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+
+        .article-meta {
+            color: var(--text-secondary);
+            font-size: 14px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .article-content h2 {
+            font-size: 24px;
+            margin-top: 36px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            border-left: 3px solid var(--accent);
+            padding-left: 14px;
+        }
+
+        .article-content p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .article-content ul {
+            list-style: none;
+            margin-bottom: 24px;
+            padding-left: 0;
+        }
+
+        .article-content li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .article-content li::before {
+            content: "•";
+            color: var(--accent);
+            font-size: 20px;
+            position: absolute;
+            left: 6px;
+            top: -2px;
+        }
+
+        .article-content strong {
+            color: var(--text-primary);
+        }
+
+        .highlight-quote {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            margin: 28px 0;
+            border-radius: 0 16px 16px 0;
+            color: var(--text-primary);
+            font-size: 17px;
+        }
+
+        .share-bar {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .share-btn-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .copy-link-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 10px 18px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .copy-link-btn:hover {
+            background: rgba(255, 255, 255, 0.16);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .toast-notification {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #111;
+            border: 1px solid var(--accent);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 2000;
+            pointer-events: none;
+        }
+
+        .toast-notification.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .share-x-btn {
+            background: #FFFFFF;
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .share-x-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            padding: 60px 0 40px;
+            border-top: 1px solid var(--card-border);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .footer-desc {
+            color: var(--text-secondary);
+            max-width: 300px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer-col h5 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--card-border);
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .share-bar {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-container"></div>
+    <div class="glow-overlay"></div>
+
+    <div class="container">
+        <a href="../stories.html" class="back-btn">← Back to Stories</a>
+
+        <header class="article-header">
+            <span class="tag-badge">Case Study</span>
+            <h1>One character, $300, No undo.</h1>
+            <div class="article-meta">
+                <span>By impylse</span>
+                <span>•</span>
+                <time datetime="2026-09-06">September 6, 2026</time>
+                <span>•</span>
+                <span>2 min read</span>
+            </div>
+        </header>
+
+        <main class="article-content">
+            <p>Earlier this week, a Seeker user in the <a href="https://discord.gg/solanamobile" target="_blank"
+                    rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">Solana Mobile
+                    Discord</a> shared a painful story that I believe should have been avoidable.</p>
+
+            <p>They wanted to send $300 to one of their own wallets using its <code>.skr</code> domain,
+                <strong>cu.skr</strong>, but accidentally mistyped it as <strong>su.skr</strong>. They didn't notice the
+                mistake because the wallet never surfaced the address the domain had actually resolved to.
+            </p>
+
+            <p>The mistyped domain was real. The transaction succeeded. And the $300 went to someone else.</p>
+
+            <p>This was especially painful for me because I'd previously looked at how wallets handle these kinds of
+                operations and had already identified this exact scenario as a possibility.</p>
+
+            <p>So when I added transfers to domains to Token Studio, I built in <a
+                    href="../changelog.html#domain-resolver-update"
+                    style="color: var(--accent); text-decoration: underline;">four layers of redundancy</a>:</p>
+
+            <h2>Layer 1: Solana Domain Resolution Verification</h2>
+            <p>When a domain is resolved, its underlying address is surfaced directly in the UI, so you can confirm
+                where you're actually sending.</p>
+
+            <h2>Layer 2: Transaction History & Receipts</h2>
+            <p>Token Studio keeps receipts for previous transfers, recognizes addresses you've successfully sent to
+                before, and shows you how many times you've used each one.</p>
+
+            <h2>Layer 3: Warning</h2>
+            <p>Sending or delegating to an address you've used fewer than two times triggers an additional confirmation.
+            </p>
+
+            <h2>Layer 4: Re-resolution</h2>
+            <p>Before building the transaction, Token Studio resolves the domain one more time and verifies that it
+                still points to the address shown in your address book.</p>
+
+            <p>Domains can be transferred, burned, or expire. If the original resolution happened some time ago, things
+                may have changed.</p>
+
+            <p>Any one safeguard can fail to get your attention. That's why there are several.</p>
+
+            <div class="highlight-quote">
+                This is what I mean when I describe Token Studio as <strong>Vigilant by design.</strong>
+                <br><br>
+                <strong>Small safeguards against expensive mistakes.</strong>
+            </div>
+        </main>
+
+        <div class="share-bar">
+            <span>Enjoyed this story?</span>
+            <div class="share-btn-group">
+                <button type="button" class="copy-link-btn" id="copyBtn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    Copy Link
+                </button>
+                <a href="https://x.com/intent/post?text=One%20character%2C%20%24300%2C%20No%20undo.&url=https%3A%2F%2Ftokenstudio.dev%2Fstories%2Fone-character-300-no-undo.html"
+                    target="_blank" rel="noopener noreferrer" class="share-x-btn">
+                    <svg width="14" height="14" viewBox="0 0 1200 1227" fill="currentColor">
+                        <path
+                            d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" />
+                    </svg>
+                    Post on X
+                </a>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <a href="../index.html" class="back-btn">← Back to Token Studio</a>
+        </div>
+    </div>
+
+    <div id="toast" class="toast-notification">
+        <span style="color: var(--accent);">✓</span> Link copied to clipboard!
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">Token Studio</div>
+                    <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the
+                        Solana blockchain.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="../about.html">About & Vision</a></li>
+                        <li><a href="../features.html">Features & Toolset</a></li>
+                        <li><a href="../stories.html">Stories & Field Notes</a></li>
+                        <li><a href="../faq.html">Frequently Asked Questions</a></li>
+                        <li><a href="../changelog.html">Changelog & Releases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Social</h5>
+                    <ul>
+                        <li><a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+                        </li>
+                        <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank"
+                                rel="noopener noreferrer">Discord Community</a></li>
+                        <li><a href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S"
+                                target="_blank" rel="noopener noreferrer">Mallow Collection</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Compliance</h5>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Service</a></li>
+                        <li><a href="../copyright.html">Copyright Notice</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2026 TokenStudio. All rights reserved.</div>
+                <div>Built for the Solana Mobile Ecosystem.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('copyBtn').addEventListener('click', function () {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2500);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        });
+    </script>
+</body>
+
+</html>
