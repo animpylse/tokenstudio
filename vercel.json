@@ -1,0 +1,33 @@
+{
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "functions": {
+        "api/negotiate.js": {
+            "includeFiles": [
+                "index.html",
+                "index.md",
+                "404.html",
+                "404.md"
+            ]
+        }
+    },
+    "routes": [
+        {
+            "src": "^/$",
+            "dest": "/api/negotiate"
+        },
+        {
+            "src": "^/burner(?:\\.html)?$",
+            "status": 301,
+            "headers": {
+                "Location": "/cheapest-solana-burner.html"
+            }
+        },
+        {
+            "handle": "filesystem"
+        },
+        {
+            "src": "^/.*$",
+            "dest": "/api/negotiate"
+        }
+    ]
+}

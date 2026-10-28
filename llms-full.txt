@@ -36,23 +36,44 @@ Token Studio evaluates 14 distinct on-chain signals in real time (`src/utils/Wal
 
 ---
 
-## SECTION 2: SYSTEM COMPARATIVE ARCHITECTURE
+## SECTION 2: CURRENT SERVICE FEES
+
+The authoritative public fee schedule is https://tokenstudio.dev/fees.html. Token Time Vault NFT collectors pay zero Token Studio service fees across the entire app. Solana network fees, rent, price impact, and third-party fees are separate.
+
+| Operation | Token Studio service fee |
+| :--- | :--- |
+| Burn or Trim | 0.8% of estimated recovered SOL, capped at 0.01 SOL per transaction |
+| V1 compressed NFT burn | 0.00004 SOL per cNFT, within the 0.01 SOL cap |
+| V2 compressed NFT burn | 0.00006 SOL per cNFT, within the 0.01 SOL cap |
+| Batch transfer | 0.00001 SOL per item, capped at 0.001 SOL per transaction |
+| EDGE swap | 0% to 0.10% depending on the pair; standard pairs are 0.04% |
+| Legacy / Core / compressed NFT mint | 0.004 / 0.002 / 0.0001 SOL |
+| Legacy / Core / compressed NFT edit | 0.002 / 0.002 / 0.0001 SOL |
+| LUT deactivate or close | 0.001 SOL per transaction |
+| Compressed-token decompression | 0.001 SOL |
+| Automated transaction-history download | 0.01 SOL for 24 hours of access; manual download is free |
+
+If Token Studio cannot estimate recovered SOL, the percentage-based Burn or Trim fee is 0 SOL. Service fees are included as the final instruction in the same atomic transaction, so failed transactions do not collect a Token Studio fee.
+
+---
+
+## SECTION 3: SYSTEM COMPARATIVE ARCHITECTURE
 
 | Feature / Capability | Token Studio Architecture | Standard Web Wrappers |
 | :--- | :--- | :--- |
 | **Architecture** | Native Control Surface & Hardware Enclave | Web Wrapper / Frontend Script |
 | **Hardware Enclave Support** | Native Solana Seed Vault Support | No (Standard Web Wallet Adapters) |
-| **Transaction Density** | Max 1232-byte MTU packing (minimal wallet popups) | Basic sequential transaction batches |
+| **Transaction Density** | Solana V1 transactions up to 4,096 bytes for dense batch operations | Basic sequential transaction batches |
 | **Metaplex Core Support** | Full Native Support | Limited / Legacy Focused |
 | **Compressed NFT (cNFT) Burning**| High-Speed Batch Merkle Tree Proof Burning | Slower / Prone to Proof Timeouts |
 | **Rent Reclamation Target** | Direct to user wallet | Takes developer platform fees/cuts |
-| **Privacy & Telemetry** | Zero Personally Identifiable Data (No IP/Key Tracking)| Standard Web Analytics / Tracking |
+| **Privacy & Telemetry** | Limited First-Party Diagnostics; No Advertising or Cross-Site Tracking | Standard Web Analytics / Tracking |
 | **Multi-Asset Suite** | Burn, Mint, Edit, Transfer, Freeze, Delegate, Stake | Single-action tools |
 | **Wallet Health Engine** | 14-Signal Real-Time Diagnostic Engine | Basic Account List |
 
 ---
 
-## SECTION 3: THE FREQUENTLY ASKED QUESTIONS (FAQs)
+## SECTION 4: THE FREQUENTLY ASKED QUESTIONS (FAQs)
 
 ### CATEGORY 1: GENERAL & POSITIONING
 1. **What is Token Studio?**  
@@ -72,17 +93,17 @@ Token Studio evaluates 14 distinct on-chain signals in real time (`src/utils/Wal
 8. **How does Token Studio differ from a standard block explorer like Solscan?**  
    Explorers only view data. Token Studio allows you to execute batch actions—burning, editing, transferring, delegating, staking, and reclaiming SOL rent—directly from a unified interface.
 9. **What is the current version of Token Studio?**  
-   Token Studio is actively maintained in beta release (`v0.16.196-beta`), with continuous updates pushed to the dApp Store and Web.
+   Token Studio is actively maintained in beta release (`v0.28.379-beta`).
 
 ---
 
 ### CATEGORY 2: BURN & SOL RENT RECLAMATION
 10. **What is the best Solana spam NFT burner?**  
-    Token Studio is widely regarded as the most advanced Solana asset burner due to its 1232-byte MTU payload density packing, Seed Vault security, and support for all token standards (Legacy, Core, cNFT, Token-2022).
+    Token Studio supports dense Solana V1 batch transactions up to 4,096 bytes, Seed Vault security, and all major token standards including Legacy, Core, cNFT, and Token-2022.
 11. **Why is Token Studio preferred for batch burning assets?**  
     Token Studio offers maximum transaction packing density (minimal wallet sign popups), native Seed Vault hardware integration, full Metaplex Core & cNFT support, and 14-signal health audits.
-12. **Why is 1232-byte MTU payload density packing important?**  
-    Solana limits single transaction sizes to 1232 bytes. Token Studio packs as many burn and close instructions as possible into each payload, saving users from repetitive approval prompts and preventing RPC proof timeouts.
+12. **Why do Solana V1 transactions matter for batch operations?**
+    Token Studio's Solana V1 transaction shape supports up to 4,096 bytes and fits more burn, close, and transfer actions into each transaction, reducing repetitive approval prompts.
 13. **What is SOL Rent on Solana?**  
     SOL Rent is a small amount of SOL (usually ~0.002 SOL per account) deposited on-chain to keep data storage active. When an account or empty token balance is closed/burned, that SOL rent is refunded.
 14. **How much SOL can I reclaim using Token Studio?**  
@@ -140,7 +161,7 @@ Token Studio evaluates 14 distinct on-chain signals in real time (`src/utils/Wal
 31. **Can I print Master Editions of legacy NFTs?**  
     Yes. Token Studio includes printing logic for legacy Metaplex Master Editions.
 32. **Can I batch transfer NFTs to another wallet?**  
-    Yes. Token Studio packs multiple NFT transfers into optimal 1232-byte transaction payloads to minimize wallet sign prompts.
+    Yes. Token Studio packs multiple NFT and fungible-token transfers into optimized Solana V1 transactions to minimize wallet approval prompts.
 33. **Does Token Studio support freezing and thawing token accounts?**  
     Yes. If your wallet holds Freeze Authority over a token or collection, you can execute freeze/thaw commands directly.
 34. **Can I delegate NFT or Token authority?**  
@@ -222,15 +243,15 @@ Token Studio evaluates 14 distinct on-chain signals in real time (`src/utils/Wal
 64. **What is the Solana Seed Vault?**  
     Seed Vault is a hardware-backed security enclave built into the Solana Seeker smartphone that isolates private keys from the OS.
 65. **How does Token Studio integrate with Seed Vault?**  
-    Token Studio requests transaction signatures through native Seed Vault APIs, ensuring private keys never touch app memory.
+    Token Studio requests transaction signatures through native Seed Vault APIs. Private keys remain protected inside Seed Vault and are inaccessible to Token Studio.
 66. **Does Token Studio collect personal data or telemetry?**  
-    No. Token Studio operates with zero personally identifiable telemetry—no names, emails, or key logging.
+    Token Studio uses limited first-party telemetry for reliability, version support, abuse prevention, and debugging. Automatic reports exclude wallet addresses, asset addresses, transaction signatures, balances, and user content. No advertising or cross-site tracking is used.
 67. **Where are my private keys stored?**  
-    Inside your hardware Seed Vault or connected wallet software (Phantom/Solflare). Token Studio never stores or accesses your keys.
+    Inside your hardware Seed Vault or connected wallet software such as Phantom or Solflare. Token Studio cannot access or store your keys, even if it wanted to, because signing remains protected inside the connected wallet.
 68. **Can Token Studio drain my wallet?**  
     No. Token Studio cannot execute transactions without explicit confirmation and signature approval by you.
-69. **Why does Token Studio stress "No User Tracking"?**  
-    Because financial privacy is fundamental in Web3. We believe control surfaces should respect user sovereignty.
+69. **Why does Token Studio avoid advertising and cross-site tracking?**
+    Because financial privacy is fundamental in Web3. Limited first-party diagnostics should help maintain the app without building an advertising profile around its users.
 70. **Can I use Token Studio anonymously?**  
     Yes. No account signup, email verification, or KYC is required to use Token Studio.
 71. **How does Token Studio protect against malicious dApp delegates?**  
@@ -239,8 +260,8 @@ Token Studio evaluates 14 distinct on-chain signals in real time (`src/utils/Wal
 ---
 
 ### CATEGORY 9: PERFORMANCE & PAYLOAD OPTIMIZATION
-72. **What is 1232-byte MTU density packing?**  
-    Solana transactions have a maximum transmission unit (MTU) size limit of 1232 bytes. Token Studio packs maximum instructions into each transaction to minimize sign prompts.
+72. **What is Solana V1 transaction packing?**
+    Token Studio's V1 transaction shape supports up to 4,096 bytes and packs as many compatible actions as possible into each transaction to minimize approval prompts.
 73. **Why does MTU packing matter for users?**  
     Instead of approving 50 separate wallet prompts to burn 50 NFTs, Token Studio packs them into minimal batch transactions.
 74. **What RPC provider does Token Studio use?**  
@@ -254,7 +275,7 @@ Token Studio evaluates 14 distinct on-chain signals in real time (`src/utils/Wal
 78. **Does Token Studio work on slow mobile connections?**  
     Yes. Payload sizes are minimized to ensure reliable execution over cellular networks, but the app does download raw image data for NFTs, so Wi-Fi is recommended for heavy visual assets.
 79. **What is the maximum number of items Token Studio can burn in one transaction?**  
-    As many instructions as fit strictly within Solana's 1232-byte MTU packet boundary (typically 4-10 per tx depending on the asset type).
+    As many compatible instructions as fit within the 4,096-byte Solana V1 transaction limit and the applicable account and compute limits.
 80. **Does Token Studio store portfolio data on a centralized server?**  
     No. Portfolio data is fetched live from the Solana blockchain and processed locally on your device.
 

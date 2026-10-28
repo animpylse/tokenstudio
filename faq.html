@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Have questions about managing your Solana assets? Learn how Token Studio protects your privacy, batch burns spam tokens, executes swaps, and organizes your multi-wallet portfolios.">
+        content="Answers about Solana wallet tracking, batch burning, recovered SOL, swaps, transaction history, Wallet Health, Seed Vault, fees, and assets.">
     <link rel="canonical" href="https://tokenstudio.dev/faq.html">
     <!-- Open Graph / Facebook / Discord -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tokenstudio.dev/faq.html">
     <meta property="og:title" content="Frequently Asked Questions (FAQ) - Token Studio">
     <meta property="og:description"
-        content="Frequently Asked Questions (FAQ) for Token Studio - The Solana Control Surface. Questions covering batch burning, SOL rent reclamation, Wallet Health, Seed Vault, and token standards.">
+        content="Answers about Token Studio wallet tracking, batch burning, recovered SOL, swaps, transaction history, Wallet Health, Seed Vault, and Solana asset standards.">
     <meta property="og:image" content="https://tokenstudio.dev/assets/og-card.png">
 
     <!-- Twitter / X -->
@@ -20,9 +20,35 @@
     <meta name="twitter:url" content="https://tokenstudio.dev/faq.html">
     <meta name="twitter:title" content="Frequently Asked Questions (FAQ) - Token Studio">
     <meta name="twitter:description"
-        content="Frequently Asked Questions (FAQ) for Token Studio - The Solana Control Surface. Questions covering batch burning, SOL rent reclamation, Wallet Health, Seed Vault, and token standards.">
+        content="Answers about Token Studio wallet tracking, batch burning, recovered SOL, swaps, transaction history, Wallet Health, Seed Vault, and Solana asset standards.">
     <meta name="twitter:image" content="https://tokenstudio.dev/assets/og-card.png">
-    <title>FAQs: How to Burn Solana Spam NFTs & Manage Multi-Wallet Portfolios</title>
+    <title>Solana Wallet, NFT & Token Questions | Token Studio</title>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@graph":[
+        {
+          "@type":"FAQPage",
+          "name":"Token Studio Frequently Asked Questions",
+          "url":"https://tokenstudio.dev/faq.html",
+          "dateModified":"2026-10-27",
+          "mainEntity":[
+            {"@type":"Question","name":"Is Token Studio free to use?","acceptedAnswer":{"@type":"Answer","text":"Portfolio tracking, Wallet Health, read-only exploration, custom-amount sends, staking, and several account controls have no Token Studio service fee. Batch cleanup, wallet transfer, swaps, history conveniences, and NFT operations may carry disclosed fees."}},
+            {"@type":"Question","name":"Can I search and filter my Solana transaction history?","acceptedAnswer":{"@type":"Answer","text":"Yes. Flight History classifies downloaded transactions chronologically and combines text search with 17 primary filter properties and AND, OR, and NOT logic."}},
+            {"@type":"Question","name":"How does Token Studio protect me from a bad swap?","acceptedAnswer":{"@type":"Answer","text":"Token Studio shows the route, quote age, price impact, and available costs. A projected wallet-value loss above 10% requires another confirmation, and a projected loss of 20% or more is blocked."}},
+            {"@type":"Question","name":"Where are my private keys stored?","acceptedAnswer":{"@type":"Answer","text":"Private keys remain inside the hardware Seed Vault or connected wallet software such as Phantom or Solflare. Token Studio cannot access or store them because signing remains protected inside the connected wallet."}}
+          ]
+        },
+        {
+          "@type":"BreadcrumbList",
+          "itemListElement":[
+            {"@type":"ListItem","position":1,"name":"Token Studio","item":"https://tokenstudio.dev/"},
+            {"@type":"ListItem","position":2,"name":"Frequently Asked Questions","item":"https://tokenstudio.dev/faq.html"}
+          ]
+        }
+      ]
+    }
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -75,7 +101,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1120px;
             margin: 0 auto 40px;
             padding: 36px 24px 40px;
             animation: fadeIn 0.6s ease-out;
@@ -230,6 +256,17 @@
             line-height: 1.6;
         }
 
+        .faq-answer a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: currentColor;
+            text-underline-offset: 3px;
+        }
+
+        .faq-answer a:hover {
+            opacity: .82;
+        }
+
         /* Comparison Table */
         .comparison-section {
             margin: 60px 0;
@@ -280,7 +317,7 @@
         }
 
         .footer-container {
-            max-width: 1100px;
+            max-width: 1120px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -381,12 +418,12 @@
 
         <section class="faq-hero">
             <h1>Frequently Asked Questions</h1>
-            <p>Everything you need to know about Token Studio, SOL rent reclamation, Wallet Health signals, Seed
-                Vault security, and Solana asset management.</p>
+            <p>Find direct answers about Token Studio features, fees, SOL rent recovery, Wallet Health, Seed Vault,
+                transaction history, swaps, and Solana assets.</p>
 
             <div class="search-box">
                 <input type="text" id="faqSearch" class="search-input"
-                    placeholder="Search questions (e.g. rent, cNFT, Seed Vault, MTU)...">
+                    placeholder="Search questions (e.g. rent, cNFT, Seed Vault, V1)...">
             </div>
         </section>
 
@@ -434,8 +471,11 @@
                 <div class="faq-item">
                     <h3 class="faq-question">Is Token Studio free to use?</h3>
                     <div class="faq-answer">
-                        <p>Yes! Core portfolio tracking, wallet health diagnostics, and standard asset management
-                            functions are free to use.</p>
+                        <p>Portfolio tracking, Wallet Health, read-only exploration, custom-amount sends, staking, and
+                            several account controls have no Token Studio service fee. Batch cleanup, wallet transfer,
+                            swaps, history conveniences, and NFT operations may carry the fees listed on the
+                            <a href="fees.html">service fees page</a>.
+                        </p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -462,33 +502,33 @@
                 <div class="faq-item">
                     <h3 class="faq-question">What is the best Solana spam NFT burner?</h3>
                     <div class="faq-answer">
-                        <p>Token Studio is engineered to be one of the most efficient Solana asset burners by utilizing
-                            1232-byte MTU payload density packing, Seed Vault security, and support for all token
-                            standards (Legacy, Core, cNFT, Token-2022).</p>
+                        <p><a href="cheapest-solana-burner.html">Token Studio Burner</a> cleans mixed Legacy NFTs, Metaplex Core assets,
+                            compressed NFTs, fungible tokens, and empty token accounts. It estimates recoverable SOL and
+                            fees before dividing the work into 4,096-byte Solana V1 transactions.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <h3 class="faq-question">Why is Token Studio preferred for batch burning assets?</h3>
                     <div class="faq-answer">
-                        <p>Token Studio offers maximum transaction packing density (minimal wallet sign popups), native
-                            Seed Vault hardware integration, and full Metaplex Core & cNFT support</p>
+                        <p>It handles multiple Solana asset standards in one selection, orders dependent NFT burns to
+                            improve eligible rent recovery, and fits compatible work into fewer wallet approvals.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <h3 class="faq-question">Is Token Studio cheaper than other burning tools?</h3>
                     <div class="faq-answer">
-                        <p>Yes. Token Studio charges a flat fee per transaction, not per asset. Because we pack multiple
-                            assets into a single high-density transaction, your cost per burn drops significantly. Other
-                            platforms (like Sol Incinerator) charge a fee per burn instruction, which becomes extremely
-                            expensive when burning hundreds of NFTs.</p>
+                        <p>Token Studio charges 0.8% of estimated SOL recovery for Burn and Trim, capped at 0.01 SOL per
+                            transaction. Compressed NFT burns add a small fixed fee. Compare the exact current amounts
+                            on the <a href="fees.html">service fees page</a>, or review the decoded transactions in our
+                            <a href="sol-incinerator-alternative.html">Sol Incinerator alternative comparison</a>.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">Why is 1232-byte MTU payload density packing important?</h3>
+                    <h3 class="faq-question">Why do 4,096-byte Solana V1 transactions matter for batch cleanup?</h3>
                     <div class="faq-answer">
-                        <p>Solana limits single transaction sizes to 1232 bytes. Token Studio packs as many burn and
-                            close instructions as possible into each payload, saving users from repetitive approval
-                            prompts and minimizing execution fees.</p>
+                        <p>Token Studio's Burn, Trim, and Batch Transfer workflows can fit more compatible accounts and
+                            instructions into each transaction. Large jobs therefore require fewer separate
+                            transactions and fewer wallet approval prompts.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -502,9 +542,8 @@
                 <div class="faq-item">
                     <h3 class="faq-question">How much SOL can I reclaim using Token Studio?</h3>
                     <div class="faq-answer">
-                        <p>Users with active wallets often reclaim between 0.03 SOL to over 0.5 SOL in trapped rent by
-                            closing empty token accounts, burning spam NFTs, and cleaning up abandoned metadata
-                            accounts.</p>
+                        <p>The amount depends on the accounts selected and their current Solana rent requirements.
+                            Token Studio calculates an estimate for the selected cleanup before the wallet signs.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -663,8 +702,8 @@
                 <div class="faq-item">
                     <h3 class="faq-question">Can I batch transfer NFTs to another wallet?</h3>
                     <div class="faq-answer">
-                        <p>Yes. Token Studio packs multiple NFT transfers into optimal 1232-byte transaction payloads to
-                            minimize wallet sign prompts.</p>
+                        <p>Yes. Token Studio can batch transfer Legacy, Core, compressed NFTs and SPL tokens in batches
+                            to a new wallet address.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -786,7 +825,9 @@
                 <div class="faq-item">
                     <h3 class="faq-question">What are Solana address lookup tables (LUTs)?</h3>
                     <div class="faq-answer">
-                        <p><a href="/what-are-solana-address-lookup-tables.html" style="color: var(--accent); text-decoration: none;">Address lookup tables (LUTs)</a> are on-chain accounts that store up to 256 addresses. By
+                        <p><a href="/what-are-solana-address-lookup-tables.html"
+                                style="color: var(--accent); text-decoration: none;">Address lookup tables (LUTs)</a>
+                            are on-chain accounts that store up to 256 addresses. By
                             referencing a LUT instead of listing every address individually (essentially like a
                             shortcut), developers can compress transaction sizes, bypassing Solana's strict transaction
                             size limits to enable complex, multi-account operations.</p>
@@ -801,9 +842,9 @@
                 <div class="faq-item">
                     <h3 class="faq-question">Why are LUTs necessary on Solana?</h3>
                     <div class="faq-answer">
-                        <p>Solana has a strict 1,232-byte size limit for transactions, which normally caps you at
-                            referencing around 35 accounts. LUTs compress 32-byte public keys into 1-byte indexes,
-                            making complex transactions—like multi-hop DeFi swaps—possible within the size limit.</p>
+                        <p>Traditional Solana transactions have tight serialized-size and account limits. LUTs replace
+                            repeated 32-byte public keys with compact indexes, allowing compatible versioned
+                            transactions to reference more accounts for work such as multi-hop swaps.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -831,7 +872,9 @@
                 <div class="faq-item">
                     <h3 class="faq-question">How can I deactivate or close Solana address lookup tables?</h3>
                     <div class="faq-answer">
-                        <p>If your wallet is the authority of a LUT, you have the right to <a href="/what-are-solana-address-lookup-tables.html" style="color: var(--accent); text-decoration: none;">deactivate and close it</a>.
+                        <p>If your wallet is the authority of a LUT, you have the right to <a
+                                href="/what-are-solana-address-lookup-tables.html"
+                                style="color: var(--accent); text-decoration: none;">deactivate and close it</a>.
                             Token Studio allows you to easily discover wallet-owned LUTs and batch deactivate or close
                             them seamlessly.</p>
                     </div>
@@ -877,19 +920,32 @@
                 <div class="faq-item">
                     <h3 class="faq-question">What is a Merkle Tree on Solana?</h3>
                     <div class="faq-answer">
-                        <p>Think of a <a href="/what-are-solana-merkle-trees.html" style="color: var(--accent); text-decoration: none;">Merkle Tree</a> like a family tree of digital fingerprints. At the bottom, every piece of data (like an NFT) is turned into a unique fingerprint. These fingerprints are paired up and combined repeatedly until you reach the very top, resulting in one single master fingerprint called the <strong>Merkle Root</strong>. On Solana, the network only stores this single root on-chain, while the actual data is kept off-chain by indexers. This allows millions of assets to be securely verified without paying the massive on-chain rent costs for each one.</p>
+                        <p>Think of a <a href="/what-are-solana-merkle-trees.html"
+                                style="color: var(--accent); text-decoration: none;">Merkle Tree</a> like a family tree
+                            of digital fingerprints. At the bottom, every piece of data (like an NFT) is turned into a
+                            unique fingerprint. These fingerprints are paired up and combined repeatedly until you reach
+                            the very top, resulting in one single master fingerprint called the <strong>Merkle
+                                Root</strong>. On Solana, the network only stores this single root on-chain, while the
+                            actual data is kept off-chain by indexers. This allows millions of assets to be securely
+                            verified without paying the massive on-chain rent costs for each one.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <h3 class="faq-question">What are Merkle Proofs?</h3>
                     <div class="faq-answer">
-                        <p>A Merkle Proof is a piece of mathematical evidence used to verify that your specific asset exists inside the tree. Instead of downloading or checking every single item, you only need the specific "path" of fingerprints that connects your asset to the master Merkle Root. The network checks your proof against the on-chain root, and if they match, your transaction is securely approved.</p>
+                        <p>A Merkle Proof is a piece of mathematical evidence used to verify that your specific asset
+                            exists inside the tree. Instead of downloading or checking every single item, you only need
+                            the specific "path" of fingerprints that connects your asset to the master Merkle Root. The
+                            network checks your proof against the on-chain root, and if they match, your transaction is
+                            securely approved.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <h3 class="faq-question">How can I create a Merkle Tree?</h3>
                     <div class="faq-answer">
-                        <p>You can easily <a href="/what-are-solana-merkle-trees.html" style="color: var(--accent); text-decoration: none;">create your own Merkle Trees</a> directly within Token Studio. The platform
+                        <p>You can easily <a href="/what-are-solana-merkle-trees.html"
+                                style="color: var(--accent); text-decoration: none;">create your own Merkle Trees</a>
+                            directly within Token Studio. The platform
                             supports creating both V1 and V2 Merkle Trees, complete with custom sizing parameters
                             depending on how many assets you plan to mint.</p>
                     </div>
@@ -1055,15 +1111,17 @@
                 <div class="faq-item">
                     <h3 class="faq-question">Does Token Studio collect personal data or telemetry?</h3>
                     <div class="faq-answer">
-                        <p>No. Token Studio operates with zero personally identifiable telemetry (no names or public
-                            addresses).</p>
+                        <p>Token Studio uses limited first-party telemetry for reliability, version support, and error
+                            reporting. Automatic reports exclude wallet addresses, asset addresses, transaction
+                            signatures, balances, and user content.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <h3 class="faq-question">Where are my private keys stored?</h3>
                     <div class="faq-answer">
-                        <p>Inside your hardware Seed Vault or connected wallet software (Phantom/Solflare). Token Studio
-                            never stores or accesses your keys.</p>
+                        <p>Inside your hardware Seed Vault or connected wallet software such as Phantom or Solflare.
+                            Token Studio cannot access or store your keys, even if it wanted to, because signing remains
+                            protected inside the connected wallet.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1095,17 +1153,66 @@
                 </div>
             </div>
 
-            <h2 class="category-title">Performance & Payload Optimization</h2>
+            <h2 class="category-title">Transaction History & Swaps</h2>
             <div class="faq-group">
                 <div class="faq-item">
-                    <h3 class="faq-question">What is 1232-byte MTU density packing?</h3>
+                    <h3 class="faq-question">Can I search and filter my Solana transaction history?</h3>
                     <div class="faq-answer">
-                        <p>Solana transactions have a maximum transmission unit (MTU) size limit of 1232 bytes. Token
-                            Studio packs maximum instructions into each transaction to minimize sign prompts.</p>
+                        <p>Yes. <a href="solana-transaction-history.html">Flight History</a> classifies downloaded
+                            transactions chronologically and combines text search with 17 primary filter properties and
+                            AND, OR, and NOT logic.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <h3 class="faq-question">Why does MTU packing matter for users?</h3>
+                    <h3 class="faq-question">How much transaction history can Token Studio download?</h3>
+                    <div class="faq-answer">
+                        <p>Standard access covers up to 16,000 transactions and 30 days. <a
+                                href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S"
+                                target="_blank" rel="noopener noreferrer">Token Time Vault</a> collectors can cover up
+                            to 128,000 transactions and 90 days. Available provider data and
+                            historical pricing can still limit the result.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Is the Flight History value graph a tax report?</h3>
+                    <div class="faq-answer">
+                        <p>No. It is wallet analysis based on available historical prices and best-effort transaction
+                            classification. Missing prices are skipped rather than invented, so the graph should not be
+                            treated as authoritative tax or accounting data.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">How does Token Studio protect me from a bad swap?</h3>
+                    <div class="faq-answer">
+                        <p><a href="solana-swap.html">Optimized Swaps</a> shows the route, quote age, price impact, and
+                            available costs. A projected wallet-value loss above 10% requires another confirmation, and
+                            a projected loss of 20% or more is blocked.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What are Token Studio's swap fees?</h3>
+                    <div class="faq-answer">
+                        <p>Established pairs range from 0% to 0.04%; eligible newly pooled non-pegged tokens use a 0.1%
+                            fee. <a href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S"
+                                target="_blank" rel="noopener noreferrer">Token Time Vault</a> collectors pay no Token Studio service fee. Jupiter, pool,
+                            network, rent, and market costs remain separate. See the <a href="fees.html">current fee
+                                schedule</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="category-title">Batch Transaction Performance</h2>
+            <div class="faq-group">
+                <div class="faq-item">
+                    <h3 class="faq-question">What is Solana V1 transaction packing?</h3>
+                    <div class="faq-answer">
+                        <p>Token Studio's Burn, Trim, and Batch Transfer tools use a V1 transaction shape with a
+                            4,096-byte envelope. The allocator fits as many compatible actions as the transaction's
+                            byte, address, instruction, and compute limits permit.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">Why does transaction packing matter for users?</h3>
                     <div class="faq-answer">
                         <p>Instead of approving 50 separate wallet prompts to burn 50 NFTs, Token Studio packs them into
                             minimal batch transactions.</p>
@@ -1151,8 +1258,9 @@
                     <h3 class="faq-question">What is the maximum number of items Token Studio can burn in one
                         transaction?</h3>
                     <div class="faq-answer">
-                        <p>As many instructions as fit strictly within Solana's 1232-byte MTU packet boundary (typically
-                            4-10 per tx depending on the type of asset).</p>
+                        <p>There is no honest fixed item count because different assets require different accounts and
+                            instructions. Token Studio fills each 4,096-byte V1 transaction up to its applicable byte,
+                            address, instruction, and compute limits.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1211,7 +1319,7 @@
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <div class="footer-logo">Token Studio</div>
+                    <a class="footer-logo" href="index.html" style="display: inline-block; color: #fff; text-decoration: none;">Token Studio</a>
                     <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the
                         Solana blockchain.</p>
                 </div>
@@ -1220,6 +1328,7 @@
                     <ul>
                         <li><a href="about.html">About & Vision</a></li>
                         <li><a href="features.html">Features & Toolset</a></li>
+                        <li><a href="fees.html">Fees & Pricing</a></li>
                         <li><a href="stories.html">Stories & Field Notes</a></li>
                         <li><a href="faq.html">Frequently Asked Questions</a></li>
                         <li><a href="changelog.html">Changelog & Releases</a></li>
@@ -1228,6 +1337,7 @@
                 <div class="footer-col">
                     <h5>Social</h5>
                     <ul>
+                        <li><a href="contact.html">Contact</a></li>
                         <li><a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer">Twitter / X</a>
                         </li>
                         <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank"

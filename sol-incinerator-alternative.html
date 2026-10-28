@@ -4,9 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clean Up Solana Wallet & Reclaim SOL Rent | Token Studio</title>
+    <title>Sol Incinerator Alternative: Verified NFT Burn Test</title>
     <meta name="description"
-        content="The premium Sol Incinerator alternative. Burn spam NFTs, close empty token accounts, and reclaim your SOL rent safely with our 1232-byte MTU payload density packing.">
+        content="Looking for a Sol Incinerator alternative? Compare decoded transactions, NFT rent recovery, effective fees, and net SOL returned by three Solana burners.">
+    <link rel="canonical" href="https://tokenstudio.dev/sol-incinerator-alternative.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tokenstudio.dev/sol-incinerator-alternative.html">
+    <meta property="og:title" content="Sol Incinerator Alternative: Verified NFT Burn Comparison">
+    <meta property="og:description"
+        content="Decoded transactions show how much SOL three NFT burners recovered, transferred as fees, and returned to the wallet.">
+    <meta property="og:image" content="https://tokenstudio.dev/screenshots/incinerator.jpg">
+    <meta property="og:image:width" content="2048">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:image:alt"
+        content="Sol Incinerator alternative comparison showing 0.0018 SOL versus 0.0066 SOL wallet recovery">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sol Incinerator Alternative: Verified NFT Burn Comparison">
+    <meta name="twitter:description"
+        content="Sol Incinerator recovered 0.00148844 SOL. Token Studio recovered 0.00625232 SOL from the same Legacy NFT account structure.">
+    <meta name="twitter:image" content="https://tokenstudio.dev/screenshots/incinerator.jpg">
+    <meta name="twitter:image:alt"
+        content="Sol Incinerator alternative comparison showing different SOL recovery results">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Sol Incinerator Alternative: Verified NFT Burn Comparison",
+      "description": "A reproducible comparison of Sol Incinerator, Burn & Claim, and Token Studio using decoded Solana transaction payloads.",
+      "image": "https://tokenstudio.dev/screenshots/incinerator.jpg",
+      "datePublished": "2026-10-27",
+      "dateModified": "2026-10-27",
+      "author": {"@type": "Person", "name": "impylse", "url": "https://x.com/impylse"},
+      "publisher": {"@type": "Organization", "name": "Token Studio", "url": "https://tokenstudio.dev/"},
+      "mainEntityOfPage": "https://tokenstudio.dev/sol-incinerator-alternative.html"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://tokenstudio.dev/"},
+        {"@type":"ListItem","position":2,"name":"Stories & Field Notes","item":"https://tokenstudio.dev/stories.html"},
+        {"@type":"ListItem","position":3,"name":"Sol Incinerator Alternative","item":"https://tokenstudio.dev/sol-incinerator-alternative.html"}
+      ]
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,9 +109,9 @@
         }
 
         .container {
-            max-width: 900px;
+            width: min(100% - 48px, 1120px);
+            max-width: none;
             margin: 0 auto;
-            padding: 0 24px;
             animation: fadeIn 0.6s ease-out;
         }
 
@@ -102,7 +146,7 @@
         }
 
         .logo-text {
-            font-size: 34px;
+            font-size: 28px;
             font-weight: 800;
             letter-spacing: -1px;
             background: linear-gradient(135deg, #fff 0%, var(--text-secondary) 100%);
@@ -264,6 +308,184 @@
             max-width: 800px;
         }
 
+        .report-card {
+            padding: 34px;
+            margin-top: 28px;
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.035);
+            backdrop-filter: blur(20px);
+        }
+
+        .report-card h2 {
+            color: var(--accent);
+            font-size: 30px;
+            line-height: 1.25;
+            margin-bottom: 14px;
+        }
+
+        .report-card h3 {
+            margin: 28px 0 10px;
+            font-size: 22px;
+        }
+
+        .report-card p,
+        .report-card li {
+            color: var(--text-secondary);
+            font-size: 17px;
+        }
+
+        .report-card ul,
+        .report-card ol {
+            padding-left: 24px;
+            margin-top: 12px;
+        }
+
+        .report-card li {
+            margin-bottom: 8px;
+        }
+
+        .finding {
+            color: #fff;
+            font-size: 21px;
+            line-height: 1.5;
+            margin-top: 10px;
+        }
+
+        .finding strong {
+            color: var(--accent);
+        }
+
+        .comparison-figure {
+            margin: 28px 0 0;
+        }
+
+        .comparison-figure img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+        }
+
+        .comparison-figure figcaption {
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.58);
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .table-wrap {
+            overflow: hidden;
+            margin: 26px 0 14px;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.24);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 13px 10px;
+            border-bottom: 1px solid var(--card-border);
+            text-align: right;
+            vertical-align: middle;
+            overflow-wrap: anywhere;
+        }
+
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            text-align: left;
+            width: 28%;
+        }
+
+        .comparison-table th {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.055);
+            font-size: 15px;
+        }
+
+        .comparison-table td {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .comparison-table .winner {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .comparison-table .failure {
+            color: #ff9b9b;
+            font-weight: 600;
+        }
+
+        .fine-print {
+            font-size: 14px !important;
+            color: rgba(255, 255, 255, 0.55) !important;
+        }
+
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .evidence-item {
+            padding: 18px;
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .evidence-item span {
+            display: block;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 6px;
+        }
+
+        .evidence-item code,
+        details code {
+            color: #fff;
+            overflow-wrap: anywhere;
+            font-size: 13px;
+        }
+
+        details {
+            margin-top: 14px;
+            padding: 16px 18px;
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        summary {
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        details p {
+            margin-top: 12px;
+        }
+
+        a {
+            color: var(--accent);
+        }
+
         .back-btn {
             display: inline-flex;
             align-items: center;
@@ -350,6 +572,10 @@
         }
 
         @media (max-width: 768px) {
+            .container {
+                width: min(100% - 32px, 1120px);
+            }
+
             .hero h1 {
                 font-size: 40px;
             }
@@ -374,6 +600,26 @@
                 flex-direction: column;
                 gap: 16px;
                 text-align: center;
+            }
+
+            .report-card {
+                padding: 24px 18px;
+            }
+
+            .evidence-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 9px 5px;
+                font-size: 11px;
+                line-height: 1.3;
+            }
+
+            .comparison-table th:first-child,
+            .comparison-table td:first-child {
+                width: 31%;
             }
         }
     </style>
@@ -401,76 +647,330 @@
     <div class="container">
 
         <section class="hero">
-            <h1>The Most Economical Way to Clean Your Solana Wallet</h1>
-            <p>Stop paying per-asset burn fees. Token Studio uses a flat-fee model and 1232-byte MTU payload packing to
-                burn more assets per transaction, saving you money and maximizing your reclaimed SOL rent.</p>
+            <h1>Sol Incinerator Alternative: A Verified NFT Burn Comparison</h1>
+            <p>If you are searching for a Sol Incinerator alternative, this report compares decoded transaction
+                payloads rather than advertised fee percentages. We submitted the same Legacy NFT account structure,
+                simulated each captured transaction against the same live accounts, and measured the SOL each burner
+                actually returned.</p>
 
-            <div class="cta-group" style="margin-top: 40px;">
-                <a href="https://play.google.com/store/apps/details?id=com.tokenstudio.dev" target="_blank"
-                    rel="noopener noreferrer" class="store-badge-link">
-                    <img src="assets/google-play-badge.svg" alt="Get it on Google Play" class="store-badge">
-                </a>
-                <a href="solanadappstore://details?id=com.tokenstudio.app" class="store-badge-link">
-                    <img src="assets/solana-dapp-store-badge.svg" alt="Get it on the Solana dApp Store"
-                        class="store-badge">
-                </a>
-                <a href="https://discord.gg/mkb9apzpbT" class="btn btn-discord" target="_blank"
-                    rel="noopener noreferrer">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z" />
-                    </svg>
-                    Join Discord
-                </a>
+        </section>
+
+        <section class="report-card" id="test-results">
+            <h2>TL;DR</h2>
+            <p class="finding">Across three decoded payloads, the same Legacy NFT produced results ranging from
+                <strong>0.001441416 SOL</strong> to <strong>0.00624348 SOL</strong> net wallet increase.
+            </p>
+
+            <div class="table-wrap">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>October 27, 2026 test</th>
+                            <th>Sol Incinerator</th>
+                            <th>Burn &amp; Claim</th>
+                            <th>Token Studio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Evidence</td>
+                            <td>Decoded and simulated</td>
+                            <td>Decoded and simulated</td>
+                            <td>Decoded and simulated</td>
+                        </tr>
+                        <tr>
+                            <td>Transaction format</td>
+                            <td>Solana V0</td>
+                            <td>Solana V0</td>
+                            <td class="winner">Solana V1</td>
+                        </tr>
+                        <tr>
+                            <td>Serialized transaction size</td>
+                            <td>406 bytes</td>
+                            <td class="failure">563 bytes</td>
+                            <td class="winner">438 bytes</td>
+                        </tr>
+                        <tr>
+                            <td>Token account closed</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Metadata account closed</td>
+                            <td class="failure">No</td>
+                            <td>Yes</td>
+                            <td class="winner">Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Edition account closed</td>
+                            <td class="failure">No</td>
+                            <td>Yes</td>
+                            <td class="winner">Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Gross SOL recovered</td>
+                            <td>0.00148844</td>
+                            <td class="winner">0.00625232</td>
+                            <td class="winner">0.00625232</td>
+                        </tr>
+                        <tr>
+                            <td>SOL stranded forever</td>
+                            <td class="failure">0.00476388</td>
+                            <td>0</td>
+                            <td class="winner">0</td>
+                        </tr>
+                        <tr>
+                            <td>Transfer to fee wallet</td>
+                            <td>0.000040782</td>
+                            <td class="failure">0.001926528</td>
+                            <td class="winner">0* (0.00005002 standard)</td>
+                        </tr>
+                        <tr>
+                            <td>Effective service fee</td>
+                            <td>2.74%</td>
+                            <td class="failure">30.81%</td>
+                            <td class="winner">0%* (0.8% standard)</td>
+                        </tr>
+                        <tr>
+                            <td>Network fee</td>
+                            <td>0.000006242</td>
+                            <td>0.000014003</td>
+                            <td>0.00000884</td>
+                        </tr>
+                        <tr>
+                            <td>Net wallet increase</td>
+                            <td>0.001441416</td>
+                            <td>0.004311789</td>
+                            <td class="winner">0.00624348* (0.00619346 standard)</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+            <p class="fine-print">*The exact Token Studio test used the developer's own wallet, which holds an official
+                Token Studio NFT and therefore paid no Token Studio service fee. Values in parentheses show what a
+                standard wallet would have paid and retained: a 0.8% fee of approximately 0.00005002 SOL, leaving
+                approximately 0.00619346 SOL after the simulated network fee.</p>
+
+            <figure class="comparison-figure">
+                <img src="screenshots/incinerator.jpg"
+                    alt="Sol Incinerator alternative comparison between Sol Incinerator and Token Studio wallet transaction previews"
+                    width="2048" height="1024" loading="eager">
+                <figcaption>Wallet previews from the comparison: Sol Incinerator displayed approximately 0.0018 SOL,
+                    while Token Studio displayed approximately 0.0066 SOL for the complete NFT burn path.</figcaption>
+            </figure>
+        </section>
+
+        <section class="report-card">
+            <h2>What Sol Incinerator actually submitted</h2>
+            <p>The transaction called Sol Incinerator's <code>BURNow...</code> program with an instruction named
+                <code>BurnAllTokensAndCloseAccount</code>. Simulation showed four internal calls:
+            </p>
+            <ol>
+                <li>Burn the NFT token through the SPL Token program.</li>
+                <li>Close the NFT's associated token account.</li>
+                <li>Execute one System Program transfer.</li>
+                <li>Execute a second System Program transfer.</li>
+            </ol>
+            <p>The NFT's metadata and edition addresses were not included anywhere in the transaction. A Solana
+                program cannot modify an account that the transaction did not provide. Consequently, this payload
+                could not close either account.</p>
+
+            <h3>The SOL it did not recover</h3>
+            <div class="table-wrap">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Account</th>
+                            <th>Live balance</th>
+                            <th>Sol Incinerator</th>
+                            <th>Token Studio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Associated token account</td>
+                            <td>0.00148844 SOL</td>
+                            <td>Closed</td>
+                            <td>Closed</td>
+                        </tr>
+                        <tr>
+                            <td>Metadata PDA</td>
+                            <td>0.00373380 SOL</td>
+                            <td class="failure">Left open</td>
+                            <td class="winner">Closed</td>
+                        </tr>
+                        <tr>
+                            <td>Edition PDA</td>
+                            <td>0.00103008 SOL</td>
+                            <td class="failure">Left open</td>
+                            <td class="winner">Closed</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Recoverable total</strong></td>
+                            <td><strong>0.00625232 SOL</strong></td>
+                            <td>0.00148844 SOL</td>
+                            <td class="winner">0.00625232 SOL</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Once the NFT token is burned and its token account is closed separately, the normal complete Metaplex
+                burn path is no longer available in the same form. The omitted metadata and edition balances are not
+                merely a smaller refund; they are onchain accounts left behind by the operation.</p>
+        </section>
+
+        <section class="report-card">
+            <h2>The advertised 2% behaved like 2.74%</h2>
+            <p>The associated token account held 1,488,440 lamports. Sol Incinerator's recipient gained 40,782
+                lamports during simulation. That is 2.74% of the amount its transaction actually recovered.</p>
+            <p>There is an unusually precise explanation. The former rent-exempt balance for a 165-byte token account
+                was 2,039,280 lamports. Two percent of that older amount is approximately 40,786 lamports, almost
+                exactly the fee observed in this payload. The evidence is consistent with a fee derived from the old
+                token-account rent requirement instead of the account's current balance. This report cannot establish
+                the implementation method without Sol Incinerator's source code, but it can establish the inputs and
+                outputs recorded by the simulation.</p>
+            <p>This distinction is increasingly important. Solana is rolling out SIMD-0437, which reduces account rent
+                deposits in stages and targets a 90% total reduction. The current balance in this test already reflects
+                the lower 5,080-lamports-per-byte rate. A fee based on the former fixed amount becomes a progressively
+                larger percentage of the SOL actually recovered as rent requirements fall. See Solana Foundation's
+                <a href="https://solana.com/upgrades/reduced-rent" target="_blank" rel="noopener noreferrer">Reduced
+                    Rent overview</a> and the
+                <a href="https://github.com/solana-foundation/solana-improvement-documents/blob/main/proposals/0437-incremental-rent-reduction.md"
+                    target="_blank" rel="noopener noreferrer">SIMD-0437 specification</a>.
+            </p>
+        </section>
+
+        <section class="report-card">
+            <h2>Thirty-two extra bytes recovered 4.20 times more SOL</h2>
+            <p>Sol Incinerator's incomplete V0 transaction was 406 bytes. Token Studio's complete V1 transaction was
+                438 bytes, only 32 bytes larger.</p>
+            <p>Token Studio called the official Metaplex Token Metadata program directly and supplied the token
+                account, mint, metadata PDA, and edition PDA. The resulting burn closed all three closable accounts in
+                one operation. Sol Incinerator instead routed the operation through its custom program, omitted two of
+                those accounts, and added two internal System Program transfers.</p>
+            <p>This is why fee percentages alone are a poor way to compare burners. A lower percentage does not help
+                when the transaction fails to recover most of the available SOL.</p>
+
+            <h3>Fee transfers also consume batch capacity</h3>
+            <p>The tested Sol Incinerator operation made two internal System Program transfers in addition to its burn
+                and close calls. Every extra call consumes transaction execution capacity. Token Studio calculates one
+                service fee for the complete batch and places one fee transfer at the end, or none for an exempt
+                collector.</p>
+        </section>
+
+        <section class="report-card">
+            <h2>Should you rely on Sol Incinerator for Legacy NFT burns?</h2>
+            <p class="finding"><strong>Based on this reproducible failure, no.</strong> A burn is irreversible. A tool
+                that omits recoverable NFT accounts can destroy the token first and leave the user without the complete
+                recovery that a standard Metaplex burn would have produced.</p>
+            <p>The issue does not have to affect every collection to be serious. Users cannot reasonably inspect a
+                serialized transaction to determine whether metadata and edition accounts are missing before they sign.
+                The burner is responsible for identifying the NFT structure, constructing the complete operation, and
+                calculating its advertised percentage from current onchain values.</p>
+        </section>
+
+        <section class="report-card" id="methodology">
+            <h2>Evidence and reproduction details</h2>
+            <p>The three captured unsigned payloads targeted the same wallet, mint, and associated token account. We
+                decoded the
+                transactions locally and simulated them through Solana mainnet RPC with signature verification disabled
+                and a replacement blockhash. No transaction was submitted during this comparison.</p>
+            <div class="evidence-grid">
+                <div class="evidence-item"><span>Wallet</span><code>AyPmiJNbxQsVJfLzuvNvL3GZ13BcmSnk27Tmb7nHWhvV</code>
+                </div>
+                <div class="evidence-item"><span>NFT
+                        mint</span><code>6isyE1csV4je6T7DpqZCf8H2VRNJD4dQdREmrcGRA9j1</code></div>
+                <div class="evidence-item"><span>Token
+                        account</span><code>AP1qTb4eUqWS8jLbpDY1pfgmbt5UJ4ZU9a46RJ498bT7</code></div>
+                <div class="evidence-item"><span>Metadata
+                        PDA</span><code>9MDdKhc5JMwUMUqyh9DC2trkavqkiYFwMUNug3mdummH</code></div>
+                <div class="evidence-item"><span>Edition
+                        PDA</span><code>3xRMY6aD8ja822kdBJRLGrFW26X3jAzWpeC4tyESRJ3D</code></div>
+                <div class="evidence-item"><span>Observed account slot</span><code>462164213</code></div>
+                <div class="evidence-item"><span>Sol Incinerator simulation slot</span><code>462164294</code></div>
+                <div class="evidence-item"><span>Burn &amp; Claim simulation slot</span><code>462173209</code></div>
+                <div class="evidence-item"><span>Token Studio simulation slot</span><code>462164363</code></div>
+            </div>
+            <details>
+                <summary>Sol Incinerator payload</summary>
+                <p><code>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAECJQrdGyNUv7msQvC8ryildhlGmZOvSRju6CHuYmpVljmi1znos8YN1hQjhyzpzPckIWesKc+P/CUcbDnO79BEmpVBOEKzIliqoSTp3Sw5r/WMGMYAB9lL7wXmKllovMHLAjxg7ZRH3iqKI9oOyADdEkZYzI0Fph8TIzXNeS4ak8NAwZGb+UhFzL/7K26csOb57yM5bvF9xJrLEObOkAAAACbmxz4dB6LD/mStmA4ylu3CsdqWFijAHls2pP/InA3Bwbd9uHXZaGT2cvhRs7reawctIXtX1s3kTqM9YV+/wCpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACG67kM+DtypZLErRlKAdWZQs4lffE9AGrzc9Ja9t+HHwMEAAUCfjAAAAQACQOghgEAAAAAAAUHAAYBAgMHAxBVSLi+2EFjgEoAAAAAAAAAAA==</code>
+                </p>
+            </details>
+            <details>
+                <summary>Burn &amp; Claim payload</summary>
+                <p><code>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAGDJQrdGyNUv7msQvC8ryildhlGmZOvSRju6CHuYmpVljmfAtjXPM538pSxnWFkTcsvSgdECZM0ImPcjeTiw6Uchgr6dsH0qTu3j6cgdcqvrcmOmk3rR8GrAhGQBgcx1Il1FUE4QrMiWKqhJOndLDmv9YwYxgAH2UvvBeYqWWi8wcsi1znos8YN1hQjhyzpzPckIWesKc+P/CUcbDnO79BEmoInvk8aAf2AVUqie+XdYP0icwF9EAYalqgWs3HrU8VuwMGRm/lIRcy/+ytunLDm+e8jOW7xfcSayxDmzpAAAAACJuUvWCxq41GmfOHFnR9FcIK1RdTvaSrGrF8Z/WlcP0LcGWx49F8RTidUn9rBMPNWLhscxqg/bVJttG8A/gpRgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABqfVFxh70WY12tQEVf3CwMEkxo8hVnWl27rLXwgAAAAG3fbh12Whk9nL4UbO63msHLSF7V9bN5E6jPWFfv8AqSpds8u2/Ydm2Sxu0pRqPDnyZqbdTaZq3e+CrM1tCKyoBQYABQKghgEABgAJA6pfAQAAAAAABwAI7TSk+ZVxDVwIDgAIAQIDBAgICAgICQoLCikAAQAAAAAAAAAJAgAFDAIAAACAZR0AAAAAAAA=</code>
+                </p>
+            </details>
+            <details>
+                <summary>Token Studio payload</summary>
+                <p><code>gQEABA8AAADOsXrNhJVcicXT5JUhxppjhCSGBL54T//CvJls9KC+DgEJlCt0bI1S/uaxC8LyvKKV2GUaZk69JGO7oIe5ialWWOYr6dsH0qTu3j6cgdcqvrcmOmk3rR8GrAhGQBgcx1Il1FUE4QrMiWKqhJOndLDmv9YwYxgAH2UvvBeYqWWi8wcsfAtjXPM538pSxnWFkTcsvSgdECZM0ImPcjeTiw6UchiLXOeizxg3WFCOHLOnM9yQhZ6wpz4/8JRxsOc7v0ESagAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC3BlsePRfEU4nVJ/awTDzVi4bHMaoP21SbbRvAP4KUYGp9UXGHvRZjXa1ARV/cLAwSTGjyFWdaXbustfCAAAAAbd9uHXZaGT2cvhRs7reawctIXtX1s3kTqM9YV+/wCpAA8AAAAAAADAcgAAAIAOAAYOCgAAAwMBAgQGBgYGBgUHCCkAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</code>
+                </p>
+            </details>
+
+            <h3>Scope and fairness</h3>
+            <p>This is a documented result for one Legacy NFT tested on October 27, 2026. Other NFTs tested through Sol
+                Incinerator did include the complete account set and recovered their metadata-related balances. We do
+                not claim that every Sol Incinerator burn has this failure. For Sol Incinerator, this payload, its
+                account balances, and both successful simulations make the specific result independently reproducible.
+            </p>
+            <p>The collection had no remaining items at the time of testing. That may be relevant to the failure, but
+                the payload alone does not prove its cause.</p>
         </section>
 
         <!-- Solana Wallet Cleaning & Optimization -->
         <section class="category-section">
-            <h2 class="category-title" style="font-size: 24px; margin-bottom: 20px;">Solana Wallet Cleaning &
-                Optimization</h2>
+            <h2 class="category-title" style="font-size: 24px; margin-bottom: 20px;">How Token Studio Approaches Wallet
+                Cleanup</h2>
             <div class="features-list">
                 <div class="feature-row">
-                    <h3>Flat Fee vs. Per-Asset Fee</h3>
-                    <p>Sol Incinerator charge a fee for every single NFT burned, which adds a fee transfer instruction
-                        for each asset. This bloats the transaction size and limits how many NFTs you can burn at once.
-                        Token Studio charges a flat fee per transaction, whether you burn 2 NFTs or 20, the fee is
-                        exactly the same. It's wildly more economical.</p>
+                    <h3>A fee tied to recovered SOL</h3>
+                    <p>Burn and Trim cost 0.8% of estimated SOL recovery, capped at 0.01 SOL per transaction. If Token
+                        Studio cannot estimate the recovery safely, the percentage fee is zero. See the complete
+                        <a href="fees.html">Token Studio fee schedule</a>.
+                    </p>
                 </div>
                 <div class="feature-row">
-                    <h3>1232-Byte Maximum Payload Density</h3>
-                    <p>Because we don't bloat transactions with per-asset fee instructions, our custom packer can
-                        utilize the absolute maximum 1232-byte limit of the Solana network. This means you can pack and
-                        burn more assets in a single click than anywhere else.</p>
-                </div>
-                <div class="feature-row">
-                    <h3>Mixed Asset Processing</h3>
-                    <p>Burn NFTs, clear out scam tokens, and close empty token accounts simultaneously within the exact
-                        same transaction batch. No need to switch between different tools or tabs.</p>
+                    <h3>4,096-byte Solana V1 batch transactions</h3>
+                    <p>Token Studio measures the accounts and instructions required by each selected asset, then fits
+                        the largest compatible group it can into each 4,096-byte transaction. That means fewer
+                        transactions and fewer wallet approval prompts for large cleanup jobs.</p>
                 </div>
                 <div class="feature-row">
                     <h3>Wallet Health Reporter</h3>
-                    <p>A unique diagnostic tool that evaluates your wallet across multiple data points, including
-                        identifying empty token accounts. We tell you exactly what you can burn and close to
-                        improve your wallet health and get the most SOL back.</p>
+                    <p>A 14-signal report identifies empty accounts, recoverable rent, suspicious metadata, active
+                        approvals, staking efficiency, and other conditions that may deserve attention.</p>
                 </div>
                 <div class="feature-row">
                     <h3>Bulk Burn NFTs & Scam Tokens</h3>
-                    <p>Select and burn hundreds of NFTs and tokens in a single click. Token Studio auto-sorts
-                        and tightly packs assets into full 1232-byte payload transactions.</p>
-                </div>
-                <div class="feature-row">
-                    <h3>Close Empty Token Accounts</h3>
-                    <p>Scan and automatically close unused accounts left behind by your onchain activity or improperly
-                        burned assets to recover
-                        locked SOL rent from back to your main
-                        balance..</p>
+                    <p>Select large mixed groups of NFTs and tokens. Token Studio orders compatible assets and divides
+                        them into safe transaction batches for wallet approval.</p>
                 </div>
             </div>
+            <p style="margin-top: 24px; color: var(--text-secondary);">For the complete cleanup workflow, asset
+                standards, pre-flight checks, and recovery policy, see the <a href="cheapest-solana-burner.html"
+                    style="color: var(--accent);">Token Studio Burner</a>.</p>
         </section>
 
+        <div class="cta-group" style="margin-top: 50px;">
+            <a href="https://play.google.com/store/apps/details?id=com.tokenstudio.dev" target="_blank"
+                rel="noopener noreferrer" class="store-badge-link">
+                <img src="assets/google-play-badge.svg" alt="Get it on Google Play" class="store-badge">
+            </a>
+            <a href="solanadappstore://details?id=com.tokenstudio.app" class="store-badge-link">
+                <img src="assets/solana-dapp-store-badge.svg" alt="Get it on the Solana dApp Store" class="store-badge">
+            </a>
+            <a href="https://discord.gg/mkb9apzpbT" class="btn btn-discord" target="_blank" rel="noopener noreferrer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z" />
+                </svg>
+                Join Discord
+            </a>
+        </div>
+
         <div style="margin-top: 50px;">
-            <a href="index.html" class="back-btn">← Back to Token Studio</a>
+            <a href="stories.html" class="back-btn">← Back to Stories &amp; Field Notes</a>
         </div>
 
     </div>
@@ -479,7 +979,7 @@
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <div class="footer-logo">Token Studio</div>
+                    <a class="footer-logo" href="index.html" style="display: inline-block; color: #fff; text-decoration: none;">Token Studio</a>
                     <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the
                         Solana blockchain.</p>
                 </div>
@@ -488,6 +988,7 @@
                     <ul>
                         <li><a href="about.html">About & Vision</a></li>
                         <li><a href="features.html">Features & Toolset</a></li>
+                        <li><a href="fees.html">Fees & Pricing</a></li>
                         <li><a href="stories.html">Stories & Field Notes</a></li>
                         <li><a href="faq.html">Frequently Asked Questions</a></li>
                         <li><a href="changelog.html">Changelog & Releases</a></li>
@@ -496,6 +997,7 @@
                 <div class="footer-col">
                     <h5>Social</h5>
                     <ul>
+                        <li><a href="contact.html">Contact</a></li>
                         <li><a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer">Twitter / X</a>
                         </li>
                         <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank"

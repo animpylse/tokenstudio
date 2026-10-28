@@ -2,25 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://tokenstudio.dev/</loc>
-        <lastmod>2026-07-29</lastmod>
+        <lastmod>2026-10-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://tokenstudio.dev/about.html</loc>
-        <lastmod>2026-07-29</lastmod>
+        <lastmod>2026-10-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://tokenstudio.dev/contact.html</loc>
+        <lastmod>2026-10-27</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://tokenstudio.dev/features.html</loc>
-        <lastmod>2026-08-17</lastmod>
+        <lastmod>2026-10-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://tokenstudio.dev/solana-wallet.html</loc>
+        <lastmod>2026-10-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://tokenstudio.dev/fees.html</loc>
+        <lastmod>2026-10-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.95</priority>
+    </url>
+    <url>
         <loc>https://tokenstudio.dev/faq.html</loc>
-        <lastmod>2026-07-30</lastmod>
+        <lastmod>2026-10-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.95</priority>
     </url>
@@ -38,13 +56,13 @@
     </url>
     <url>
         <loc>https://tokenstudio.dev/changelog.html</loc>
-        <lastmod>2026-07-29</lastmod>
+        <lastmod>2026-10-26</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://tokenstudio.dev/stories.html</loc>
-        <lastmod>2026-08-03</lastmod>
+        <lastmod>2026-10-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -56,7 +74,7 @@
     </url>
     <url>
         <loc>https://tokenstudio.dev/privacy.html</loc>
-        <lastmod>2026-06-19</lastmod>
+        <lastmod>2026-10-27</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
@@ -80,14 +98,50 @@
     </url>
     <url>
         <loc>https://tokenstudio.dev/sol-incinerator-alternative.html</loc>
-        <lastmod>2026-09-06</lastmod>
+        <lastmod>2026-10-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.95</priority>
+    </url>
+    <url>
+        <loc>https://tokenstudio.dev/cheapest-solana-burner.html</loc>
+        <lastmod>2026-10-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://tokenstudio.dev/solana-swap.html</loc>
+        <lastmod>2026-10-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://tokenstudio.dev/solana-transaction-history.html</loc>
+        <lastmod>2026-10-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://tokenstudio.dev/security-and-independence.html</loc>
+        <lastmod>2026-10-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://tokenstudio.dev/solana-nft-minter.html</loc>
-        <lastmod>2026-09-06</lastmod>
+        <lastmod>2026-10-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://tokenstudio.dev/what-are-solana-address-lookup-tables.html</loc>
+        <lastmod>2026-10-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://tokenstudio.dev/what-are-solana-merkle-trees.html</loc>
+        <lastmod>2026-09-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
 </urlset>

@@ -89,7 +89,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1120px;
             margin: 0 auto 40px;
             padding: 36px 24px 40px;
             animation: fadeIn 0.6s ease-out;
@@ -296,7 +296,7 @@
         }
 
         .footer-container {
-            max-width: 1100px;
+            max-width: 1120px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -413,6 +413,86 @@
         </div>
 
         <div class="timeline">
+
+            <!-- 0.28.379-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">0.28.379-beta</span>
+                    <time class="release-date">October 26, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">New Feature</span>
+                        <div><strong>Advanced Transaction Filters:</strong> Bring powerful history filtering to the Flight History dashboard. Combine any of the 16+ modular property filters with three logical operators to surface any transaction, aggregate only your P&amp;L, or build anything else you can imagine.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">New Feature</span>
+                        <div><strong>Favorites Management:</strong> You can now manage your favorites list.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-perf">Perf</span>
+                        <div><strong>Solana V1 Batch Transactions:</strong> Batch Burn, Trim, and Transfer now use the newest Solana V1 transaction shape, drastically increasing the number of assets and account operations that can fit into each transaction.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">New Feature</span>
+                        <div><strong>Fungible Token Batch Transfers:</strong> You can now batch transfer fungible tokens too. Migrate your entire wallet to a new address with just a few clicks.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">New Feature</span>
+                        <div><strong>Black Box Recovery:</strong> A convenient way to automatically download your transaction history, available from the dropdown menu in the History tab.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-perf">Perf</span>
+                        <div><strong>GPU-Accelerated Animations:</strong> Most animations now run on the GPU, keeping them much smoother while the CPU is busy.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-hotfix">Fees</span>
+                        <div><strong>Updated Fee Structure:</strong> Because the new Solana V1 transaction shape can allow up to four times more tokens per transaction, a fixed fee of 0.0001 SOL per burn transaction no longer makes sense. Burn and Trim service fees are now 0.8% of estimated SOL recovery. Compressed NFT burns add a small flat fee of approximately 0.00005 SOL, while Batch Transfer now costs only 0.00001 SOL per transferred item. This is typically 2.5x&ndash;10x cheaper when interacting with one token and now scales proportionally with transaction size. TTV collectors remain fee-free across the entire Token Studio control surface.</div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- 0.27.360-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">0.27.360-beta</span>
+                    <time class="release-date">October 12, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">New Feature</span>
+                        <div><strong>Experimental External Position Discovery:</strong> Added discovery for external positions. This data is not authoritative and may not always display correctly.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-feature">New Feature</span>
+                        <div><strong>Transaction History:</strong> The new History tab downloads, parses, and classifies your transactions in chronological order. Jump to any indexed day, open a transaction for more details, copy a recipient, or explore their wallet directly in Read-Only mode&mdash;almost entirely eliminating the need for an on-chain explorer. If you spot a misclassified transaction, please report it.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Migrated JUP stake discovery to be fully on-chain, so staked JUP no longer disappears when Jupiter's servers are unavailable.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Restored image and GIF loading when a wallet is not connected, fixing a regression introduced by the previous media-handling improvements.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Fixed Core Assets being misclassified as Core Collections in Recent Changes.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Fixed full-balance SOL transfers being rejected because the base transaction fee was calculated incorrectly.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-ux">UX</span>
+                        <div>Various UI/UX improvements.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div>Various bug fixes.</div>
+                    </li>
+                </ul>
+            </article>
 
             <!-- 0.26.328-beta -->
             <article class="release-entry">
@@ -1293,7 +1373,7 @@
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <div class="footer-logo">Token Studio</div>
+                    <a class="footer-logo" href="index.html" style="display: inline-block; color: #fff; text-decoration: none;">Token Studio</a>
                     <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the
                         Solana blockchain.</p>
                 </div>
@@ -1302,6 +1382,7 @@
                     <ul>
                         <li><a href="about.html">About & Vision</a></li>
                         <li><a href="features.html">Features & Toolset</a></li>
+                        <li><a href="fees.html">Fees & Pricing</a></li>
                         <li><a href="stories.html">Stories & Field Notes</a></li>
                         <li><a href="faq.html">Frequently Asked Questions</a></li>
                         <li><a href="changelog.html">Changelog & Releases</a></li>
@@ -1310,6 +1391,7 @@
                 <div class="footer-col">
                     <h5>Social</h5>
                     <ul>
+                        <li><a href="contact.html">Contact</a></li>
                         <li><a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer">Twitter / X</a>
                         </li>
                         <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank"

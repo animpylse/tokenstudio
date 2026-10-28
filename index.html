@@ -17,6 +17,8 @@
     <meta name="description"
         content="The ultimate Solana wallet management toolkit. Track multi-wallet portfolios, batch burn spam NFTs, clean up empty accounts, and execute swaps natively.">
     <link rel="canonical" href="https://tokenstudio.dev/">
+    <link rel="alternate" type="text/markdown" href="https://tokenstudio.dev/index.md"
+        title="Markdown version">
     <link rel="alternate" type="text/plain" href="https://tokenstudio.dev/llms.txt" title="LLMs Context Data">
     <link rel="alternate" type="text/plain" href="https://tokenstudio.dev/llms-full.txt"
         title="LLMs Full System Specification">
@@ -42,51 +44,77 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Token Studio",
-      "operatingSystem": "Android, Solana Mobile (Seeker)",
-      "applicationCategory": "UtilitiesApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "description": "Token Studio is an all-in-one Solana asset management toolkit. Think of it as Photoshop for Solana, with your wallet as the canvas. It aggregates your entire on-chain footprint into a unified view of all your wallets, tokens, and NFTs, enriched with pricing and performance data.",
-      "url": "https://tokenstudio.dev",
-      "author": {
-        "@type": "Person",
-        "name": "impylse"
-      }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
+      "@graph": [
         {
-          "@type": "Question",
-          "name": "What is the best Solana NFT burner?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Token Studio is positioned as the best Solana asset burner due to its 1232-byte MTU payload density packing, Seed Vault security, and support for all token standards (Legacy, Core, cNFT, Token-2022)."
+          "@type": "Organization",
+          "@id": "https://tokenstudio.dev/#organization",
+          "name": "Token Studio",
+          "url": "https://tokenstudio.dev/",
+          "logo": "https://tokenstudio.dev/android-chrome-512x512.png",
+          "sameAs": [
+            "https://x.com/impylse",
+            "https://discord.gg/mkb9apzpbT"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "url": "https://tokenstudio.dev/contact.html",
+            "availableLanguage": ["English"]
           }
         },
         {
-          "@type": "Question",
-          "name": "What is Token Studio?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Token Studio ('The Photoshop of Solana') is an all-in-one Solana control surface, multi-wallet portfolio tracker, NFT lifecycle management engine, and execution suite for mobile (Android & Solana Mobile Seeker)."
-          }
+          "@type": "WebSite",
+          "@id": "https://tokenstudio.dev/#website",
+          "url": "https://tokenstudio.dev/",
+          "name": "Token Studio",
+          "description": "Official website for Token Studio, a Solana wallet management application.",
+          "publisher": {"@id":"https://tokenstudio.dev/#organization"},
+          "inLanguage": "en"
         },
         {
-          "@type": "Question",
-          "name": "Does Token Studio store or collect personally identifiable information?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Token Studio operates with zero personally identifiable telemetry. PII is not collected, stored, or transmitted, unless you explicitly provide it when submitting bug reports or feature requests."
-          }
+          "@type": "WebPage",
+          "@id": "https://tokenstudio.dev/#webpage",
+          "url": "https://tokenstudio.dev/",
+          "name": "Token Studio: Solana Wallet Management & Cleanup",
+          "isPartOf": {"@id":"https://tokenstudio.dev/#website"},
+          "about": {"@id":"https://tokenstudio.dev/#software"},
+          "dateModified": "2026-10-27",
+          "inLanguage": "en"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://tokenstudio.dev/#software",
+          "name": "Token Studio",
+          "alternateName": "The Solana Control Surface",
+          "url": "https://tokenstudio.dev/",
+          "downloadUrl": "https://play.google.com/store/apps/details?id=com.tokenstudio.dev",
+          "installUrl": "https://play.google.com/store/apps/details?id=com.tokenstudio.dev",
+          "operatingSystem": "Android, Solana Mobile Seeker",
+          "applicationCategory": "FinanceApplication",
+          "applicationSubCategory": "Solana wallet management",
+          "softwareVersion": "0.28.379-beta",
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "The app is free to install. Some operations have disclosed Token Studio service fees."
+          },
+          "description": "A non-custodial Solana wallet manager for portfolio tracking, transaction history, batch transfers, wallet cleanup, swaps, staking, NFT creation, and account controls.",
+          "featureList": [
+            "Multi-wallet Solana portfolio tracking",
+            "Searchable and filterable Solana transaction history",
+            "Batch token and NFT transfers",
+            "Token and NFT burning with SOL rent recovery estimates",
+            "Jupiter-powered token swaps with safety controls",
+            "SOL, SKR, and JUP staking controls",
+            "Legacy, Core, and compressed NFT creation and editing",
+            "Read-only public wallet exploration"
+          ],
+          "publisher": {"@id":"https://tokenstudio.dev/#organization"},
+          "author": {"@type":"Person","name":"impylse","url":"https://x.com/impylse"},
+          "releaseNotes": "https://tokenstudio.dev/changelog.html",
+          "screenshot": "https://tokenstudio.dev/assets/og-card.png"
         }
       ]
     }
@@ -454,6 +482,8 @@
             padding: 40px;
             border-radius: 24px;
             transition: all 0.3s ease;
+            color: inherit;
+            text-decoration: none;
         }
 
         .feature-card:hover {
@@ -632,6 +662,109 @@
             margin: 0 0 80px;
             padding: 0;
             position: relative;
+        }
+
+        .global-activity {
+            margin: 0 0 80px;
+        }
+
+        .global-activity.is-loaded {
+            animation: fadeIn 0.8s ease-out 0.3s backwards;
+        }
+
+        .global-activity-card {
+            padding: 32px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .global-activity-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .global-activity[hidden] {
+            display: none;
+        }
+
+        .activity-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        .activity-eyebrow {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .activity-heading h2 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .activity-summary {
+            display: flex;
+            gap: 28px;
+            flex: 0 0 auto;
+        }
+
+        .activity-stat {
+            text-align: right;
+        }
+
+        .activity-stat strong {
+            display: block;
+            color: var(--accent);
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        .activity-stat span {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 12px;
+            margin-top: 7px;
+        }
+
+        .activity-countries {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .activity-country {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid var(--card-border);
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .activity-country-count {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .activity-note {
+            color: var(--text-secondary);
+            font-size: 12px;
+            line-height: 1.5;
+            margin: 18px 0 0;
         }
 
         .reviews-header {
@@ -873,6 +1006,7 @@
 
             .hero,
             .reviews-section,
+            .global-activity,
             .features,
             .screenshots-section,
             .stats {
@@ -910,6 +1044,36 @@
             .carousel-arrow {
                 display: none;
             }
+
+            .global-activity-card {
+                padding: 24px;
+            }
+
+            .activity-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .activity-summary {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .activity-stat {
+                text-align: left;
+            }
+
+            .activity-countries {
+                flex-wrap: nowrap;
+                margin: 0 -24px;
+                padding: 0 24px 8px;
+                overflow-x: auto;
+                scrollbar-width: thin;
+            }
+
+            .activity-country {
+                flex: 0 0 auto;
+            }
         }
     </style>
 </head>
@@ -926,7 +1090,7 @@
                 </div>
                 <span class="logo-text">Token Studio</span>
             </div>
-            <div class="version-badge">0.26.328</div>
+            <div class="version-badge">0.28.379-beta</div>
         </header>
 
         <section class="hero">
@@ -985,6 +1149,40 @@
                     aria-label="Previous review">‹</button>
                 <div class="reviews-track-wrapper">
                     <div class="reviews-track" id="reviewsTrack">
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">TD</div>
+                                    <div>
+                                        <div class="reviewer-name">tdegen.skr <span class="seeker-badge">Seeker
+                                                Owner</span></div>
+                                        <div class="review-date">Oct 12, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                            </div>
+                            <p class="review-body">This is actually a crazy cool app. Super fast connection,
+                                incredible amounts of features, awesome graphics, beautiful NFT collection with a ton
+                                of perks. The only star off is because for a new user it's so overwhelming and there
+                                are a lot of features with no label so it takes a ton of time to learn the app without
+                                any kind of welcome or tutorial.</p>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="review-card-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">A</div>
+                                    <div>
+                                        <div class="reviewer-name">Anonymous reviewer</div>
+                                        <div class="review-date">Sep 30, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            </div>
+                            <p class="review-body">One of the better portfolio tracking tools available on the dApp
+                                store. The pixel cat at the bottom of the screen is cute.</p>
+                        </div>
+
                         <div class="review-card">
                             <div class="review-card-header">
                                 <div class="reviewer-info">
@@ -1286,24 +1484,50 @@
             <div class="carousel-dots" id="carouselDots"></div>
         </section>
 
+        <section class="global-activity" id="globalActivity" aria-labelledby="globalActivityTitle" hidden>
+            <div class="global-activity-card">
+                <div class="activity-heading">
+                    <div>
+                        <div class="activity-eyebrow">30-day activity</div>
+                        <h2 id="globalActivityTitle">Used around the world</h2>
+                    </div>
+                    <div class="activity-summary" aria-label="Global activity summary">
+                        <div class="activity-stat">
+                            <strong id="activityUsers"></strong>
+                            <span>active users</span>
+                        </div>
+                        <div class="activity-stat">
+                            <strong id="activityCountryCount"></strong>
+                            <span>countries</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="activity-countries" id="activityCountries" aria-label="Top countries"></div>
+                <p class="activity-note" id="activityUpdated"></p>
+            </div>
+        </section>
+
         <section class="features" id="features">
-            <div class="feature-card">
+            <a href="solana-wallet.html" class="feature-card"
+                aria-label="Explore Token Studio's Solana wallet features">
                 <div class="feature-icon">
                     <img src="assets/wallet.png" alt="Wallet"
                         style="left: -100px; filter: drop-shadow(100px 0 0 #F294C3);">
                 </div>
                 <h3>Wallet</h3>
                 <p>A unified view of your entire Solana footprint aggregated into a
-                    single control surface.</p>
-            </div>
-            <div class="feature-card">
+                    single control surface. Track your portfolio value, wallet health, staking positions, token
+                    approvals, and every Solana asset from one place.</p>
+            </a>
+            <a href="solana-nft-minter.html" class="feature-card" aria-label="Explore Token Studio's Asset Foundry">
                 <div class="feature-icon">
                     <img src="assets/master.png" alt="Asset Foundry"
                         style="left: -100px; filter: drop-shadow(100px 0 0 #BBF294);">
                 </div>
                 <h3>Asset Foundry</h3>
-                <p>Create, Edit, Verify, Print, Transfer, Autograph, Freeze, Delegate, and Burn NFTs at scale.</p>
-            </div>
+                <p>Create, edit, verify, print, transfer, autograph, freeze, delegate, and burn NFTs at scale. Manage
+                    Legacy, Metaplex Core, and compressed assets through their entire on-chain lifecycle.</p>
+            </a>
             <div class="feature-card">
                 <div class="feature-icon">
                     <img src="assets/search.png" alt="Search"
@@ -1313,45 +1537,52 @@
                 <p>Powerful filtering lets you query everything across your holdings by name,
                     address, category, or metadata property.</p>
             </div>
-            <div class="feature-card">
+            <a href="cheapest-solana-burner.html" class="feature-card" aria-label="Explore Token Studio's Solana Burner">
                 <div class="feature-icon">
                     <img src="assets/burn.png" alt="Burn" style="left: -100px; filter: drop-shadow(100px 0 0 #F294C3);">
                 </div>
                 <h3>Burner</h3>
                 <p>Large-scale asset cleanup with thorough safety validations, letting you process mixed sets of
-                    hundreds of tokens at once.</p>
-            </div>
-            <div class="feature-card">
+                    hundreds of tokens at once. Preview every account and estimated SOL
+                    recovery before anything is permanently removed.</p>
+            </a>
+            <a href="solana-swap.html" class="feature-card" aria-label="Explore Token Studio's Optimized Swaps">
                 <div class="feature-icon">
                     <img src="assets/swap.png" alt="Swaps"
                         style="left: -100px; filter: drop-shadow(100px 0 0 #BBF294);">
                 </div>
                 <h3>Optimized Swaps</h3>
                 <p>Powered by Jupiter but built in-house, offering native swap execution with up to 20x lower fees than
-                    standard frontends or even zero fees for NFT collectors.</p>
-            </div>
-            <div class="feature-card">
+                    standard frontends or even zero fees for NFT collectors. Safety firewall terminates swaps that lose
+                    more
+                    than 20% of value.</p>
+            </a>
+            <a href="solana-transaction-history.html" class="feature-card"
+                aria-label="Explore Token Studio Flight History">
                 <div class="feature-icon">
-                    <img src="assets/airdrop.png" alt="Airdrop"
-                        style="top: -100px; left: 0; filter: drop-shadow(0 100px 0 #BCE1F3); transform: scaleX(-1);">
+                    <img src="assets/hourglass.png" alt="Solana transaction history"
+                        style="left: -100px; filter: drop-shadow(100px 0 0 #BCE1F3);">
                 </div>
-                <h3>Control Surface</h3>
-                <p>Navigate the Solana blockchain at scale through a unified, responsive interface with a
-                    real-time tactile feedback that keeps you in the loop.</p>
-            </div>
-            <div class="feature-card">
+                <h3>Flight History</h3>
+                <p>Download, classify, and search your transaction history. Combine search with 17 modular filters and
+                    three logical operators to find any transaction, track daily inflow and outflow value changes, and
+                    jump straight from the interactive graph to any day's activity.</p>
+            </a>
+            <a href="security-and-independence.html" class="feature-card"
+                aria-label="Explore Token Studio security and independence">
                 <div class="feature-icon">
                     <img src="assets/hide.png" alt="Independance"
                         style="left: -100px; filter: drop-shadow(100px 0 0 #F294C3);">
                 </div>
                 <h3>Independence</h3>
-                <p>The blockchain is public, but your workspace shouldn't be. No backend reliance, zero personal
+                <p>TThe blockchain is public, but your workspace shouldn't be. No backend reliance, zero personal
                     tracking.
                     Your
                     data
                     never leaves your device.</p>
-            </div>
-            <div class="feature-card">
+            </a>
+            <a href="security-and-independence.html#seed-vault" class="feature-card"
+                aria-label="Learn about Token Studio Seed Vault security">
                 <div class="feature-icon">
                     <img src="assets/collection.png" alt="Seed Vault"
                         style="left: -100px; filter: drop-shadow(100px 0 0 #BBF294);">
@@ -1359,8 +1590,9 @@
                 <h3>Seed Vault Native</h3>
                 <p>Built from the ground up for the Solana Mobile ecosystem. Every transaction is signed locally using
                     the hardware-backed security of the Seed Vault.</p>
-            </div>
-            <div class="feature-card">
+            </a>
+            <a href="security-and-independence.html#read-only" class="feature-card"
+                aria-label="Learn about Token Studio read-only wallet exploration">
                 <div class="feature-icon">
                     <img src="assets/read_only.png" alt="Read-Only"
                         style="left: -100px; filter: drop-shadow(100px 0 0 #BCE1F3);">
@@ -1368,7 +1600,7 @@
                 <h3>Read-Only</h3>
                 <p>Extract the same deep intelligence from any public Solana wallet address, without ever connecting
                     your keys.</p>
-            </div>
+            </a>
         </section>
 
         <section class="screenshots-section" id="screenshots" style="position: relative;">
@@ -1407,19 +1639,21 @@
         </section>
 
         <div class="stats">
-            <div class="stat-item">
+            <a href="security-and-independence.html#safeguards" class="stat-item"
+                style="color: inherit; text-decoration: none;">
                 <h4>VIGILANT</h4>
                 <p>Multi-Layer Safeguards</p>
-            </div>
-            <div class="stat-item">
+            </a>
+            <a href="security-and-independence.html#seed-vault" class="stat-item"
+                style="color: inherit; text-decoration: none;">
                 <h4>SECURE</h4>
                 <p>Seed Vault Native</p>
-            </div>
-            <div class="stat-item">
+            </a>
+            <a href="security-and-independence.html#privacy" class="stat-item"
+                style="color: inherit; text-decoration: none;">
                 <h4>PRIVATE</h4>
-                <p><a href="privacy.html#anonymous-telemetry" style="color: inherit; text-decoration: none;">Anonymous
-                        Telemetry*</a></p>
-            </div>
+                <p>Limited Telemetry*</p>
+            </a>
         </div>
     </div>
 
@@ -1427,7 +1661,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <div class="footer-logo">Token Studio</div>
+                    <a class="footer-logo" href="index.html" style="display: inline-block; color: #fff; text-decoration: none;">Token Studio</a>
                     <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the
                         Solana blockchain.</p>
                 </div>
@@ -1436,6 +1670,7 @@
                     <ul>
                         <li><a href="about.html">About & Vision</a></li>
                         <li><a href="features.html">Features & Toolset</a></li>
+                        <li><a href="fees.html">Fees & Pricing</a></li>
                         <li><a href="stories.html">Stories & Field Notes</a></li>
                         <li><a href="faq.html">Frequently Asked Questions</a></li>
                         <li><a href="changelog.html">Changelog & Releases</a></li>
@@ -1444,6 +1679,7 @@
                 <div class="footer-col">
                     <h5>Social</h5>
                     <ul>
+                        <li><a href="contact.html">Contact</a></li>
                         <li><a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer">Twitter / X</a>
                         </li>
                         <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank"
@@ -1469,6 +1705,80 @@
     </footer>
 
     <script>
+        // Public activity is optional: the section remains absent if the aggregate cannot be loaded safely.
+        (function () {
+            const section = document.getElementById('globalActivity');
+            if (!section) return;
+
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 5000);
+            const numberFormatter = new Intl.NumberFormat();
+            const countryNames = typeof Intl.DisplayNames === 'function'
+                ? new Intl.DisplayNames([document.documentElement.lang || 'en'], { type: 'region' })
+                : null;
+            const countryNameOverrides = { HK: 'Hong Kong' };
+            const countryFlag = code => String.fromCodePoint(...code.split('').map(letter => 127397 + letter.charCodeAt(0)));
+
+            fetch('https://dashboard.tokenstudio.dev/api/users', {
+                headers: { Accept: 'application/json' },
+                signal: controller.signal,
+            })
+                .then(response => {
+                    if (!response.ok) throw new Error('Public activity unavailable');
+                    return response.json();
+                })
+                .then(data => {
+                    const countriesAreValid = Array.isArray(data.topCountries)
+                        && data.topCountries.length > 0
+                        && data.topCountries.length <= 10
+                        && data.topCountries.every(country => /^[A-Z]{2}$/.test(country.code)
+                            && Number.isSafeInteger(country.count) && country.count > 0);
+                    if (data.windowDays !== 30
+                        || !Number.isSafeInteger(data.activeUsers) || data.activeUsers < 1
+                        || !Number.isSafeInteger(data.countryCount) || data.countryCount < 1
+                        || !countriesAreValid
+                        || !Number.isFinite(Date.parse(data.updatedAt))) {
+                        throw new Error('Invalid public activity response');
+                    }
+
+                    document.getElementById('activityUsers').textContent = numberFormatter.format(data.activeUsers);
+                    document.getElementById('activityCountryCount').textContent = numberFormatter.format(data.countryCount);
+                    const countries = document.getElementById('activityCountries');
+                    const fragment = document.createDocumentFragment();
+                    data.topCountries.forEach(country => {
+                        const chip = document.createElement('span');
+                        chip.className = 'activity-country';
+
+                        const name = document.createElement('span');
+                        const countryName = countryNameOverrides[country.code]
+                            || countryNames?.of(country.code)
+                            || country.code;
+                        name.textContent = `${countryFlag(country.code)} ${countryName}`;
+                        const count = document.createElement('span');
+                        count.className = 'activity-country-count';
+                        count.textContent = numberFormatter.format(country.count);
+                        chip.append(name, count);
+                        fragment.appendChild(chip);
+                    });
+                    countries.replaceChildren(fragment);
+
+                    const updated = new Date(data.updatedAt).toLocaleString(undefined, {
+                        dateStyle: 'medium',
+                        timeStyle: 'short',
+                    });
+                    document.getElementById('activityUpdated').textContent =
+                        `Anonymous 30-day activity. Showing the 10 most active countries. Updated ${updated}.`;
+                    section.classList.remove('is-loaded');
+                    section.hidden = false;
+                    void section.offsetWidth;
+                    section.classList.add('is-loaded');
+                })
+                .catch(() => {
+                    section.hidden = true;
+                })
+                .finally(() => clearTimeout(timeout));
+        })();
+
         // Reviews Carousel Script
         document.addEventListener('DOMContentLoaded', function () {
             const track = document.getElementById('reviewsTrack');

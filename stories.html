@@ -104,7 +104,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1120px;
             margin: 0 auto 40px;
             padding: 36px 24px 40px;
             animation: fadeIn 0.6s ease-out;
@@ -115,6 +115,7 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -181,7 +182,7 @@
 
         .header-section {
             margin-bottom: 40px;
-            
+
             text-align: center;
         }
 
@@ -320,7 +321,7 @@
         }
 
         .footer-container {
-            max-width: 1100px;
+            max-width: 1120px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -390,6 +391,7 @@
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
+
             .footer-bottom {
                 flex-direction: column;
                 gap: 12px;
@@ -425,17 +427,47 @@
                 </div>
                 <div class="logo-text">Token Studio</div>
             </a>
-            <a href="index.html" style="color: var(--text-secondary); text-decoration: none; font-weight: 600; transition: color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'">Back to Home</a>
+            <a href="index.html"
+                style="color: var(--text-secondary); text-decoration: none; font-weight: 600; transition: color 0.3s;"
+                onmouseover="this.style.color='var(--accent)'"
+                onmouseout="this.style.color='var(--text-secondary)'">Back to Home</a>
         </header>
     </div>
     <div class="container">
 
         <div class="header-section">
             <h1>Stories & Field Notes</h1>
-            <p class="subtitle">Real-world case studies, technical breakthroughs, and uncompromised insights from building and using Token Studio across the Solana ecosystem.</p>
+            <p class="subtitle">Real-world case studies, technical breakthroughs, and uncompromised insights from
+                building and using Token Studio across the Solana ecosystem.</p>
         </div>
 
         <div class="stories-grid">
+
+            <!-- Featured Comparison -->
+            <article class="story-card">
+                <div>
+                    <div class="story-meta">
+                        <span class="tag-badge">Technical Comparison</span>
+                        <time datetime="2026-10-27">Oct 27, 2026</time>
+                        <span>• 8 min read</span>
+                    </div>
+                    <h2><a href="sol-incinerator-alternative.html" style="text-decoration: none; color: inherit;">Sol
+                            Incinerator Alternative: A Verified NFT Burn Comparison</a></h2>
+                    <p>Decoded payloads reveal how much SOL three burners recovered, how much they transferred away, and
+                        why one incomplete Legacy NFT burn left 0.00476388 SOL stranded.</p>
+                </div>
+                <div class="story-footer">
+                    <a href="sol-incinerator-alternative.html" class="read-link">Read Comparison →</a>
+                    <a href="https://x.com/intent/post?text=Sol%20Incinerator%20Alternative%3A%20A%20Verified%20NFT%20Burn%20Comparison&url=https%3A%2F%2Ftokenstudio.dev%2Fsol-incinerator-alternative.html"
+                        target="_blank" rel="noopener noreferrer" class="share-x-btn">
+                        <svg width="12" height="12" viewBox="0 0 1200 1227" fill="currentColor">
+                            <path
+                                d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" />
+                        </svg>
+                        Share on X
+                    </a>
+                </div>
+            </article>
 
             <!-- Story -->
             <article class="story-card">
@@ -445,14 +477,18 @@
                         <time datetime="2026-09-06">Sep 6, 2026</time>
                         <span>• 2 min read</span>
                     </div>
-                    <h2><a href="stories/one-character-300-no-undo.html" style="text-decoration: none; color: inherit;">One character, $300, No undo.</a></h2>
-                    <p>A painful story about a mistyped .skr domain, and how Token Studio's redundant layers of verification protect against exactly this kind of error.</p>
+                    <h2><a href="stories/one-character-300-no-undo.html"
+                            style="text-decoration: none; color: inherit;">One character, $300, No undo.</a></h2>
+                    <p>A painful story about a mistyped .skr domain, and how Token Studio's redundant layers of
+                        verification protect against exactly this kind of error.</p>
                 </div>
                 <div class="story-footer">
                     <a href="stories/one-character-300-no-undo.html" class="read-link">Read Story →</a>
-                    <a href="https://x.com/intent/post?text=One%20character%2C%20%24300%2C%20No%20undo.&url=https%3A%2F%2Ftokenstudio.dev%2Fstories%2Fone-character-300-no-undo.html" target="_blank" rel="noopener noreferrer" class="share-x-btn">
+                    <a href="https://x.com/intent/post?text=One%20character%2C%20%24300%2C%20No%20undo.&url=https%3A%2F%2Ftokenstudio.dev%2Fstories%2Fone-character-300-no-undo.html"
+                        target="_blank" rel="noopener noreferrer" class="share-x-btn">
                         <svg width="12" height="12" viewBox="0 0 1200 1227" fill="currentColor">
-                            <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/>
+                            <path
+                                d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" />
                         </svg>
                         Share on X
                     </a>
@@ -467,14 +503,19 @@
                         <time datetime="2026-08-03">Aug 3, 2026</time>
                         <span>• 3 min read</span>
                     </div>
-                    <h2><a href="stories/96-stake-accounts-and-250-missing-usdc.html" style="text-decoration: none; color: inherit;">96 Stake Accounts and $250 in Missing USDC</a></h2>
-                    <p>What began as a simple unstaking question in the Solana Mobile Discord became a perfect demonstration of why Token Studio exposes account details ordinary wallet balances hide.</p>
+                    <h2><a href="stories/96-stake-accounts-and-250-missing-usdc.html"
+                            style="text-decoration: none; color: inherit;">96 Stake Accounts and $250 in Missing
+                            USDC</a></h2>
+                    <p>What began as a simple unstaking question in the Solana Mobile Discord became a perfect
+                        demonstration of why Token Studio exposes account details ordinary wallet balances hide.</p>
                 </div>
                 <div class="story-footer">
                     <a href="stories/96-stake-accounts-and-250-missing-usdc.html" class="read-link">Read Story →</a>
-                    <a href="https://x.com/intent/post?text=96%20Stake%20Accounts%20and%20%24250%20in%20Missing%20USDC&url=https%3A%2F%2Ftokenstudio.dev%2Fstories%2F96-stake-accounts-and-250-missing-usdc.html" target="_blank" rel="noopener noreferrer" class="share-x-btn">
+                    <a href="https://x.com/intent/post?text=96%20Stake%20Accounts%20and%20%24250%20in%20Missing%20USDC&url=https%3A%2F%2Ftokenstudio.dev%2Fstories%2F96-stake-accounts-and-250-missing-usdc.html"
+                        target="_blank" rel="noopener noreferrer" class="share-x-btn">
                         <svg width="12" height="12" viewBox="0 0 1200 1227" fill="currentColor">
-                            <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/>
+                            <path
+                                d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" />
                         </svg>
                         Share on X
                     </a>
@@ -492,14 +533,16 @@
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <div class="footer-logo">Token Studio</div>
-                    <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the Solana blockchain.</p>
+                    <a class="footer-logo" href="index.html" style="display: inline-block; color: #fff; text-decoration: none;">Token Studio</a>
+                    <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the
+                        Solana blockchain.</p>
                 </div>
                 <div class="footer-col">
                     <h5>Resources</h5>
                     <ul>
                         <li><a href="about.html">About & Vision</a></li>
                         <li><a href="features.html">Features & Toolset</a></li>
+                        <li><a href="fees.html">Fees & Pricing</a></li>
                         <li><a href="stories.html">Stories & Field Notes</a></li>
                         <li><a href="faq.html">Frequently Asked Questions</a></li>
                         <li><a href="changelog.html">Changelog & Releases</a></li>
@@ -508,9 +551,13 @@
                 <div class="footer-col">
                     <h5>Social</h5>
                     <ul>
-                        <li><a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
-                        <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank" rel="noopener noreferrer">Discord Community</a></li>
-                        <li><a href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S" target="_blank" rel="noopener noreferrer">Mallow Collection</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+                        </li>
+                        <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank"
+                                rel="noopener noreferrer">Discord Community</a></li>
+                        <li><a href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S"
+                                target="_blank" rel="noopener noreferrer">Mallow Collection</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
