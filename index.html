@@ -17,8 +17,7 @@
     <meta name="description"
         content="The ultimate Solana wallet management toolkit. Track multi-wallet portfolios, batch burn spam NFTs, clean up empty accounts, and execute swaps natively.">
     <link rel="canonical" href="https://tokenstudio.dev/">
-    <link rel="alternate" type="text/markdown" href="https://tokenstudio.dev/index.md"
-        title="Markdown version">
+    <link rel="alternate" type="text/markdown" href="https://tokenstudio.dev/index.md" title="Markdown version">
     <link rel="alternate" type="text/plain" href="https://tokenstudio.dev/llms.txt" title="LLMs Context Data">
     <link rel="alternate" type="text/plain" href="https://tokenstudio.dev/llms-full.txt"
         title="LLMs Full System Specification">
@@ -1064,15 +1063,14 @@
             }
 
             .activity-countries {
-                flex-wrap: nowrap;
-                margin: 0 -24px;
-                padding: 0 24px 8px;
-                overflow-x: auto;
-                scrollbar-width: thin;
+                flex-wrap: wrap;
+                margin: 0;
+                padding: 0;
+                overflow: visible;
             }
 
             .activity-country {
-                flex: 0 0 auto;
+                padding: 4px 14px;
             }
         }
     </style>
@@ -1537,7 +1535,8 @@
                 <p>Powerful filtering lets you query everything across your holdings by name,
                     address, category, or metadata property.</p>
             </div>
-            <a href="cheapest-solana-burner.html" class="feature-card" aria-label="Explore Token Studio's Solana Burner">
+            <a href="cheapest-solana-burner.html" class="feature-card"
+                aria-label="Explore Token Studio's Solana Burner">
                 <div class="feature-icon">
                     <img src="assets/burn.png" alt="Burn" style="left: -100px; filter: drop-shadow(100px 0 0 #F294C3);">
                 </div>
@@ -1575,7 +1574,7 @@
                         style="left: -100px; filter: drop-shadow(100px 0 0 #F294C3);">
                 </div>
                 <h3>Independence</h3>
-                <p>TThe blockchain is public, but your workspace shouldn't be. No backend reliance, zero personal
+                <p>The blockchain is public, but your workspace shouldn't be. No backend reliance, zero personal
                     tracking.
                     Your
                     data
@@ -1661,7 +1660,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a class="footer-logo" href="index.html" style="display: inline-block; color: #fff; text-decoration: none;">Token Studio</a>
+                    <a class="footer-logo" href="index.html"
+                        style="display: inline-block; color: #fff; text-decoration: none;">Token Studio</a>
                     <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the
                         Solana blockchain.</p>
                 </div>
@@ -1760,14 +1760,28 @@
                         chip.append(name, count);
                         fragment.appendChild(chip);
                     });
+                    const remainingCountryCount = data.countryCount - data.topCountries.length;
+                    if (remainingCountryCount > 0) {
+                        const moreChip = document.createElement('span');
+                        moreChip.className = 'activity-country';
+                        moreChip.textContent = `+${numberFormatter.format(remainingCountryCount)} more`;
+                        fragment.appendChild(moreChip);
+                    }
                     countries.replaceChildren(fragment);
 
                     const updated = new Date(data.updatedAt).toLocaleString(undefined, {
                         dateStyle: 'medium',
                         timeStyle: 'short',
                     });
-                    document.getElementById('activityUpdated').textContent =
-                        `Anonymous 30-day activity. Showing the 10 most active countries. Updated ${updated}.`;
+                    const updatedAtMs = Date.parse(data.updatedAt);
+                    const updateTimestampLabel = () => {
+                        const minutesAgo = Math.max(0, Math.floor((Date.now() - updatedAtMs) / 60000));
+                        const relativeTime = `${minutesAgo} ${minutesAgo === 1 ? 'minute' : 'minutes'} ago`;
+                        document.getElementById('activityUpdated').textContent =
+                            `Anonymous 30-day activity. Showing the 10 most active countries. Last updated ${updated} (${relativeTime}).`;
+                    };
+                    updateTimestampLabel();
+                    setInterval(updateTimestampLabel, 60000);
                     section.classList.remove('is-loaded');
                     section.hidden = false;
                     void section.offsetWidth;

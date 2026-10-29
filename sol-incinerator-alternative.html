@@ -649,8 +649,8 @@
         <section class="hero">
             <h1>Sol Incinerator Alternative: A Verified NFT Burn Comparison</h1>
             <p>If you are searching for a Sol Incinerator alternative, this report compares decoded transaction
-                payloads rather than advertised fee percentages. We submitted the same Legacy NFT account structure,
-                simulated each captured transaction against the same live accounts, and measured the SOL each burner
+                payloads rather than advertised fee percentages. I submitted the same Legacy NFT,
+                simulated each captured transaction, and measured the SOL each burner
                 actually returned.</p>
 
         </section>
@@ -747,7 +747,7 @@
                     </tbody>
                 </table>
             </div>
-            <p class="fine-print">*The exact Token Studio test used the developer's own wallet, which holds an official
+            <p class="fine-print">*I ran the exact Token Studio test with my own wallet, which holds an official
                 Token Studio NFT and therefore paid no Token Studio service fee. Values in parentheses show what a
                 standard wallet would have paid and retained: a 0.8% fee of approximately 0.00005002 SOL, leaving
                 approximately 0.00619346 SOL after the simulated network fee.</p>
@@ -872,7 +872,7 @@
 
         <section class="report-card" id="methodology">
             <h2>Evidence and reproduction details</h2>
-            <p>The three captured unsigned payloads targeted the same wallet, mint, and associated token account. We
+            <p>The three captured unsigned payloads targeted the same wallet, mint, and associated token account. I
                 decoded the
                 transactions locally and simulated them through Solana mainnet RPC with signature verification disabled
                 and a replacement blockhash. No transaction was submitted during this comparison.</p>
@@ -910,7 +910,7 @@
 
             <h3>Scope and fairness</h3>
             <p>This is a documented result for one Legacy NFT tested on October 27, 2026. Other NFTs tested through Sol
-                Incinerator did include the complete account set and recovered their metadata-related balances. We do
+                Incinerator did include the complete account set and recovered their metadata-related balances. I do
                 not claim that every Sol Incinerator burn has this failure. For Sol Incinerator, this payload, its
                 account balances, and both successful simulations make the specific result independently reproducible.
             </p>
@@ -979,7 +979,8 @@
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a class="footer-logo" href="index.html" style="display: inline-block; color: #fff; text-decoration: none;">Token Studio</a>
+                    <a class="footer-logo" href="index.html"
+                        style="display: inline-block; color: #fff; text-decoration: none;">Token Studio</a>
                     <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the
                         Solana blockchain.</p>
                 </div>
