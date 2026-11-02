@@ -414,6 +414,36 @@
 
         <div class="timeline">
 
+            <!-- 0.29.401-beta -->
+            <article class="release-entry">
+                <div class="release-header">
+                    <span class="version-tag">0.29.401-beta</span>
+                    <time class="release-date">November 2, 2026</time>
+                </div>
+                <ul class="change-list">
+                    <li class="change-item">
+                        <span class="badge badge-feature">New Feature</span>
+                        <div><strong>Transaction Parser V2:</strong> Flight History can now identify seven additional transaction types: Dust, Perpetual, Bridge, Multisig, Deploy, Nonce, and Sale.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div><strong>Foreign Close Authorities:</strong> Empty token accounts controlled by a foreign close authority are now disabled during wallet cleanup, preventing signature mismatch errors. Reported by @grthebest.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div><strong>Off-Curve Token Account Ownership:</strong> Token accounts owned by off-curve addresses, including Program Derived Addresses (PDAs), are now correctly classified as canonical or auxiliary accounts.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div><strong>Reliable Synchronization for Massive Wallets:</strong> Asset synchronization now applies an overflow limit of 1,024 assets per category. When a category exceeds its limit, Token Studio reports the discarded assets by category and suppresses unreliable Recent Changes comparisons. Token Time Vault collectors can increase the per-category limit to 2,048 or 4,096 assets.</div>
+                    </li>
+                    <li class="change-item">
+                        <span class="badge badge-fix">Fix</span>
+                        <div><strong>Arweave Image Loading:</strong> Arweave-hosted images now request raw media, preventing JSON responses from appearing as broken images following Arweave's recent delivery change.</div>
+                    </li>
+                </ul>
+            </article>
+
             <!-- 0.28.379-beta -->
             <article class="release-entry">
                 <div class="release-header">

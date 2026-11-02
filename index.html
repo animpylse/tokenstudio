@@ -759,6 +759,20 @@
             font-weight: 700;
         }
 
+        .activity-country-name {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .activity-country-flag {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+            object-fit: cover;
+            flex: 0 0 auto;
+        }
+
         .activity-note {
             color: var(--text-secondary);
             font-size: 12px;
@@ -1717,7 +1731,6 @@
                 ? new Intl.DisplayNames([document.documentElement.lang || 'en'], { type: 'region' })
                 : null;
             const countryNameOverrides = { HK: 'Hong Kong' };
-            const countryFlag = code => String.fromCodePoint(...code.split('').map(letter => 127397 + letter.charCodeAt(0)));
 
             fetch('https://dashboard.tokenstudio.dev/api/users', {
                 headers: { Accept: 'application/json' },
@@ -1750,10 +1763,21 @@
                         chip.className = 'activity-country';
 
                         const name = document.createElement('span');
+                        name.className = 'activity-country-name';
                         const countryName = countryNameOverrides[country.code]
                             || countryNames?.of(country.code)
                             || country.code;
-                        name.textContent = `${countryFlag(country.code)} ${countryName}`;
+                        const flag = document.createElement('img');
+                        const lowerCode = country.code.toLowerCase();
+                        flag.className = 'activity-country-flag';
+                        flag.src = `https://flagcdn.com/w20/${lowerCode}.png`;
+                        flag.srcset = `https://flagcdn.com/w40/${lowerCode}.png 2x`;
+                        flag.width = 20;
+                        flag.height = 15;
+                        flag.alt = '';
+                        flag.setAttribute('aria-hidden', 'true');
+                        flag.referrerPolicy = 'no-referrer';
+                        name.append(flag, document.createTextNode(countryName));
                         const count = document.createElement('span');
                         count.className = 'activity-country-count';
                         count.textContent = numberFormatter.format(country.count);
