@@ -91,7 +91,7 @@
           "operatingSystem": "Android, Solana Mobile Seeker",
           "applicationCategory": "FinanceApplication",
           "applicationSubCategory": "Solana wallet management",
-          "softwareVersion": "0.28.379-beta",
+          "softwareVersion": "0.29.401-beta",
           "isAccessibleForFree": true,
           "offers": {
             "@type": "Offer",
@@ -312,12 +312,156 @@
             margin: 0 auto 40px;
         }
 
+        /* Ecosystem integrations */
+        .integrations-section {
+            margin-bottom: 80px;
+            animation: fadeIn 0.8s ease-out 0.2s backwards;
+        }
+
+        .integrations-header {
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .integrations-header h2 {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-primary);
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+
+        .integrations-strip {
+            width: 100%;
+            padding: 22px 0;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+            -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+        }
+
+        .integrations-marquee {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .integrations-track {
+            display: flex;
+            width: max-content;
+            animation: integrationsMarquee 42s linear infinite;
+            will-change: transform;
+        }
+
+        .integrations-marquee:hover .integrations-track,
+        .integrations-marquee:focus-within .integrations-track {
+            animation-play-state: paused;
+        }
+
+        .integrations-set {
+            display: flex;
+            flex: none;
+            align-items: center;
+            gap: 72px;
+            padding-right: 72px;
+        }
+
+        .integration-link {
+            display: flex;
+            flex: none;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 48px;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        .integration-link--magic-eden {
+            margin-right: 30px;
+        }
+
+        .integration-logo {
+            --logo-scale: 1;
+            --logo-hover-scale: 1.04;
+            --logo-offset-y: 0%;
+            display: block;
+            width: auto;
+            max-width: 145px;
+            height: auto;
+            max-height: 38px;
+            opacity: 0.58;
+            filter: grayscale(1) brightness(0) invert(1);
+            transform: translateY(var(--logo-offset-y)) scale(var(--logo-scale));
+            transition: opacity 0.25s ease, filter 0.25s ease, transform 0.25s ease;
+        }
+
+        .integration-logo[src$="birdeye.svg"] {
+            --logo-scale: 0.9;
+            --logo-hover-scale: 0.936;
+        }
+
+        .integration-logo[src$="binance.svg"],
+        .integration-logo[src$="stakewiz.svg"] {
+            --logo-scale: 1.1;
+            --logo-hover-scale: 1.144;
+        }
+
+        .integration-logo[src$="magic-eden.svg"] {
+            --logo-scale: 1.21;
+            --logo-hover-scale: 1.2584;
+        }
+
+        .integration-logo[src$="metaplex.svg"] {
+            --logo-scale: 1.2;
+            --logo-hover-scale: 1.248;
+        }
+
+        .integration-logo[src$="irys.svg"] {
+            --logo-scale: 0.722;
+            --logo-hover-scale: 0.75088;
+        }
+
+        .integration-logo[src$="bybit.svg"],
+        .integration-logo[src$="solflare.svg"] {
+            --logo-scale: 0.81;
+            --logo-hover-scale: 0.8424;
+            --logo-offset-y: -10%;
+        }
+
+        .integration-logo[src$="pinata.svg"] {
+            --logo-scale: 0.95;
+            --logo-hover-scale: 0.988;
+            --logo-offset-y: -10%;
+        }
+
+        .integration-link:hover .integration-logo,
+        .integration-link:focus-visible .integration-logo {
+            opacity: 1;
+            filter: none;
+            transform: translateY(calc(var(--logo-offset-y) - 2px)) scale(var(--logo-hover-scale));
+        }
+
+        .integration-link:focus-visible {
+            box-shadow: 0 0 0 2px rgba(187, 242, 148, 0.75);
+        }
+
+        @keyframes integrationsMarquee {
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
         .cta-group {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
         }
 
         .btn {
@@ -1018,6 +1162,7 @@
             }
 
             .hero,
+            .integrations-section,
             .reviews-section,
             .global-activity,
             .features,
@@ -1032,6 +1177,41 @@
 
             .hero p {
                 font-size: 18px;
+            }
+
+            .integrations-strip {
+                padding: 17px 0 19px;
+            }
+
+            .integrations-header {
+                margin-bottom: 24px;
+            }
+
+            .integrations-header h2 {
+                font-size: 26px;
+            }
+
+            .integrations-set {
+                gap: 44px;
+                padding-right: 44px;
+            }
+
+            .integration-link {
+                width: 126px;
+                height: 40px;
+            }
+
+            .integration-link--magic-eden {
+                margin-right: 25px;
+            }
+
+            .integration-logo {
+                max-width: 122px;
+                max-height: 32px;
+            }
+
+            .integrations-track {
+                animation-duration: 34s;
             }
 
             .cta-group {
@@ -1087,6 +1267,21 @@
                 padding: 4px 14px;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            .integrations-marquee {
+                overflow-x: auto;
+                scrollbar-width: thin;
+            }
+
+            .integrations-track {
+                animation: none;
+            }
+
+            .integrations-set[aria-hidden="true"] {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -1102,7 +1297,7 @@
                 </div>
                 <span class="logo-text">Token Studio</span>
             </div>
-            <div class="version-badge">0.28.379-beta</div>
+            <div class="version-badge">0.29.401-beta</div>
         </header>
 
         <section class="hero">
@@ -1140,10 +1335,129 @@
                     Join Discord
                 </a>
             </div>
-            <p style="font-size: 14px; color: var(--text-secondary); margin-top: 12px; font-weight: 400;">Web-app & iOS
+            <p style="font-size: 14px; color: var(--text-secondary); margin: 0 auto; font-weight: 400;">Also available
+                in Japanese (日本語), Korean (한국어), and Simplified Chinese (简体中文).</p>
+            <p style="font-size: 14px; color: var(--text-secondary); margin: 4px auto 0; font-weight: 400;">Web-app &
+                iOS
                 in
                 development.</p>
 
+        </section>
+
+        <section class="integrations-section" aria-labelledby="integrationsTitle">
+            <div class="integrations-header">
+                <h2 id="integrationsTitle">
+                    <img src="assets/heart.png" alt="" class="header-icon-left">
+                    Built with the Help of
+                </h2>
+            </div>
+            <div class="integrations-strip">
+                <div class="integrations-marquee">
+                    <div class="integrations-track">
+                        <div class="integrations-set">
+                            <a class="integration-link" href="https://www.helius.dev/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Helius">
+                                <img class="integration-logo" src="integrations/helius.svg" alt="Helius">
+                            </a>
+                            <a class="integration-link" href="https://www.alchemy.com/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Alchemy">
+                                <img class="integration-logo" src="integrations/alchemy.svg" alt="Alchemy">
+                            </a>
+                            <a class="integration-link" href="https://jup.ag/" target="_blank" rel="noopener noreferrer"
+                                aria-label="Jupiter">
+                                <img class="integration-logo" src="integrations/jupiter.svg" alt="Jupiter">
+                            </a>
+                            <a class="integration-link" href="https://birdeye.so/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Birdeye">
+                                <img class="integration-logo" src="integrations/birdeye.svg" alt="Birdeye">
+                            </a>
+                            <a class="integration-link integration-link--magic-eden" href="https://magiceden.io/"
+                                target="_blank" rel="noopener noreferrer" aria-label="Magic Eden">
+                                <img class="integration-logo" src="integrations/magic-eden.svg" alt="Magic Eden">
+                            </a>
+                            <a class="integration-link" href="https://www.metaplex.com/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Metaplex">
+                                <img class="integration-logo" src="integrations/metaplex.svg" alt="Metaplex">
+                            </a>
+                            <a class="integration-link" href="https://irys.xyz/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Irys">
+                                <img class="integration-logo" src="integrations/irys.svg" alt="Irys">
+                            </a>
+                            <a class="integration-link" href="https://pinata.cloud/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Pinata">
+                                <img class="integration-logo" src="integrations/pinata.svg" alt="Pinata">
+                            </a>
+                            <a class="integration-link" href="https://www.binance.com/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Binance">
+                                <img class="integration-logo" src="integrations/binance.svg" alt="Binance">
+                            </a>
+                            <a class="integration-link" href="https://www.bybit.com/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Bybit">
+                                <img class="integration-logo" src="integrations/bybit.svg" alt="Bybit">
+                            </a>
+                            <a class="integration-link" href="https://phantom.com/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Phantom">
+                                <img class="integration-logo" src="integrations/phantom.svg" alt="Phantom">
+                            </a>
+                            <a class="integration-link" href="https://solflare.com/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Solflare">
+                                <img class="integration-logo" src="integrations/solflare.svg" alt="Solflare">
+                            </a>
+                            <a class="integration-link" href="https://solanamobile.com/seeker" target="_blank"
+                                rel="noopener noreferrer" aria-label="Solana Mobile Seeker">
+                                <img class="integration-logo" src="integrations/seeker.svg" alt="Solana Mobile Seeker">
+                            </a>
+                            <a class="integration-link" href="https://stakewiz.com/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Stakewiz">
+                                <img class="integration-logo" src="integrations/stakewiz.svg" alt="Stakewiz">
+                            </a>
+                        </div>
+                        <div class="integrations-set" aria-hidden="true">
+                            <a class="integration-link" href="https://www.helius.dev/" target="_blank"
+                                rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
+                                    src="integrations/helius.svg" alt=""></a>
+                            <a class="integration-link" href="https://www.alchemy.com/" target="_blank"
+                                rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
+                                    src="integrations/alchemy.svg" alt=""></a>
+                            <a class="integration-link" href="https://jup.ag/" target="_blank" rel="noopener noreferrer"
+                                tabindex="-1"><img class="integration-logo" src="integrations/jupiter.svg" alt=""></a>
+                            <a class="integration-link" href="https://birdeye.so/" target="_blank"
+                                rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
+                                    src="integrations/birdeye.svg" alt=""></a>
+                            <a class="integration-link integration-link--magic-eden" href="https://magiceden.io/"
+                                target="_blank" rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
+                                    src="integrations/magic-eden.svg" alt=""></a>
+                            <a class="integration-link" href="https://www.metaplex.com/" target="_blank"
+                                rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
+                                    src="integrations/metaplex.svg" alt=""></a>
+                            <a class="integration-link" href="https://irys.xyz/" target="_blank"
+                                rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
+                                    src="integrations/irys.svg" alt=""></a>
+                            <a class="integration-link" href="https://pinata.cloud/" target="_blank"
+                                rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
+                                    src="integrations/pinata.svg" alt=""></a>
+                            <a class="integration-link" href="https://www.binance.com/" target="_blank"
+                                rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
+                                    src="integrations/binance.svg" alt=""></a>
+                            <a class="integration-link" href="https://www.bybit.com/" target="_blank"
+                                rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
+                                    src="integrations/bybit.svg" alt=""></a>
+                            <a class="integration-link" href="https://phantom.com/" target="_blank"
+                                rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
+                                    src="integrations/phantom.svg" alt=""></a>
+                            <a class="integration-link" href="https://solflare.com/" target="_blank"
+                                rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
+                                    src="integrations/solflare.svg" alt=""></a>
+                            <a class="integration-link" href="https://solanamobile.com/seeker" target="_blank"
+                                rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
+                                    src="integrations/seeker.svg" alt=""></a>
+                            <a class="integration-link" href="https://stakewiz.com/" target="_blank"
+                                rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
+                                    src="integrations/stakewiz.svg" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="reviews-section" id="reviews">
@@ -1770,8 +2084,8 @@
                         const flag = document.createElement('img');
                         const lowerCode = country.code.toLowerCase();
                         flag.className = 'activity-country-flag';
-                        flag.src = `https://flagcdn.com/w20/${lowerCode}.png`;
-                        flag.srcset = `https://flagcdn.com/w40/${lowerCode}.png 2x`;
+                        flag.src = `https://flagcdn.com/w40/${lowerCode}.png`;
+                        flag.srcset = `https://flagcdn.com/w80/${lowerCode}.png 2x`;
                         flag.width = 20;
                         flag.height = 15;
                         flag.alt = '';
