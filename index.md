@@ -32,4 +32,3 @@ Version 0.28.379-beta.
 - [Security, privacy, and independence](https://tokenstudio.dev/security-and-independence.html)
 - [FAQ](https://tokenstudio.dev/faq.html)
 - [Contact](https://tokenstudio.dev/contact.html)
-- [Full agent reference](https://tokenstudio.dev/llms-full.txt)

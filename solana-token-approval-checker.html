@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solana Token Approval Checker, Free App | Token Studio</title>
+    <meta name="description"
+        content="Free app to check Solana token approvals without connecting your wallet. Find SPL, Token-2022 and NFT delegates, and revoke supported token approvals.">
+    <link rel="canonical" href="https://tokenstudio.dev/solana-token-approval-checker.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://tokenstudio.dev/solana-token-approval-checker.html">
+    <meta property="og:title" content="Solana Token Approval Checker, Free App | Token Studio">
+    <meta property="og:description"
+        content="Free app to check Solana token approvals without connecting your wallet. Find SPL, Token-2022 and NFT delegates, and revoke supported token approvals.">
+    <meta property="og:image" content="https://tokenstudio.dev/assets/og-card.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Solana Token Approval Checker, Free App | Token Studio">
+    <meta name="twitter:description"
+        content="Free app to check Solana token approvals without connecting your wallet. Find SPL, Token-2022 and NFT delegates, and revoke supported token approvals.">
+    <meta name="twitter:image" content="https://tokenstudio.dev/assets/og-card.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Solana Token Approval Checker, Free App",
+      "description": "Free app to check Solana token approvals without connecting your wallet. Find SPL, Token-2022 and NFT delegates, and revoke supported token approvals.",
+      "mainEntityOfPage": "https://tokenstudio.dev/solana-token-approval-checker.html",
+      "datePublished": "2026-11-04",
+      "dateModified": "2026-11-04",
+      "author": {
+        "@type": "Organization",
+        "name": "Token Studio"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Token Studio"
+      },
+      "image": "https://tokenstudio.dev/assets/og-card.png"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a token approval on Solana?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a standard token account, an approval names a delegate that can transfer or burn up to a specified amount without another signature from you. It applies to that account, not your entire wallet. NFT delegation uses rules specific to the NFT standard."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does revoke approval mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Revoking a token-account approval removes its current delegate and clears the remaining allowance. It keeps your tokens in the account. It does not burn tokens, recover a previous transfer, or revoke the mint’s own authorities."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does disconnecting Phantom revoke token approvals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Disconnecting an app ends its wallet connection; an on-chain delegate remains until it is removed or otherwise cleared. Check and revoke unwanted approvals separately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this Solana token approval checker app free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Checking approvals and approving or revoking token delegates have no Token Studio service fee. Submitting a transaction still requires SOL for Solana network fees and any selected priority fee. Read-only checks do not require a transaction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I check approvals without connecting my wallet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Open the wallet in Token Studio’s read-only mode and let it sync. You can inspect detected approvals without signing. To revoke or create an approval, connect the wallet that owns the account and sign the transaction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it check Token-2022 and NFT approvals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Token Studio detects standard SPL Token and Token-2022 account delegates, plus foreign Core and compressed NFT delegates. Detection and revocation are different: the Token Operator revoke workflow handles eligible funded and empty fungible token accounts, not Core or compressed NFT delegates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is an approval yellow instead of red?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yellow means the app detects an approval without currently measured value exposure; red means it measures value exposed to foreign delegates. Yellow is not a guarantee of safety: balances can change and NFT valuations may be unavailable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can an approval take all my SOL?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A standard token-account delegate cannot spend native SOL in your wallet or unrelated token accounts. It can spend or burn tokens in the approved account up to the remaining allowance. Wrapped SOL is a token-account balance and is a separate case."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do approvals expire, and can an empty account become risky later?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standard token-account approvals do not have a built-in time expiry. A remaining allowance can matter again if you refill the same account. A zero current balance is different from a cleared delegate. Token Studio includes eligible empty delegated accounts in the Token Operator, marks them with a keychain, and lets the owner revoke them before refilling the account."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can’t I revoke a frozen account or permanent delegate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A frozen token account must be thawed by the authorized freeze authority before the normal revoke can succeed. A Token-2022 permanent delegate is a mint-level authority that an ordinary token holder cannot remove with an account-level Revoke. NFT permanent delegates have their own rules."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is revoking safe, and can I approve the delegate again?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Revoking an unwanted account delegate leaves your balance in place, but it can interrupt a legitimate listing, subscription, or automated strategy that relies on that permission. You can create a new supported approval later. Verify the delegate and amount before signing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will revoking recover stolen tokens or fix a leaked seed phrase?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Revoking stops that delegate’s future use of the approval after confirmation; it cannot reverse completed transfers. Anyone with your private key can sign new transactions. A clean approval scan does not prove the wallet or every transaction is safe."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is revoke approval the same as revoke mint or freeze authority?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. An account approval lets a delegate act on a particular token account. Mint and freeze authorities are roles on the token mint. Removing those roles is a different operation controlled by the relevant authority, not by every holder."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tokenstudio.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Stories & Field Notes",
+          "item": "https://tokenstudio.dev/stories.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Solana Token Approval Checker",
+          "item": "https://tokenstudio.dev/solana-token-approval-checker.html"
+        }
+      ]
+    }
+  ]
+}</script>
+    <style>
+        :root {
+            --accent: #BBF294;
+            --accent-glow: rgba(187, 242, 148, 0.4);
+            --bg-dark: #0A0A0A;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('assets/connect.png');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4) blur(40px);
+        }
+
+        .glow-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% -20%, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .container {
+            width: min(100% - 48px, 1120px);
+            max-width: none;
+            margin: 0 auto;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .logo-container {
+            width: 58px;
+            height: 58px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-img {
+            width: 58px;
+            height: 58px;
+            position: relative;
+        }
+
+        /* Header */
+        header {
+            padding: 32px 0 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero {
+            padding: 36px 0 0px;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-discord {
+            background: #5865F2;
+            color: #FFFFFF;
+            border: none;
+            height: 54px;
+            box-sizing: border-box;
+            border-radius: 7px;
+            padding: 0 24px;
+        }
+
+        .btn-discord:hover {
+            background: #4752C4;
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.4);
+        }
+
+        .store-badge-link {
+            display: flex;
+            align-items: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .store-badge-link:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 10px 30px rgba(255, 255, 255, 0.15));
+        }
+
+        .store-badge {
+            height: 54px;
+            width: auto;
+            display: block;
+        }
+
+        .btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Feature Categories */
+        .category-section {
+            margin: 40px 0 60px;
+        }
+
+        .category-title {
+            font-size: 32px;
+            margin: 0 auto 30px;
+            width: fit-content;
+            text-align: center;
+            color: var(--accent);
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            border: 1px solid var(--card-border);
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+        }
+
+        .feature-row {
+            display: flex;
+            flex-direction: column;
+            padding: 32px 40px;
+            border-bottom: 1px solid var(--card-border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 4px solid transparent;
+            position: relative;
+        }
+
+        .feature-row:last-child {
+            border-bottom: none;
+        }
+
+        .feature-row:hover {
+            padding-left: 56px;
+            border-left-color: var(--accent);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0%, transparent 100%);
+        }
+
+        .feature-row h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .feature-row:hover h3 {
+            color: var(--accent);
+        }
+
+        .feature-row p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            max-width: 800px;
+        }
+
+        .report-card {
+            padding: 34px;
+            margin-top: 28px;
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.035);
+            backdrop-filter: blur(20px);
+        }
+
+        .report-card h2 {
+            color: var(--accent);
+            font-size: 30px;
+            line-height: 1.25;
+            margin-bottom: 14px;
+        }
+
+        .report-card h3 {
+            margin: 28px 0 10px;
+            font-size: 22px;
+        }
+
+        .report-card p,
+        .report-card li {
+            color: var(--text-secondary);
+            font-size: 17px;
+        }
+
+        .report-card ul,
+        .report-card ol {
+            padding-left: 24px;
+            margin-top: 12px;
+        }
+
+        .report-card li {
+            margin-bottom: 8px;
+        }
+
+        .finding {
+            color: #fff;
+            font-size: 21px;
+            line-height: 1.5;
+            margin-top: 10px;
+        }
+
+        .finding strong {
+            color: var(--accent);
+        }
+
+        .comparison-figure {
+            margin: 28px 0 0;
+        }
+
+        .comparison-figure img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+        }
+
+        .comparison-figure figcaption {
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.58);
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .table-wrap {
+            overflow: hidden;
+            margin: 26px 0 14px;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.24);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 13px 10px;
+            border-bottom: 1px solid var(--card-border);
+            text-align: right;
+            vertical-align: middle;
+            overflow-wrap: anywhere;
+        }
+
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            text-align: left;
+            width: 28%;
+        }
+
+        .comparison-table th {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.055);
+            font-size: 15px;
+        }
+
+        .comparison-table td {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .comparison-table .winner {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .comparison-table .failure {
+            color: #ff9b9b;
+            font-weight: 600;
+        }
+
+        .fine-print {
+            font-size: 14px !important;
+            color: rgba(255, 255, 255, 0.55) !important;
+        }
+
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .evidence-item {
+            padding: 18px;
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .evidence-item span {
+            display: block;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 6px;
+        }
+
+        .evidence-item code,
+        details code {
+            color: #fff;
+            overflow-wrap: anywhere;
+            font-size: 13px;
+        }
+
+        details {
+            margin-top: 14px;
+            padding: 16px 18px;
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        summary {
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        details p {
+            margin-top: 12px;
+        }
+
+        a {
+            color: var(--accent);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-btn:hover {
+            opacity: 0.8;
+            transform: translateX(-3px);
+        }
+
+        /* Footer */
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        footer {
+            padding: 100px 0 60px;
+            border-top: 1px solid var(--card-border);
+            background: rgba(0, 0, 0, 0.3);
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-desc {
+            color: var(--text-secondary);
+            max-width: 300px;
+            font-size: 14px;
+        }
+
+        .footer-col h5 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--card-border);
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: min(100% - 32px, 1120px);
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .cta-group .btn-discord {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .report-card {
+                padding: 24px 18px;
+            }
+
+            .evidence-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 9px 5px;
+                font-size: 11px;
+                line-height: 1.3;
+            }
+
+            .comparison-table th:first-child,
+            .comparison-table td:first-child {
+                width: 31%;
+            }
+        }
+
+        .report-card p+p {
+            margin-top: 16px;
+        }
+
+        .page-meta {
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: 16px;
+            font-size: 14px;
+        }
+
+        .toc {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 22px;
+            justify-content: center;
+            margin: 28px 0;
+        }
+
+        .toc a {
+            color: var(--accent);
+        }
+
+        .approval-key {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 24px 0;
+        }
+
+        .approval-key>div {
+            padding: 22px;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            background: rgba(0, 0, 0, .18);
+        }
+
+        .approval-key .keychain-icon {
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            vertical-align: middle;
+            margin-right: 10px;
+            overflow: visible;
+        }
+
+        .warning-yellow {
+            color: #F2EB94;
+        }
+
+        .warning-red {
+            color: #ff4444;
+        }
+
+        .notice {
+            border-left: 3px solid var(--accent);
+            padding: 14px 18px;
+            margin: 20px 0;
+            background: rgba(187, 242, 148, .05);
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            min-width: 620px;
+            table-layout: auto;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            text-align: left;
+        }
+
+        pre {
+            overflow-x: auto;
+            padding: 18px;
+            background: rgba(0, 0, 0, .3);
+            border-radius: 12px;
+            color: #e8ecf4;
+            margin-top: 18px;
+            font-size: 14px;
+        }
+
+        summary:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 5px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section[id] {
+            scroll-margin-top: 24px;
+        }
+
+        @media(max-width:768px) {
+            .approval-key {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            .hero h1 {
+                font-size: clamp(30px, 8vw, 40px);
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .container {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-container"></div>
+    <div class="glow-overlay"></div>
+    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; box-sizing: border-box;">
+        <header>
+            <a href="index.html" class="logo-group">
+                <div class="logo-container">
+                    <img src="assets/logo_grad.png" alt="Token Studio" class="logo-img">
+                </div>
+                <div class="logo-text">Token Studio</div>
+            </a>
+            <a href="index.html"
+                style="color: var(--text-secondary); text-decoration: none; font-weight: 600; transition: color 0.3s;"
+                onmouseover="this.style.color='var(--accent)'"
+                onmouseout="this.style.color='var(--text-secondary)'">Back to Home</a>
+        </header>
+    </div>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Solana Token Approval Checker, Free App</h1>
+            <p>Free app for checking who can move your tokens. Check approvals without connecting, understand which
+                permissions expose
+                value, and revoke supported delegates in Token Studio.</p>
+            <div class="page-meta">Approval guide & field notes, Updated November 4, 2026</div>
+        </section>
+        <nav class="toc" aria-label="On this page"><a href="#check">Check approvals</a><a href="#revoke">How to
+                revoke</a><a href="#coverage">What gets detected</a><a href="#questions">Questions answered</a></nav>
+        <section class="report-card" id="check">
+            <h2>Check first. You don’t need to sign anything.</h2>
+            <p class="finding"><strong>Open Token Studio, connect your wallet or use read-only mode, and wait a few
+                    seconds for the wallet to sync.</strong> Detected foreign approvals appear in the dashboard with a
+                keychain icon. Empty token accounts with active delegates also appear in the Token Operator with the
+                keychain icon, even though their current balance is zero.</p>
+            <div class="approval-key">
+                <div>
+                    <h3 class="warning-yellow"><svg class="keychain-icon" viewBox="0 0 256 256" aria-hidden="true"
+                            focusable="false">
+                            <defs>
+                                <filter id="keychain-yellow" color-interpolation-filters="sRGB">
+                                    <feFlood flood-color="#F2EB94" />
+                                    <feComposite in2="SourceAlpha" operator="in" />
+                                </filter>
+                            </defs>
+                            <image href="assets/keychain.png" width="256" height="256" filter="url(#keychain-yellow)" />
+                        </svg>Yellow keychain</h3>
+                    <p>An approval is present, but the app does not currently measure exposed value. Review it anyway,
+                        especially before refilling an empty account. Eligible empty delegated accounts can now be
+                        selected and revoked directly in the Token Operator.</p>
+                </div>
+                <div>
+                    <h3 class="warning-red"><svg class="keychain-icon" viewBox="0 0 256 256" aria-hidden="true"
+                            focusable="false">
+                            <defs>
+                                <filter id="keychain-red" color-interpolation-filters="sRGB">
+                                    <feFlood flood-color="#ff4444" />
+                                    <feComposite in2="SourceAlpha" operator="in" />
+                                </filter>
+                            </defs>
+                            <image href="assets/keychain.png" width="256" height="256" filter="url(#keychain-red)" />
+                        </svg>Red keychain</h3>
+                    <p>The app measures value exposed to foreign delegates. Review the delegate, the approved amount,
+                        and the affected account.</p>
+                </div>
+            </div>
+            <p>A foreign-approved token’s balance and value also appear red in the wallet view. These indicators help
+                you find the permission; they do not establish whether the delegate is malicious. Missing prices can
+                also understate measured exposure.</p>
+            <p>Token Studio is an Android app available on Google Play and the Solana dApp Store. Checking is free;
+                approving or revoking token delegates has no Token Studio <a href="fees.html">service fee</a>.
+                Transactions still incur Solana network costs.</p>
+        </section>
+        <section class="report-card" id="revoke">
+            <h2>How to revoke token approval in Token Studio</h2>
+            <ol>
+                <li><strong>Open the wallet and let it sync.</strong> You can start in read-only mode to inspect the
+                    approvals, so you don't even have to connect your wallet, just provide its public address.</li>
+                <li><strong>Tap the dashboard’s keychain.</strong> Review the approval information and open the Token
+                    Operator in revoke mode.</li>
+                <li><strong>Select the delegated accounts you want to revoke.</strong> Funded and empty delegated token
+                    accounts appear in the Token Operator; empty ones retain the keychain indicator. Check which app or
+                    strategy uses each permission before removing it.</li>
+                <li><strong>Connect the owning wallet to make the change.</strong> Read-only mode cannot sign a
+                    revocation.</li>
+                <li><strong>Tap Revoke, review the wallet prompt, and sign.</strong></li>
+            </ol>
+            <h3>The shortcut from a token</h3>
+            <p>Open the token’s dropdown menu and choose <strong>Advanced → Revoke Delegate</strong>. This opens the
+                same Token Operator in revoke mode with the asset’s eligible accounts selected.</p>
+            <p class="notice"><strong>Current scope:</strong> this revoke workflow handles eligible funded and
+                zero-balance fungible token accounts. A detected Core/cNFT delegate, permanent authority, or frozen
+                account is not a promise of an available revoke action here.</p>
+            <p>For ordinary SPL and Token-2022 account delegates, Solana’s <a
+                    href="https://solana.com/docs/tokens/basics/revoke-delegate" target="_blank"
+                    rel="noopener noreferrer">Revoke instruction</a> clears the delegate and its remaining allowance. It
+                leaves your tokens in place.</p>
+        </section>
+        <section class="report-card" id="meaning">
+            <h2>What are you actually approving?</h2>
+            <p>A standard token approval gives another address permission to transfer or burn a limited amount from
+                <strong>one token account</strong>. It does not hand over every asset in your wallet. There is one
+                current delegate per standard token account; a new approval replaces the previous delegate and
+                allowance.
+            </p>
+            <p>See Solana’s <a href="https://solana.com/docs/tokens/basics/approve-delegate" target="_blank"
+                    rel="noopener noreferrer">Approve Delegate</a> and <a
+                    href="https://solana.com/docs/payments/advanced-payments/spend-permissions" target="_blank"
+                    rel="noopener noreferrer">spend-permission documentation</a> for the underlying account model.</p>
+            <h3>Can I approve a delegate in Token Studio too?</h3>
+            <p>Yes. For an eligible fungible token, open its dropdown and choose <strong>Advanced → Delegate</strong>.
+                In the Token Operator, select the source token account, enter the delegate’s address, choose the amount,
+                and review and sign with the owning wallet. Give a delegate only the allowance needed for the intended
+                task.</p>
+        </section>
+        <section class="report-card" id="story">
+            <h2>The red balance that explained “missing” USDC</h2>
+            <p>In my <a href="stories/96-stake-accounts-and-250-missing-usdc.html">96 stake accounts and $250 in
+                    missing USDC field note</a>, a user also wanted to know why roughly $250 in USDC had disappeared.
+                Their USDC balance appeared red in Token Studio, pointing us toward a delegate.</p>
+            <p>We traced a 255 USDC delegated transfer through Solana’s Subscriptions and Allowances program into a
+                Squads smart account and then Kamino Finance. Loyal’s automatic yield system had moved idle USDC into
+                lending; 5 USDC remained in the original wallet.</p>
+            <p>The funds had not been stolen. The lesson is to identify the permission and the activity it enables
+                before revoking it. A legitimate automated strategy can rely on the same delegate mechanism that an
+                unwanted approval abuses. Revoking would stop future use of the account allowance; it would not withdraw
+                a lending position or reverse that transfer.</p>
+        </section>
+        <section class="report-card" id="coverage">
+            <h2>A checker should tell you which standards it covers</h2>
+            <p>Scanning SPL Token accounts alone does not inspect every kind of delegation on Solana. Token-2022
+                accounts, Core plugins, and compressed NFT delegates need their own handling.</p>
+            <div class="table-wrap">
+                <table class="comparison-table">
+                    <caption style="padding:14px;text-align:left">Approval detection comparison, reviewed November 4,
+                        2026</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Approval type</th>
+                            <th scope="col">Token Studio</th>
+                            <th scope="col">Sol Incinerator</th>
+                            <th scope="col">Famous Foxes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">SPL Token account</th>
+                            <td class="winner">Detected</td>
+                            <td class="winner">Detected</td>
+                            <td class="winner">Detected</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Token-2022 account</th>
+                            <td class="winner">Detected</td>
+                            <td class="winner">Detected</td>
+                            <td class="failure">Missed</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Core NFT delegate</th>
+                            <td class="winner">Detected</td>
+                            <td class="failure">Missed</td>
+                            <td class="failure">Missed</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Compressed NFT delegate</th>
+                            <td class="winner">Detected</td>
+                            <td class="failure">Missed</td>
+                            <td class="failure">Missed</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Core uses plugin authorities; compressed NFTs use delegate data tied to their tree leaf. Read the <a
+                    href="https://www.metaplex.com/docs/smart-contracts/core/plugins/transfer-delegate" target="_blank"
+                    rel="noopener noreferrer">Core Transfer Delegate documentation</a> and <a
+                    href="https://developers.metaplex.com/smart-contracts/bubblegum/delegate-cnfts" target="_blank"
+                    rel="noopener noreferrer">Bubblegum delegation documentation</a>. An ordinary token-account Revoke
+                is not a universal NFT revocation instruction.</p>
+        </section>
+        <section class="report-card" id="questions">
+            <h2>Solana approval questions, answered</h2>
+            <details>
+                <summary>What is a token approval on Solana?</summary>
+                <p>For a standard token account, an approval names a delegate that can transfer or burn up to a
+                    specified amount without another signature from you. It applies to that account, not your entire
+                    wallet. NFT delegation uses rules specific to the NFT standard.</p>
+            </details>
+            <details>
+                <summary>What does revoke approval mean?</summary>
+                <p>Revoking a token-account approval removes its current delegate and clears the remaining allowance. It
+                    keeps your tokens in the account. It does not burn tokens, recover a previous transfer, or revoke
+                    the mint’s own authorities.</p>
+            </details>
+            <details>
+                <summary>Does disconnecting Phantom revoke token approvals?</summary>
+                <p>No. Disconnecting an app ends its wallet connection; an on-chain delegate remains until it is removed
+                    or otherwise cleared. Check and revoke unwanted approvals separately.</p>
+            </details>
+            <details>
+                <summary>Is this Solana token approval checker app free?</summary>
+                <p>Checking approvals and approving or revoking token delegates have no Token Studio service fee.
+                    Submitting a transaction still requires SOL for Solana network fees and any selected priority fee.
+                    Read-only checks do not require a transaction.</p>
+            </details>
+            <details>
+                <summary>Can I check approvals without connecting my wallet?</summary>
+                <p>Yes. Open the wallet in Token Studio’s read-only mode and let it sync. You can inspect detected
+                    approvals without signing. To revoke or create an approval, connect the wallet that owns the account
+                    and sign the transaction.</p>
+            </details>
+            <details>
+                <summary>Does it check Token-2022 and NFT approvals?</summary>
+                <p>Token Studio detects standard SPL Token and Token-2022 account delegates, plus foreign Core and
+                    compressed NFT delegates. Detection and revocation are different: the Token Operator revoke
+                    workflow handles eligible funded and empty fungible token accounts, not Core or compressed NFT
+                    delegates.</p>
+            </details>
+            <details>
+                <summary>Why is an approval yellow instead of red?</summary>
+                <p>Yellow means the app detects an approval without currently measured value exposure; red means it
+                    measures value exposed to foreign delegates. Yellow is not a guarantee of safety: balances can
+                    change and NFT valuations may be unavailable.</p>
+            </details>
+            <details>
+                <summary>Can an approval take all my SOL?</summary>
+                <p>A standard token-account delegate cannot spend native SOL in your wallet or unrelated token accounts.
+                    It can spend or burn tokens in the approved account up to the remaining allowance. Wrapped SOL is a
+                    token-account balance and is a separate case.</p>
+            </details>
+            <details>
+                <summary>Do approvals expire, and can an empty account become risky later?</summary>
+                <p>Standard token-account approvals do not have a built-in time expiry. A remaining allowance can matter
+                    again if you refill the same account. A zero current balance is different from a cleared delegate.
+                    Token Studio includes empty delegated accounts in the Token Operator, marks them with the
+                    keychain icon, and lets the owner revoke them before refilling the account.</p>
+            </details>
+            <details>
+                <summary>Why can’t I revoke a frozen account or permanent delegate?</summary>
+                <p>A frozen token account must be thawed by the authorized freeze authority before the normal revoke can
+                    succeed. A Token-2022 permanent delegate is a mint-level authority that an ordinary token holder
+                    cannot remove with an account-level Revoke. NFT permanent delegates have their own rules.</p>
+            </details>
+            <details>
+                <summary>Is revoking safe, and can I approve the delegate again?</summary>
+                <p>Revoking an unwanted account delegate leaves your balance in place, but it can interrupt a legitimate
+                    listing, subscription, or automated strategy that relies on that permission. You can create a new
+                    supported approval later. Verify the delegate and amount before signing.</p>
+            </details>
+            <details>
+                <summary>Will revoking recover stolen tokens or fix a leaked seed phrase?</summary>
+                <p>No. Revoking stops that delegate’s future use of the approval after confirmation; it cannot reverse
+                    completed transfers. Anyone with your private key can sign new transactions. A clean approval scan
+                    does not prove the wallet or every transaction is safe.</p>
+            </details>
+            <details>
+                <summary>Is revoke approval the same as revoke mint or freeze authority?</summary>
+                <p>No. An account approval lets a delegate act on a particular token account. Mint and freeze
+                    authorities are roles on the token mint. Removing those roles is a different operation controlled by
+                    the relevant authority, not by every holder.</p>
+            </details>
+        </section>
+        <section class="report-card">
+            <h2>Know the limits of an approval scan</h2>
+            <p>Check unwanted approvals after unfamiliar activity and when you stop using a delegated service. For a
+                Token-2022 <a href="https://solana.com/docs/tokens/extensions/permanent-delegate" target="_blank"
+                    rel="noopener noreferrer">permanent delegate</a>, account owners cannot remove that mint-level
+                authority with a normal Revoke. Core permanent plugins also follow different authority rules.</p>
+            <p>Related: <a href="security-and-independence.html">Token Studio security</a>, <a
+                    href="sol-incinerator-alternative.html">Our NFT burn comparison</a>, <a href="fees.html">Full fee
+                    schedule</a>.</p>
+        </section>
+        <div class="cta-group" style="margin-top: 50px;">
+            <a href="https://play.google.com/store/apps/details?id=com.tokenstudio.dev" target="_blank"
+                rel="noopener noreferrer" class="store-badge-link">
+                <img src="assets/google-play-badge.svg" alt="Get it on Google Play" class="store-badge">
+            </a>
+            <a href="solanadappstore://details?id=com.tokenstudio.app" class="store-badge-link">
+                <img src="assets/solana-dapp-store-badge.svg" alt="Get it on the Solana dApp Store" class="store-badge">
+            </a>
+            <a href="https://discord.gg/mkb9apzpbT" class="btn btn-discord" target="_blank" rel="noopener noreferrer">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z" />
+                </svg>
+                Join Discord
+            </a>
+        </div>
+
+        <p style="margin:40px 0"><a class="back-btn" href="stories.html">← Back to Stories &amp; Field Notes</a></p>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a class="footer-logo" href="index.html"
+                        style="display: inline-block; color: #fff; text-decoration: none;">Token Studio</a>
+                    <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the
+                        Solana blockchain.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Resources</h5>
+                    <ul>
+                        <li><a href="about.html">About & Vision</a></li>
+                        <li><a href="features.html">Features & Toolset</a></li>
+                        <li><a href="fees.html">Fees & Pricing</a></li>
+                        <li><a href="stories.html">Stories & Field Notes</a></li>
+                        <li><a href="faq.html">Frequently Asked Questions</a></li>
+                        <li><a href="changelog.html">Changelog & Releases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Social</h5>
+                    <ul>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="https://x.com/impylse" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+                        </li>
+                        <li><a href="https://discord.com/invite/5z4pE9E5Zj" target="_blank"
+                                rel="noopener noreferrer">Discord Community</a></li>
+                        <li><a href="https://www.mallow.art/collection/iN3oJdcnQyWjXj3Xw6sy65Zojdg8RBS4VPQ3PmHff5S"
+                                target="_blank" rel="noopener noreferrer">Mallow Collection</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Compliance</h5>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="copyright.html">Copyright Notice</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2026 TokenStudio. All rights reserved.</div>
+                <div>Built for the Solana Mobile Ecosystem.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -19,9 +19,6 @@
     <link rel="canonical" href="https://tokenstudio.dev/">
     <link rel="alternate" type="text/markdown" href="https://tokenstudio.dev/index.md" title="Markdown version">
     <link rel="alternate" type="text/plain" href="https://tokenstudio.dev/llms.txt" title="LLMs Context Data">
-    <link rel="alternate" type="text/plain" href="https://tokenstudio.dev/llms-full.txt"
-        title="LLMs Full System Specification">
-
     <!-- Open Graph / Facebook / Discord -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tokenstudio.dev/">
@@ -54,6 +51,7 @@
             "https://x.com/impylse",
             "https://discord.gg/mkb9apzpbT"
           ],
+          "knowsAbout": ["Solana"],
           "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "customer support",
@@ -1170,6 +1168,12 @@
             border-color: var(--accent);
         }
 
+        .carousel-arrow svg {
+            display: block;
+            width: 20px;
+            height: 20px;
+        }
+
         .carousel-dots {
             display: flex;
             justify-content: center;
@@ -1419,7 +1423,10 @@
 
             <div class="reviews-container">
                 <button type="button" class="carousel-arrow prev-arrow" id="prevReview"
-                    aria-label="Previous review">‹</button>
+                    aria-label="Previous review"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M15 18 9 12l6-6" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg></button>
                 <div class="reviews-track-wrapper">
                     <div class="reviews-track" id="reviewsTrack">
                         <div class="review-card">
@@ -1751,7 +1758,10 @@
                     </div>
                 </div>
                 <button type="button" class="carousel-arrow next-arrow" id="nextReview"
-                    aria-label="Next review">›</button>
+                    aria-label="Next review"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="m9 18 6-6-6-6" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg></button>
             </div>
 
             <div class="carousel-dots" id="carouselDots"></div>
@@ -1768,8 +1778,8 @@
                 <div class="integrations-marquee">
                     <div class="integrations-track">
                         <div class="integrations-set">
-                            <a class="integration-link" href="https://magiceden.io/"
-                                target="_blank" rel="noopener noreferrer" aria-label="Magic Eden">
+                            <a class="integration-link" href="https://magiceden.io/" target="_blank"
+                                rel="noopener noreferrer" aria-label="Magic Eden">
                                 <img class="integration-logo" src="integrations/magic-eden.svg" alt="Magic Eden">
                             </a>
                             <a class="integration-link" href="https://www.metaplex.com/" target="_blank"
@@ -1804,7 +1814,7 @@
                                 rel="noopener noreferrer" aria-label="Binance">
                                 <img class="integration-logo" src="integrations/binance.svg" alt="Binance">
                             </a>
-                            <a class="integration-link" href="https://solanamobile.com/seeker" target="_blank"
+                            <a class="integration-link" href="https://solanamobile.com/" target="_blank"
                                 rel="noopener noreferrer" aria-label="Solana Mobile Seeker">
                                 <img class="integration-logo" src="integrations/seeker.svg" alt="Solana Mobile Seeker">
                             </a>
@@ -1826,8 +1836,8 @@
                             </a>
                         </div>
                         <div class="integrations-set" aria-hidden="true">
-                            <a class="integration-link" href="https://magiceden.io/"
-                                target="_blank" rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
+                            <a class="integration-link" href="https://magiceden.io/" target="_blank"
+                                rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
                                     src="integrations/magic-eden.svg" alt=""></a>
                             <a class="integration-link" href="https://www.metaplex.com/" target="_blank"
                                 rel="noopener noreferrer" tabindex="-1"><img class="integration-logo"
@@ -1996,7 +2006,10 @@
         <section class="screenshots-section" id="screenshots" style="position: relative;">
             <div class="reviews-container" style="margin-bottom: 0;">
                 <button type="button" class="carousel-arrow prev-arrow" id="prevScreenshot"
-                    aria-label="Previous screenshot">‹</button>
+                    aria-label="Previous screenshot"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M15 18 9 12l6-6" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg></button>
                 <div class="reviews-track-wrapper" style="padding: 30px 24px 40px; margin: -30px -24px -40px;">
                     <div class="reviews-track" id="screenshotsTrack" style="gap: 24px; align-items: center;">
                         <div class="screenshot-item">
@@ -2023,7 +2036,10 @@
                     </div>
                 </div>
                 <button type="button" class="carousel-arrow next-arrow" id="nextScreenshot"
-                    aria-label="Next screenshot">›</button>
+                    aria-label="Next screenshot"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="m9 18 6-6-6-6" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg></button>
             </div>
             <div class="carousel-dots" id="screenshotDots" style="margin-top: 16px;"></div>
         </section>
