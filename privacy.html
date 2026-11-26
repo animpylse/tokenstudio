@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How Token Studio handles local wallet data, limited first-party telemetry, third-party services, and credentials protected by your connected wallet.">
+    <meta name="description"
+        content="How Token Studio handles local wallet data, limited first-party telemetry, third-party services, and credentials protected by your connected wallet.">
     <link rel="canonical" href="https://tokenstudio.dev/privacy.html">
 
     <!-- Open Graph / Facebook / Discord -->
@@ -233,7 +234,7 @@
         <a href="index.html" class="back-btn">← Back to Token Studio</a>
         <h1>Privacy Policy</h1>
         <div id="content">
-            <p><strong>Effective Date: June 19, 2026</strong></p>
+            <p><strong>Effective Date: November 25, 2026</strong></p>
 
             <h2>1. Overview</h2>
             <p>Token Studio is built on the principles of decentralization and user sovereignty. The application is
@@ -250,14 +251,16 @@
                 <br>- A hashed app-install identifier for usage analytics
                 <br>- Feature/channel metadata associated with server-assisted requests
                 <br>- Diagnostic and error-report payloads sent through the app
-                <br>Token Studio does not collect public keys, wallet authentication
-                credentials, or wallet balances for telemetry purposes.
+                <br>- Connected-wallet badge data for Sky Launge Leaderboard, described below
+                <br>Token Studio does not collect exact wallet balances. Wallet addresses
+                are submitted for public leaderboard identity, only when you choose to announce a profile.
             </p>
 
             <h2>3. Local Processing</h2>
             <p>All application logic and blockchain operations occur locally on your device or directly against public
                 blockchain infrastructure. Some features, however, rely on Token Studio-operated servers for signal
-                generation, telemetry logging, diagnostics, version checks, and service monitoring. When you use those
+                generation, leaderboard rankings, telemetry logging, diagnostics, version checks, and service
+                monitoring. When you use those
                 features, relevant request data is transmitted to those servers for processing and, in some cases,
                 storage.</p>
 
@@ -285,7 +288,20 @@
                 content. Reports include a random installation identifier, app version, locale, operation type, and
                 sanitized technical error details.</p>
 
-            <h2>6. Data Security</h2>
+            <h2 id="sky-launge">6. Sky Launge Leaderboard</h2>
+            <p>Sky Launge uses in-app activity to produce annual rankings. By default, entries appear under a
+                pseudonym derived from a hashed installation identifier. Connected-wallet reports can send Token
+                Studio's servers a wallet wealth tier (one of seven bands), a wallet-age tier, and a Wallet Health
+                score.
+                The wealth and age tiers describe ranges. The tiers and health score will appear publicly on
+                pseudonymous leaderboard entries.</p>
+            <p>If you choose to announce a profile, its public wallet address and any verified domain you choose
+                to display are linked to its leaderboard entry. You can hide that profile's identity later. The entry
+                returns to its pseudonym, and
+                its badges remain public. People who have previously seen or saved the association may still have it.
+                Hiding one profile does not hide other profiles you announced.</p>
+
+            <h2>7. Data Security</h2>
             <p>Security is managed by the decentralized architecture of the Solana blockchain and the secure signing
                 systems of <strong>Seed Vault, Solflare, and Phantom</strong>. Token Studio cannot access your private
                 keys or sensitive wallet credentials, even if it wanted to, because they remain protected inside your
@@ -296,22 +312,22 @@
                 technical safeguards, but no internet transmission or storage system can be guaranteed to be perfectly
                 secure.</p>
 
-            <h2>7. Children's Privacy</h2>
+            <h2>8. Children's Privacy</h2>
             <p>Token Studio is not directed at children under the age of 13. It does not knowingly collect, solicit, or
                 process any data from children.</p>
 
-            <h2>8. On-Chain Immutability</h2>
+            <h2>9. On-Chain Immutability</h2>
             <p>Data recorded on the Solana blockchain, such as transaction history, minting activity, or burns, is
                 immutable by design. The developer does not control the Solana network and is technically unable to
                 alter, delete, or "forget" any on-chain records. These actions are permanent and publicly
                 accessible.</p>
 
-            <h2>9. Changes to Policy</h2>
+            <h2>10. Changes to Policy</h2>
             <p>This Privacy Policy may be updated at any time to reflect changes in our technical practices or the
                 evolving regulatory landscape. Continued use of the application constitutes your acceptance of the
                 revised Policy.</p>
 
-            <h2>10. Contact</h2>
+            <h2>11. Contact</h2>
             <p>If you have questions regarding this Privacy Policy, please contact the developer via the official
                 Discord Community Server or X (Twitter) handle.</p>
             <div style="margin-top: 50px;">
@@ -323,7 +339,8 @@
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a class="footer-logo" href="index.html" style="display: inline-block; color: #fff; text-decoration: none;">Token Studio</a>
+                    <a class="footer-logo" href="index.html"
+                        style="display: inline-block; color: #fff; text-decoration: none;">Token Studio</a>
                     <p class="footer-desc">Professional-grade engine for comprehensive asset lifecycle management on the
                         Solana blockchain.</p>
                 </div>

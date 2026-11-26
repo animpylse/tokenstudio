@@ -25,7 +25,7 @@ Version 0.28.379-beta.
 - [Features](https://tokenstudio.dev/features.html)
 - [Service fees](https://tokenstudio.dev/fees.html)
 - [Solana wallet manager](https://tokenstudio.dev/solana-wallet.html)
-- [Flight History](https://tokenstudio.dev/solana-transaction-history.html)
+- [Flight History](https://tokenstudio.dev/solana-transaction-tracker.html)
 - [Cheapest Solana burner](https://tokenstudio.dev/cheapest-solana-burner.html)
 - [Optimized swaps](https://tokenstudio.dev/solana-swap.html)
 - [Solana NFT minter](https://tokenstudio.dev/solana-nft-minter.html)

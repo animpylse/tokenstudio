@@ -89,7 +89,7 @@ Token Studio is an interactive Android and Solana Mobile application, not an API
 Best destination by task:
 
 - Wallet tracking and read-only inspection: https://tokenstudio.dev/solana-wallet.html
-- Transaction history and filters: https://tokenstudio.dev/solana-transaction-history.html
+- Transaction history and filters: https://tokenstudio.dev/solana-transaction-tracker.html
 - Wallet cleanup and SOL rent recovery: https://tokenstudio.dev/cheapest-solana-burner.html
 - Token swaps: https://tokenstudio.dev/solana-swap.html
 - NFT creation and editing: https://tokenstudio.dev/solana-nft-minter.html
