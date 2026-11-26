@@ -648,17 +648,16 @@
 
         <section class="hero">
             <h1>Sol Incinerator Alternative: A Verified NFT Burn Comparison</h1>
-            <p>If you are searching for a Sol Incinerator alternative, this report compares decoded transaction
-                payloads rather than advertised fee percentages. I submitted the same Legacy NFT,
-                simulated each captured transaction, and measured the SOL each burner
-                actually returned.</p>
+            <p>Given that you are here, im guessing you've been looking for a Sol Incinerator alternative, but rather
+                than comparing fees, like every other "best of" articles, i will show you how careless sol-incinerator
+                is with your SOL. I submitted the same Legacy NFT for burn, and measured the actual SOL each burner
+                recovered.</p>
 
         </section>
 
         <section class="report-card" id="test-results">
             <h2>TL;DR</h2>
-            <p class="finding">Across three decoded payloads, the same Legacy NFT produced results ranging from
-                <strong>0.001441416 SOL</strong> to <strong>0.00624348 SOL</strong> net wallet increase.
+            <p class="finding">Across the three decoded payloads, the same NFT produced wildly different results.
             </p>
 
             <div class="table-wrap">
@@ -747,34 +746,33 @@
                     </tbody>
                 </table>
             </div>
-            <p class="fine-print">*I ran the exact Token Studio test with my own wallet, which holds an official
-                Token Studio NFT and therefore paid no Token Studio service fee. Values in parentheses show what a
-                standard wallet would have paid and retained: a 0.8% fee of approximately 0.00005002 SOL, leaving
-                approximately 0.00619346 SOL after the simulated network fee.</p>
+            <p class="fine-print">*I ran the Token Studio test with my own wallet, which holds an official
+                Token Studio NFT and so i paid no Token Studio service fee. Values in parentheses show what a
+                regular wallet would have paid (0.8% fee of approximately 0.00005 SOL), leaving
+                about 0.00619 SOL after the network fee.</p>
 
             <figure class="comparison-figure">
                 <img src="screenshots/incinerator.jpg"
                     alt="Sol Incinerator alternative comparison between Sol Incinerator and Token Studio wallet transaction previews"
                     width="2048" height="1024" loading="eager">
-                <figcaption>Wallet previews from the comparison: Sol Incinerator displayed approximately 0.0018 SOL,
-                    while Token Studio displayed approximately 0.0066 SOL for the complete NFT burn path.</figcaption>
+                <figcaption>Wallet previews from the comparison: Sol Incinerator displayed +0.0018 SOL,
+                    while Token Studio displayed +0.0066 SOL for the complete NFT burn.</figcaption>
             </figure>
         </section>
 
         <section class="report-card">
-            <h2>What Sol Incinerator actually submitted</h2>
+            <h2>What Sol Incinerator actually did</h2>
             <p>The transaction called Sol Incinerator's <code>BURNow...</code> program with an instruction named
                 <code>BurnAllTokensAndCloseAccount</code>. Simulation showed four internal calls:
             </p>
             <ol>
-                <li>Burn the NFT token through the SPL Token program.</li>
+                <li>Burn the NFT through the SPL Token program.</li>
                 <li>Close the NFT's associated token account.</li>
-                <li>Execute one System Program transfer.</li>
-                <li>Execute a second System Program transfer.</li>
+                <li>Execute a System Program transfer.</li>
+                <li>Execute another System Program transfer.</li>
             </ol>
-            <p>The NFT's metadata and edition addresses were not included anywhere in the transaction. A Solana
-                program cannot modify an account that the transaction did not provide. Consequently, this payload
-                could not close either account.</p>
+            <p>The NFT's metadata and master edition accounts were not included anywhere in the transaction, so
+                therefore they were never closed would still be live on-chain, consuming rent for nothing.</p>
 
             <h3>The SOL it did not recover</h3>
             <div class="table-wrap">
@@ -815,25 +813,25 @@
                     </tbody>
                 </table>
             </div>
-            <p>Once the NFT token is burned and its token account is closed separately, the normal complete Metaplex
-                burn path is no longer available in the same form. The omitted metadata and edition balances are not
-                merely a smaller refund; they are onchain accounts left behind by the operation.</p>
+            <p>Once the NFT is burned and its token account is closed, the complete Metaplex
+                burn is no longer available in the same form. The omitted metadata and master edition balances are
+                onchain accounts left behind by the operation.</p>
         </section>
 
         <section class="report-card">
-            <h2>The advertised 2% behaved like 2.74%</h2>
+            <h2>The advertised 2% behaved effectively more like 2.74%</h2>
             <p>The associated token account held 1,488,440 lamports. Sol Incinerator's recipient gained 40,782
-                lamports during simulation. That is 2.74% of the amount its transaction actually recovered.</p>
+                lamports during simulation. That is effectively 2.74% of the amount the transaction actually recovered.
+            </p>
             <p>There is an unusually precise explanation. The former rent-exempt balance for a 165-byte token account
-                was 2,039,280 lamports. Two percent of that older amount is approximately 40,786 lamports, almost
+                was 2,039,280 lamports. Two percent of that older amount is 40,786 lamports,
                 exactly the fee observed in this payload. The evidence is consistent with a fee derived from the old
-                token-account rent requirement instead of the account's current balance. This report cannot establish
-                the implementation method without Sol Incinerator's source code, but it can establish the inputs and
-                outputs recorded by the simulation.</p>
-            <p>This distinction is increasingly important. Solana is rolling out SIMD-0437, which reduces account rent
-                deposits in stages and targets a 90% total reduction. The current balance in this test already reflects
+                token account rent instead of the account's live balance.</p>
+            <p>This distinction is important because Solana is rolling out SIMD-0437, which reduces account rent
+                requirements in stages, and targets a 90% total reduction once complete. The current balance in this
+                test already reflects
                 the lower 5,080-lamports-per-byte rate. A fee based on the former fixed amount becomes a progressively
-                larger percentage of the SOL actually recovered as rent requirements fall. See Solana Foundation's
+                larger percentage of the SOL recovered in reality, as rent requirements fall. See Solana Foundation's
                 <a href="https://solana.com/upgrades/reduced-rent" target="_blank" rel="noopener noreferrer">Reduced
                     Rent overview</a> and the
                 <a href="https://github.com/solana-foundation/solana-improvement-documents/blob/main/proposals/0437-incremental-rent-reduction.md"
@@ -846,36 +844,37 @@
             <p>Sol Incinerator's incomplete V0 transaction was 406 bytes. Token Studio's complete V1 transaction was
                 438 bytes, only 32 bytes larger.</p>
             <p>Token Studio called the official Metaplex Token Metadata program directly and supplied the token
-                account, mint, metadata PDA, and edition PDA. The resulting burn closed all three closable accounts in
-                one operation. Sol Incinerator instead routed the operation through its custom program, omitted two of
-                those accounts, and added two internal System Program transfers.</p>
-            <p>This is why fee percentages alone are a poor way to compare burners. A lower percentage does not help
-                when the transaction fails to recover most of the available SOL.</p>
+                account, mint, metadata PDA, and master edition PDA. The resulting burn closed all three accounts in
+                one operation. Sol Incinerator instead routed the operation through its custom program, forgot to close
+                the two PDA accounts, and added two internal System Program transfers.</p>
+            <p>This is why fee percentages alone are a poor way to compare burners. A better way to compare is, how much
+                SOL does it actually recover for the user.</p>
 
             <h3>Fee transfers also consume batch capacity</h3>
             <p>The tested Sol Incinerator operation made two internal System Program transfers in addition to its burn
-                and close calls. Every extra call consumes transaction execution capacity. Token Studio calculates one
-                service fee for the complete batch and places one fee transfer at the end, or none for an exempt
-                collector.</p>
+                and close instructions. Every extra instruction consumes transaction capacity. Token Studio calculates
+                one
+                service fee for the complete batch and places one fee transfer at the end (or none for an Official NFT
+                collector).</p>
         </section>
 
         <section class="report-card">
-            <h2>Should you rely on Sol Incinerator for Legacy NFT burns?</h2>
-            <p class="finding"><strong>Based on this reproducible failure, no.</strong> A burn is irreversible. A tool
-                that omits recoverable NFT accounts can destroy the token first and leave the user without the complete
-                recovery that a standard Metaplex burn would have produced.</p>
-            <p>The issue does not have to affect every collection to be serious. Users cannot reasonably inspect a
-                serialized transaction to determine whether metadata and edition accounts are missing before they sign.
-                The burner is responsible for identifying the NFT structure, constructing the complete operation, and
-                calculating its advertised percentage from current onchain values.</p>
+            <h2>So, should you rely on Sol Incinerator for Legacy NFT burns?</h2>
+            <p class="finding"><strong>Based on this failure, absolutely not.</strong> A burn is irreversible, and a
+                tool
+                that leaves recoverable SOL stranded on-chain forever, should be avoided. Especially one thats been live
+                for ages and still fails.</p>
+            <p>The issue does not have to affect every NFT to be serious. Regular users cannot easily inspect a
+                transaction to determine whether or not they will reliably burn the NFT before they sign.
+                The responsibility of identifying the NFT structure lies on the burner itself.</p>
         </section>
 
         <section class="report-card" id="methodology">
             <h2>Evidence and reproduction details</h2>
-            <p>The three captured unsigned payloads targeted the same wallet, mint, and associated token account. I
+            <p>The three captured payloads targeted the same wallet and NFT. I
                 decoded the
                 transactions locally and simulated them through Solana mainnet RPC with signature verification disabled
-                and a replacement blockhash. No transaction was submitted during this comparison.</p>
+                and a replacement blockhash. No transaction was submitted.</p>
             <div class="evidence-grid">
                 <div class="evidence-item"><span>Wallet</span><code>AyPmiJNbxQsVJfLzuvNvL3GZ13BcmSnk27Tmb7nHWhvV</code>
                 </div>
@@ -910,12 +909,12 @@
 
             <h3>Scope and fairness</h3>
             <p>This is a documented result for one Legacy NFT tested on October 27, 2026. Other NFTs tested through Sol
-                Incinerator did include the complete account set and recovered their metadata-related balances. I do
-                not claim that every Sol Incinerator burn has this failure. For Sol Incinerator, this payload, its
-                account balances, and both successful simulations make the specific result independently reproducible.
+                Incinerator did recover the full rent (but also miscalculate the advertised 2% fee). I do
+                not claim that every Sol Incinerator burn has this failure, but if one NFT type fails, who knows what
+                else might be going wrong. I do not have the time to fully test their system.
             </p>
-            <p>The collection had no remaining items at the time of testing. That may be relevant to the failure, but
-                the payload alone does not prove its cause.</p>
+            <p>The Legacy NFT in question, was a collection, and had no remaining items at the time of testing (which if
+                it had, could be the reason for the failure).</p>
         </section>
 
         <!-- Solana Wallet Cleaning & Optimization -->
@@ -925,8 +924,9 @@
             <div class="features-list">
                 <div class="feature-row">
                     <h3>A fee tied to recovered SOL</h3>
-                    <p>Burn and Trim cost 0.8% of estimated SOL recovery, capped at 0.01 SOL per transaction. If Token
-                        Studio cannot estimate the recovery safely, the percentage fee is zero. See the complete
+                    <p>Burn and Trim cost 0.8% of estimated SOL recovery, capped at 0.01 SOL per transaction (as a
+                        ceiling safety, in case you have extra SOL stored in any of the accounts being closed). If Token
+                        Studio cannot estimate the recovery, the fee is zero. See the complete
                         <a href="fees.html">Token Studio fee schedule</a>.
                     </p>
                 </div>
@@ -934,17 +934,17 @@
                     <h3>4,096-byte Solana V1 batch transactions</h3>
                     <p>Token Studio measures the accounts and instructions required by each selected asset, then fits
                         the largest compatible group it can into each 4,096-byte transaction. That means fewer
-                        transactions and fewer wallet approval prompts for large cleanup jobs.</p>
+                        transactions and wallet approval prompts, for largeer cleanup jobs.</p>
                 </div>
                 <div class="feature-row">
                     <h3>Wallet Health Reporter</h3>
-                    <p>A 14-signal report identifies empty accounts, recoverable rent, suspicious metadata, active
+                    <p>A 14+ signal report identifies empty accounts, recoverable rent, suspicious metadata, active
                         approvals, staking efficiency, and other conditions that may deserve attention.</p>
                 </div>
                 <div class="feature-row">
-                    <h3>Bulk Burn NFTs & Scam Tokens</h3>
-                    <p>Select large mixed groups of NFTs and tokens. Token Studio orders compatible assets and divides
-                        them into safe transaction batches for wallet approval.</p>
+                    <h3>Bulk Burn NFTs & Spam Tokens</h3>
+                    <p>Select large mixed groups of NFTs and tokens. Token Studio arranges assets and divides
+                        them into efficient transaction batches for wallet approval.</p>
                 </div>
             </div>
             <p style="margin-top: 24px; color: var(--text-secondary);">For the complete cleanup workflow, asset
